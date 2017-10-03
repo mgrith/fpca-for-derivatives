@@ -1,0 +1,637 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Determining the document class and the input encoding: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[paper=a4, fontsize=10.5pt, parskip=false, oneside, pointlessnumbers, leqno]{scrartcl}
+
+\newcommand{\eqnum}{\leavevmode\hfill\refstepcounter{equation}\textup{\tagform@{\theequation}}}
+% \documentclass[paper=a4, fontsize=11pt, twoside]{scrartcl}
+% \documentclass[a4paper,twoside,11pt,fleqn]{article}
+% \usepackage{typearea}
+\typearea[2.5mm]{8}
+\setlength{\textheight}{22.1cm}
+% \setlength{\textwidth}{12cm}
+\usepackage{lscape}
+
+\DeclareFontFamily{OT1}{pzc}{}
+\DeclareFontShape{OT1}{pzc}{m}{it}{<-> s * [1.10] pzcmi7t}{}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+
+\usepackage{bbm}
+\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{proof}[proposition]{Proof}
+\newtheorem{proposition and definition}[proposition]{Proposition and Definition}
+\newtheorem{definition}[proposition]{Definition}
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{theorem}[proposition]{Theorem}
+%\newtheorem{example}[proposition]{Example}
+\newtheorem{corollary}[proposition]{Corollary}
+\newtheorem{remarks}[proposition]{Remarks}
+\newtheorem{remark}[proposition]{Remark}
+\newtheorem{assumptions}[proposition]{Assumption}
+\newcommand{\timesim}{\raisebox{-2.2mm}{
+\unitlength 1.00pt
+\linethickness{0.5pt}
+\begin{picture}(10.00,20.00)
+\multiput(2.00,6.00)(0.12,0.18){50}{\line(0,1){0.18}}
+\multiput(2.00,15.00)(0.12,-0.18){50}{\line(0,-1){0.18}}
+\put(5.00,2.00){\makebox(0,0)[cc]{$\scriptstyle i=1$}}
+\put(5.00,18.00){\makebox(0,0)[cc]{$\scriptstyle r$}}
+\end{picture}
+}}
+
+\usepackage{subcaption}
+% \usepackage[ansinew]{inputenc}
+% \usepackage[applemac]{inputenc}
+% This package enables you to input special characters---like umlauts---
+% via hitting the corresponding keys on your keyboard, instead of
+% having to use LaTeX commands like \"{a}, \"{o} etc.
+
+%\usepackage{mathtools}
+%\mathtoolsset{showonlyrefs=true}
+
+%\usepackage{autonum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands influencing the page design and typography: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[USenglish, ngerman]{babel}
+
+\usepackage{fixltx2e}
+
+% Provides the ``\textsubscript'' command
+
+\usepackage{ragged2e}
+
+% Provides, among others, the \RaggedRight environment, which is \raggedright but with hyphenation enabled.
+
+% Typeset the title, authors' names, and affiliations ragged right
+
+\makeatletter
+\def\maketitle{%
+  % \null
+  % \thispagestyle{empty}%
+  % \vfill
+  \linespread{1.05}
+  \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+  \begin{RaggedRight}
+    \leavevmode
+    {\normalfont \LARGE \@title \par}%
+    \vskip 20pt
+    {\sffamily \bfseries \normalsize \@author \par}%
+    \vskip 20pt
+    {\sffamily \normalsize \@date \par}%
+    \vskip 7.5pt
+  \end{RaggedRight}%
+  {\@thanks}
+  % \vfill
+  % \null
+  % \cleardoublepage
+  \setcounter{footnote}{0}
+  }
+\makeatother
+
+\usepackage[bottom, splitrule]{footmisc}
+\setlength{\footnotemargin}{0.97\parindent}
+\let\oldfootnoterule\footnoterule
+\renewcommand{\footnoterule}{\bigskip\oldfootnoterule\smallskip}
+% Replace the asterisk in the footnotes marked with symbols by a star:
+\DefineFNsymbols*{stars}{{$\star$}\dagger\ddagger\S\P\|%
+                   {$\star\star$}{\dagger\dagger}{\ddagger\ddagger}}
+\setfnsymbol{stars}
+
+\let \footnoteorig \footnote
+\renewcommand{\footnote}[1]{\footnoteorig{\:#1}}
+
+% Setting up the fonts to use (needs the respective packages to be installed!):
+% Just delete the percent sign "%" in front of the package combination that you want to use and
+% insert a percent sign in front of the packages that you don't use:
+
+\usepackage[flushleft, online, para]{threeparttable}
+% Provides the `table notes' environment
+
+\usepackage{amsmath, amssymb}
+% This package makes additional mathematical commands and symbols available. For example, standard LaTeX
+% knows a command "\begin{eqnarray} ... \end{eqnarray}" for typesetting a sequence of equations. However,
+% it numbers each of the equations involved - which you might not want. Therefore, the package "amsmath"
+% provides the command "\begin{eqnarray*} ... \end{eqnarray*}" which suppresses the numbering.
+% \usepackage{amssymb}
+
+\renewcommand{\dots}{\ldots{\kern -1pt}}
+
+% \usepackage[charter, sfscaled=false]{mathdesign}
+% \renewcommand{\rmdefault}{bch}
+% \usepackage{charter}
+
+\usepackage{fourier}
+\DeclareMathAlphabet{\mathbfit}{T1}{fut\mathfamilyextension}{bx}{it}
+\newcommand{\gammaup}{\othergamma}
+
+%\usepackage{txfonts}
+%\usepackage[LY1]{fontenc}
+
+\newcommand{\euro}{\texteuro}
+
+%\DeclareSymbolFont{rmcustom}{T1}\rmdefault\mddefault\updefault
+%\DeclareMathSymbol{(}{\mathopen}{rmcustom}{`(}
+%\DeclareMathSymbol{)}{\mathclose}{rmcustom}{`)}
+%\DeclareMathSymbol{[}{\mathopen}{rmcustom}{`[}
+%\DeclareMathSymbol{]}{\mathclose}{rmcustom}{`]}
+%\DeclareMathDelimiter{\lbrace}{\mathopen}{rmcustom}{`\{}{largesymbols}{"08}
+%\DeclareMathDelimiter{\rbrace}{\mathclose}{rmcustom}{`\}}{largesymbols}{"09}
+%\DeclareMathDelimiter{\leftcurly}{\mathopen}{rmcustom}{`\{}{largesymbols}{"08}
+%\DeclareMathDelimiter{\rightcurly}{\mathclose}{rmcustom}{`\}}{largesymbols}{"09}
+%\renewcommand{\{}{\leftcurly}
+%\renewcommand{\}}{\rightcurly}
+% \DeclareMathAlphabet{\mathbfit}{T1}{chr}{bx}{it}
+% \usepackage[defaultsans, scale=0.87]{opensans}
+\usepackage[scaled=0.92]{helvet}
+\usepackage[scaled=0.84]{beramono}
+% \usepackage[defaultsans]{droidsans}
+% \usepackage[defaultmono, scale=0.865]{droidmono}
+% \usepackage[scaled=0.93]{PTSans}
+% \usepackage{PTSansNarrow}
+
+\usepackage{textcomp}
+
+% sets the font of text and formulae to Utopia; sets the sans-serif and monospaced font to Bera
+% \usepackage{mathptmx} \usepackage[scaled=0.9]{helvet} \usepackage{courier}
+% sets the font of text and formulae to Times; sets the sans-serif font to Helvetica;
+% sets the monospaced font to Courier
+% \usepackage[charter]{mathdesign} \usepackage{berasans} \usepackage{beramono}
+% \usepackage{charter}
+% \DeclareSymbolFont{rmcustom}{T1}\rmdefault\mddefault\updefault
+% \DeclareMathSymbol{(}{\mathopen}{rmcustom}{`(}
+% \DeclareMathSymbol{)}{\mathclose}{rmcustom}{`)}
+% \DeclareMathSymbol{[}{\mathopen}{rmcustom}{`[}
+% \DeclareMathSymbol{]}{\mathclose}{rmcustom}{`]}
+% \DeclareMathDelimiter{\leftcurly}{\mathopen}{rmcustom}{`\{}{largesymbols}{"08}
+% \DeclareMathDelimiter{\rightcurly}{\mathclose}{rmcustom}{`\}}{largesymbols}{"09}
+%\renewcommand{\{}{\leftcurly}
+%\renewcommand{\}}{\rightcurly}
+% sets the font of text and formulae to ITC Charter; sets the sans-serif and monospaced font to Bera
+% \usepackage[osf]{mathpazo} \usepackage[scaled=0.9]{helvet} \usepackage{courier}
+% sets the font of text and formulae to Palatino; sets the sans-serif font to Helvetica;
+% sets the monospaced font to Courier
+
+\frenchspacing
+% By default LaTeX inserts an enlarged space after every period (.). Since the period (.) creates
+% much white space anyway, enlarging the subsequent space is unnecessary. The \frenchspacing command
+% suppresses the insertion of additional white space.
+
+\flushbottom  % forces the bottom text lines on each page to be horizontally aligned
+
+\sloppy  % less punishment for large whitespace within text lines
+
+% \usepackage[activate]{pdfcprot}
+% \usepackage[protrusion=true, factor=1200, expansion=compatibility]{microtype}
+\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
+% This package enables so-called hanging punctuation. That is, when a punctuation sign like ":", ".", "-" etc.
+% is found at the beginning or end of a line, it is protruded a little into the page margin. This leads to
+% so-called "optical margin alignment", because the protrusion makes the margin alignment look straighter.
+\SetExtraKerning[unit=space]
+  {encoding={*}, family={*}, series={*}, size={*, footnote size}}
+  {\textemdash={325,325}}
+
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=\parindent, listparindent=\parindent, parsep=0pt, labelsep=0.42\parindent}
+
+% \def\semismall{\@setfontsize{\semismall}{10.25pt}{13.5pt}}
+\renewenvironment{quote}
+                 {\list{}{\leftmargin\parindent \rightmargin\parindent}%
+                  %\small
+                  \setlength{\baselineskip}{2.8ex}\item\relax}
+                 {\endlist}
+
+\newenvironment{tightitemize}{
+  \begin{list}{\makebox(5.5,4.5)[t]{$\scriptstyle \bullet$}}{%
+    \advance\partopsep  by \topsep
+    \setlength{\topsep}{0.75ex}
+    \setlength{\itemsep}{0in}
+    \setlength{\parsep}{0em}
+    \setlength{\leftmargin}{\parindent}
+    \setlength{\rightmargin}{0in}
+    \setlength{\itemindent}{0in}
+  }
+}
+{\end{list}}
+
+\newcommand{\highlight}[1]{\textcolor{medred}{[[\:\textbf{#1}\:]]}}
+
+% Packages to influence table layout:
+\usepackage{tabularx}
+% \usepackage{tabulary}
+\usepackage{booktabs}
+\heavyrulewidth=.05em
+% \belowbottomsep=-2.5pt
+\usepackage{multirow}
+% Enables the "\multirow" command for typesetting cells inside tables which span several rows.
+% \usepackage{colortbl}
+
+% A package to change the formatting of the table of contents:
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforesecskip}{1ex}
+\renewcommand{\cftsecfont}{\sffamily\bfseries\selectfont}
+\renewcommand{\cftsecpagefont}{\sffamily\bfseries\selectfont}
+\cftsetrmarg{27.5pt}
+\cftsetpnumwidth{22.5pt}
+\makeatletter
+  \renewcommand{\@tocrmarg}{27.5pt plus1fil}
+\makeatother
+
+% A package to change the formatting of the captions for tables and figures:
+%\usepackage{caption}
+%\DeclareCaptionLabelSeparator{colon}{:\ \ \ }
+%\captionsetup{format=hang, labelsep=colon, justification=RaggedRight, font={sf, small}, labelfont=bf}
+% Formatting the captions:
+\usepackage{caption}
+\captionsetup{
+  figureposition=below,
+  tableposition=above,
+  format = plain,
+  labelsep=period,
+  margin = \parindent,
+  font = {sf, footnotesize},
+  labelfont = {bf},
+  justification = centering
+}
+% \usepackage[margin=\parindent, justification=centering, font=small]{caption}[2007/04/16]
+
+%% Disable single lines at the start of a paragraph (Schusterjungen)
+%\clubpenalty = 10000
+%% Disable single lines at the end of a paragraph (Hurenkinder)
+%\widowpenalty = 10000 \displaywidowpenalty = 10000
+\usepackage[all]{nowidow}
+
+\renewcommand{\bottomfraction}{0.99}
+\renewcommand{\topfraction}{0.99}
+
+\linespread{1}
+
+% \include{letterspacing}
+% \newcommand{\caps}[1]{\scalebox{0.97}{\letterspace to 1.06\naturalwidth{#1}}}
+\newcommand{\caps}[1]{\scalebox{0.97}{\textls[50]{#1}}}
+\newcommand{\code}[1]{\texttt{#1}}
+% \newcommand{\code}[1]{\scalebox{0.98}{\textls[5]{\texttt{#1}}}}
+% The \textls command is only available if microtype has been loaded
+
+\newcommand{\dbreak}{\hspace{0pt}}	% discretionary line break
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands influencing the PDF output: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[pdftex]{graphicx}
+\usepackage[table]{xcolor}
+\definecolor{UBonnBlue}{RGB}{000,066,145}
+\definecolor{DarkWarmGrey}{RGB}{105,105,090}
+\definecolor{WarmGrey}{RGB}{139,138,125}
+\definecolor{darkblue}{rgb}{0.00,0.00,0.50}
+\definecolor{medred}{rgb}{0.75,0.00,0.00}
+\definecolor{darkred}{rgb}{0.70,0.00,0.00}
+\definecolor{customgreen}{rgb}{0.2,0.6,0.00}
+\usepackage[pdftex, pdftitle={Cognitive Load Increases Risk Aversion},
+pdfauthor={Holger Gerhardt, Guido Biele, Harald Uhlig, Hauke~R. Heekeren}, pdfsubject={}, bookmarks=true, bookmarksopen=true,
+bookmarksnumbered=true, bookmarksopenlevel=2, colorlinks=true, pdfpagemode=UseOutlines, pdfview=Fit,
+pdfstartview=Fit, pdffitwindow=false, linkcolor=UBonnBlue, citecolor=UBonnBlue,%
+% backref=page,
+urlcolor=UBonnBlue]{hyperref}
+\urlstyle{same}   % Sets URLs in the text font instead of the typewriter font
+% \renewcommand{\url}[1]{\href{#1}{#1}}
+% \usepackage{memhfixc}
+% Only needed when using the "memoir" class
+
+% Enclose the back references in the bibliography to the pages on which a reference is cited
+% in square brackets (Econometrica style)
+% \let \backrefold \backref
+% \renewcommand*{\backref}[1]{[\backrefold{#1}]}
+
+% Influencing the color and font sizes of the headings:
+\addtokomafont{sectioning}{\color{UBonnBlue}}
+% \addtokomafont{sectioning}{\color{darkred}}
+% \addtokomafont{sectioning}{\rmfamily}
+% \addtokomafont{section}{\fontseries{l}\selectfont\large} % for OpenSans only
+% \addtokomafont{subsection}{\fontseries{sb}\selectfont\normalsize} % for OpenSans only
+\addtokomafont{section}{\large}
+\addtokomafont{subsection}{\normalsize} % for OpenSans only
+% \addtokomafont{subsubsection}{\normalsize \mdseries}
+% \addtokomafont{subsubsection}{\normalsize \rmfamily}
+
+% For AEA.cls:
+%\renewcommand{\subsubsection}[1]{%
+%\addtocounter{subsubsection}{1}%
+%\bigskip\textit{\arabic{subsubsection}.~#1}---}
+
+% For scrartcl.cls:
+\renewcommand{\subsubsection}[1]{%
+\addtocounter{subsubsection}{1}%
+\bigskip\noindent\emph{\hspace{\parindent}\arabic{subsubsection}.~#1}---\hspace{0pt}}
+\newcommand{\runinhead}[1]{%
+\bigskip\noindent\emph{\hspace{\parindent}#1.}---\hspace{0pt}}
+
+% Hanging/constant-width section numbers:
+\makeatletter
+\def\@seccntformat#1{%
+       \protect%
+       \hspace{-31pt}%
+       \makebox[31pt][l]{%
+              \csname  the#1\endcsname%
+              %\quad
+              }%
+   }
+\makeatother
+
+
+%%%%%%%%%%%%%%%%
+% Commenting commands %
+%%%%%%%%%%%%%%%%
+
+
+\setlength{\marginparwidth}{4.1cm}
+\setlength{\marginparsep}{0.4cm}
+\setlength{\marginparpush}{0.4cm}
+%\newcommand{\comment}[2]{\setbox99=\hbox{\textbf{\v{|}}}\textcolor{darkred}{\hspace{-0.75pt}\textbf{\raisebox{1.5pt}{\v{}}\hspace{-\wd99}\raisebox{0.5pt}{|}}}\hspace{0.75pt}\hspace{-\wd99}\marginpar{\RaggedRight \sffamily \footnotesize \setlength{\baselineskip}{2.35ex} \textcolor{darkred}{\textbf{#1}\\ #2}}}
+
+\newcommand{\comment}[2]{\setbox99=\hbox{\textbf{\v{ }}}\makebox[0pt][l]{\hspace{-1.35pt}\textcolor{darkred}{\textbf{\raisebox{1.75pt}{\v{ }}\hspace{-0.827\wd99}|}}}\marginpar{\RaggedRight \sffamily%
+%\fontseries{l}\selectfont
+\footnotesize \setlength{\baselineskip}{2.35ex} \textcolor{darkred}{\textbf{%
+%\fontseries{sb}\selectfont
+#1}\\ #2}}}
+% \renewcommand{\comment}[2]{}{}
+
+\newcommand{\commentgreen}[2]{\setbox99=\hbox{\textbf{\v{ }}}\makebox[0pt][l]{\hspace{-1.35pt}\textcolor{customgreen}{\textbf{\raisebox{1.75pt}{\v{ }}\hspace{-0.827\wd99}|}}}\marginpar{\RaggedRight \sffamily%
+%\fontseries{l}\selectfont
+\footnotesize \setlength{\baselineskip}{2.35ex} \textcolor{customgreen}{\textbf{%
+%\fontseries{sb}\selectfont
+#1}\\ #2}}}
+% \renewcommand{\commentgreen}[2]{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some user-defined math commands: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The following line introduces a new command which makes it easy to typeset vectors and matrices,
+% surrounded by regular (round) parentheses:
+\newcommand{\rdmatrix}[1]{\left(\,\begin{matrix}#1\end{matrix}\,\right)}
+% The same for vectors/matrices surrounded by square brackets:
+\newcommand{\sqmatrix}[1]{\left[\,\begin{matrix}#1\end{matrix}\,\right]}
+% Putting a backslash in front of "exp", "lim", "max" etc. makes LaTeX recognize the respective mathematical
+% expression as a function or operator. These are then not set in italics but upright. It improves
+% intellegibility of mathematical expressions to set the following operators upright, too:
+%\newcommand{\E}{\mathrm{E}}
+%\EE
+\DeclareMathOperator{\bias}{Bias}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\tr}{tr}
+%\DeclareMathOperator{\sup}{sup}
+\DeclareMathOperator{\cov}{Cov}
+
+
+\newcommand{\equals}{\;=\;}
+\newcommand{\mdash}{{\tiny{ }}---{\tiny{ }}}
+
+\usepackage{commath}
+%\usepackage{amsmath,amsfonts}
+\DeclareMathOperator{\spn}{span}
+
+
+
+\usepackage{rotating}
+
+\usepackage{abstract}
+\renewcommand{\absnamepos}{flushleft}
+\renewcommand{\abstractnamefont}{\sffamily \bfseries \normalsize}
+
+\usepackage{multicol}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands connected to the bibliography: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The following package has to be loaded to be able to use the "Econometrica" bibliography style.
+\usepackage{natbib}
+% \usepackage[longnamesfirst]{natbib}
+% \renewcommand{\harvardand}{and}
+% \newcommand{\harvardand}{and}
+% Since the "\cite" command puts parentheses around the cited work - which one doesn't want in most cases -
+% it is useful to redefine the meaning of "\cite"
+% \newcommand{\citep}[1]{(\citeauthor{#1}, \citeyear*{#1})}
+% \newcommand{\cite}[1]{\citeauthor{#1}, \citeyear*{#1}}
+% \renewcommand{\cite}[1]{\citeasnoun{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now the actual text begins: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{hyperref}
+\hypersetup{pdfstartview={XYZ null null 0.88}}
+\newcommand{\EE}{\mathop{\mbox{\sf E}}}
+
+\begin{document}
+
+\selectlanguage{USenglish} \frenchspacing
+% \pagenumbering{roman}
+% Numbers the pages of the front matter by "i", "ii", "iii", "iv" and so on.
+
+\begin{titlepage}
+
+% \def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+
+\title{Functional Principal Component Analysis \\for Derivatives of High-Dimensional \\Spatial Curves \thanks{$\:$The financial support from the German Research Foundation for the joint project no. 70102424 "Functional Principal Components for Derivatives and Higher Dimensions", between Humboldt-Universit\"at zu Berlin and Rheinische Friedrich-Wilhelms-Universit\"at Bonn, is gratefully acknowledged. We would like to thank as well the Collaborative Research Center 649 ``Economic Risk'' for providing the data and the International Research Training Group (IRTG) 1792 ``High-Dimensional Non-Stationary Time Series Analysis'', Humboldt-Universität zu Berlin for additional funding.}}
+
+\author{Maria Grith,\textsuperscript{\!1}
+Wolfgang K. H{\"a}rdle,\textsuperscript{\!1,3} 
+Alois Kneip \textsuperscript{\!2} and
+Heiko Wagner\textsuperscript{\,2} \\[7.5pt]
+\normalfont \scriptsize \sffamily
+\textsuperscript{\phantom{0}1}\,Ladislaus von Bortkiewicz Chair of Statistics and C.A.S.E. - Center for Applied Statistics and Economics, School of Business and Economics, Humboldt-Universit\"at zu Berlin, Spandauer Stra{\ss}e 1, 10178 Berlin, Germany \\
+\scriptsize \sffamily
+\textsuperscript{\phantom{0}2}\,Institute for Financial Economics and Statistics, Department of Economics, Rheinische Friedrich-Wilhelms-Universit\"at Bonn, Adenauerallee 24-26, 53113 Bonn \\
+\scriptsize \sffamily
+\textsuperscript{\phantom{0}3}\,Sim Kee Boon Institute for Financial Economics, Singapore Management University, 81 Victoria Street, Singapore 188065
+}
+\date{\medskip This version: \today}
+\maketitle
+
+\medskip
+
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+\setlength{\abstitleskip}{-\absparindent}
+\setlength{\columnsep}{0.95pc}
+
+\let\hyphenpenaltyorig=\hyphenpenalty
+\let\toleranceorig=\tolerance
+\begin{abstract}   \hyphenpenalty=10 \tolerance=500
+\noindent %Our paper addresses the challenge of recovering the derivatives of high-dimensional spatial noisy curves. We adapt the functional principal component analysis (FPCA) to this task using dual method and illustrate two approaches to obtain the derivatives. We compare their asymptotic performance and finite sample behavior, focusing on the computational efficiency. In a financial application that uses observed call option prices we estimate the state price density (SPD) surfaces and find that two components dominate their variability. %and extract the economic content embedded in their dynamics.  
+%one-dimensional Functions=infinite dimensional vectors; multidimensional; joint functional structure. 
+%In this paper we address the challenge of estimating smooth derivatives of high-dimensional spatial curves  with joint functional variation from noisy discrete observations using a parsimonious representation of their variation. We present two related approaches based on the functional principal component analysis (FPCA) and compare their asymptotic performance and finite sample behavior, focusing on the computational efficiency. In a simulation and empirical study, we illustrate the methodology to estimate state price density (SPD) surfaces from call option prices.
+%We estimate smooth derivatives of high-dimensional spatial curves  that display joint functional variation using two related approaches based on the functional principal component analysis (FPCA), and compare their asymptotic performance and finite sample behavior, focusing on the computational efficiency. In a simulation and empirical study, we illustrate the methods by the estimation of state price density (SPD) surfaces from call option prices.
+We present two approaches based on the functional principal component analysis (FPCA) to estimate smooth derivatives of noisy and discretely observed high-dimensional spatial curves.  %that display joint functional variation. 
+One method is based on the eigenvalue decomposition of the covariance operator of the derivatives and the other assumes the operator of the curves. To handle observed data, both approaches rely on local polynomial regressions. We analyze the requirements under which the methods are asymptotically equivalent, and establish that the first approach requires very strong smoothness assumptions to achieve similar convergence rates to the second one. %The implementation of the second approach has also computational advantages. 
+If the curves are contained in a finite-dimensional function space, we show that using both our methods provides better rates of convergence then estimating the curves individually. We illustrate the methodology in a simulation and empirical study, in which we estimate state price density (SPD) surfaces from call option prices. %This study extends that of previous researchers who have analyzed implied volatility surfaces in the cross- section of options. 
+We identify three main components, which can be interpreted as volatility, skewness and convexity factors. We also find effects introduced by the term structure variation. 
+
+
+%Our paper addresses the challenge of recovering the derivatives of high-dimension spatial noisy curves. We adapt the functional principal component analysis (FPCA) to the case of derivatives using the dual method and show how to estimate high-dimensional FPCA computationally efficient. We present two alternative methods to obtain the derivatives and compare their performance asymptotically and in finite sample. In a financial application that uses observed call option prices we estimate the state price density (SPD) surfaces and find that two components are sufficient to explain most of their variability. %and extract the economic content embedded in their dynamics.  
+
+%This allows us to reduce the model complexity and express curves variability in terms of few principal components and loadings that can be used for further analysis.
+
+\medskip
+
+\hyphenpenalty=\hyphenpenaltyorig \tolerance=\toleranceorig
+
+
+
+
+
+\noindent \emph{Keywords:\:} functional principal component, dual method, derivatives, high-dimensional spatial curves, state price densities
+
+\medskip
+
+\noindent \emph{JEL codes:\:} C13, C14, G13
+
+\end{abstract}
+
+\thispagestyle{empty}
+% Suppresses the needless output of the page number on the title page.
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+% Sets the page numbering to the usual numbers: "1", "2", "3", "4" and so on.
+
+\setcounter{page}{2}
+
+\setlength{\baselineskip}{2.9ex}
+\setlength{\parindent}{2.9ex}
+% This influences the line spacing in the footnotes
+\linespread{1.075}
+
+% \setlength{\mathindent}{\parindent}	% only if ``fleqn'' option is used
+
+% Increases line spacing a bit, which improves legibility. This is especially useful for texts containing
+% mathematical formulae, in order to prevent subscripts and superscripts in the formulae to collide with
+% the following and previous lines, respectively.
+
+\input{intro}
+\input{simulation}
+\input{application}
+
+\newpage
+\input{appendix}
+
+%\bibliographystyle{aea_doi_href2} \footnotesize
+%\setlength{\bibsep}{0pt plus 0.25pt}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{abbrvnat}
+\bibliographystyle{abra}
+\bibliography{lit1}
+
+% \renewcommand\refname{\mdseries REFERENCES}
+% \bibliographystyle{aea} \small
+% \bibliographystyle{aea_doi} \small
+% \bibliographystyle{aea_comma} \footnotesize
+%\bibliographystyle{aea_doi_href} \footnotesize
+%\setlength{\bibsep}{0pt plus 0.25pt}
+%\bibliography{$HOME/Documents/02_Literatur/Literature_UTF}
+% \bibliography{Literature_UTF}
+
+\end{document}
+
+
+\section{Conclusions}\label{t5}
+
+
+
+
+
+
+
+\subsubsection{Simulation for the application: Call options, implied volatility and the SPD - }\label{sim_app} An alternative way to represent the SPD implied from option prices is to use the Black-Scholes formula as a mapping from the price space to the volatility space, allowing the volatility to vary as a function of strike price in order to fully capture the empirical features of more sophisticated pricing processes.
+
+Let $C_{BS}(k,\sigma(k,\tau))$ denote the Black-Scholes price of a European call option, where $\sigma(k,\tau)$ is the Black-Scholes volatility implied from an option with strike price $k$ and maturity $\tau$:
+\begin{equation*}\label{cbs}
+C_{BS}(k,\sigma(k,\tau))=s_0 \Phi (y_1)-k \exp(-r_{\tau} \tau)\Phi (y_2),
+\end{equation*}
+where $y_1=\frac{\log \left(s_0/k \right)+\left(r_{\tau}+ \sigma(k,\tau)^2/2\right)\tau}{\sigma(k,\tau) \sqrt{\tau}}$, $y_2=y_1-\sigma(k,\tau)\sqrt{\tau}$ and $\Phi$ is the standard normal cumulative density function. Thus, without loss of generality, the price of the call option can be expressed as:
+\begin{equation*}
+C(k,\tau)=C_{BS}(k,\sigma(k,\tau))
+\end{equation*}
+Now, using our generalized Black-Scholes formula, we derive another expression for the first total derivative of the call option price with respect to the strike price:
+\begin{equation*}\label{dc}
+\frac{\partial C}{\partial k}=\frac{\partial C_{BS}}{\partial k} +\frac{\partial C_{BS}}{\partial \sigma} \frac{d \sigma}{d k}.
+\end{equation*}
+From this expression the second total derivative of the call option price with respect to the strike price follow:
+\begin{equation*}\label{dcc}
+\frac{\partial^2 C}{\partial k^2}=\frac{\partial^2 C_{BS}}{\partial k^2} +2\frac{\partial C_{BS}}{\partial k}\frac{\partial C_{BS}}{\partial \sigma}  \frac{d \sigma}{d k}+\frac{\partial^2 C_{BS}}{\partial \sigma^2}\left(\frac{d \sigma}{d k}\right)^2+\frac{\partial C_{BS}}{\partial \sigma} \frac{d^2 \sigma}{d k^2},
+\end{equation*}
+where the partial derivatives of the Black-Scholes formula are
+\begin{eqnarray*}\label{dcc}
+\frac{\partial C_{BS}(k,\cdot)}{\partial k} &=& -\exp(-r_{\tau}\tau)\Phi(y_2)\\
+\frac{\partial^2 C_{BS}(k,\cdot)}{\partial k^2} &=& \frac{\exp(-r_{\tau}\tau)}{\sigma(k,\tau) \sqrt{\tau}}\phi\left(\frac{\log \left(k/s_0\right)-\left(r_{\tau}-\sigma(k,\tau)^2/2\right)\tau}{\sigma(k,\tau) \sqrt{\tau}}\right)\propto q_{BS}(k,\sigma(k,\tau))\\
+\frac{\partial C_{BS}(\cdot,\sigma(k,\tau))}{\partial \sigma(k,\tau)}  &=& \exp(-r_{\tau}\tau)k\phi(y_2)\sqrt{\tau}=s_0\phi(y_1)\sqrt{\tau}=\nu(k,\sigma(k,\tau))\\ 
+\frac{\partial^2 C_{BS}(\cdot,\sigma(k,\tau))}{\partial \sigma(k,\tau)^2} &=&\exp(-r_{\tau}\tau)k\phi(y_2)\sqrt{\tau}\frac{y_2}{\sigma(k,\tau)}=s_0\phi(y_1)\sqrt{\tau}\frac{y_1-\sigma(k,\tau)\sqrt{\tau}}{\sigma(k,\tau)},%\\
+%&=&\exp(-r_{\tau}\tau)k\phi(y_2)\left(\frac{\log \left(k/s_0\right)+\left(r_{\tau}\tau}{\sigma(k,\tau)^2}\right) = 
+%s_0 \phi(y_1)\left( \frac{\tau}{2}+\frac{\log \left(k/s_0\right)+r_{\tau}\tau}{\sigma(k,\tau)^2}\right) 
+% s_0 \phi(y_1)\left( \frac{\tau}{2}+\frac{\log \left(k/s_0\right)+r_{\tau}\tau}{\sigma(k,\tau)^2}\right) 
+\end{eqnarray*}
+where $\phi$ is the standard normal probability density function and $\nu$ is called the Vega of an option. All the right hand side terms are easily expressible in terms of $m$. We can express the SPD in terms of ... For the implied volatility function and its derivatives it holds $\sigma(k,\tau|S_0=s_0)=\sigma(m,\tau|S_0=1)$, $\frac{d \sigma}{d k}=\frac{1}{s_0}\frac{d \sigma}{d m}$ and $\frac{d^2 \sigma}{d k^2}=\frac{1}{s_0^2}\frac{d \sigma}{d m^2}$. This gives us the SPD as a function of moneyness: 
+\begin{eqnarray*}
+%\exp(r_{\tau}\tau)\frac{\partial^2 C(m,\tau)}{\partial m^2}
+q(m,\tau)&=&q_{BS}(m,\sigma(m,\tau))\\&-&\nu(m,\sigma(m,\tau))\left[2\Phi(y_2)\sigma(m,\tau)^{(1,0)}-\frac{y_2}{\sigma(m,\tau)}\left\{\sigma(m,\tau)^{(1,0)}\right\}^2-\sigma(m,\tau)^{(2,0)}\right],
+\end{eqnarray*}
+which shows that the SPD can be expressed in terms of the ``implied Black-Scholes density'' minus Vega times a ``skew'' term that depends on the volatility and its first two partial derivatives.
+%Derivatives of sigma in terms of our old notations. Vega of the option and vega derivative: DC(model)=DC(BS)-skew×callvega,DC(model)=DC(BS)-skew×callvega, to solve for the skew. (See eg Section 7.7 of my book concepts and practice of mathematical finance)
+Following Cont and Da Francesca the (log) implied volatility surfaces is represented by its components on an orthogonal basis. Notice that in the original model the moneyness is on the log-scale () 
+\begin{equation*}\label{dcc}
+\sigma(m,\tau)=\bar{\sigma}(m,\tau)+\sum_{l=1}^L \delta_l f_k(m,\tau)
+\end{equation*}
+where $\delta_l=product$ and $f_i,f_j$ are orthogonal. If we input this model for $\sigma$ in the previous equation we obtain a factor model for the density 
+\begin{equation*}\label{dcc}
+q(m,\tau)=\bar{q}(m,\tau)+\sum_{l=1}^L \exp(\delta_l) F_k(\sigma(m,\tau),\sigma(m,\tau)^{(1,0)},\sigma(m,\tau)^{(2,0)},r_{\tau}\tau)
+\end{equation*}
+If we assume that $\sum_{l=1}^L\exp(\delta_l)=1$ then we have a mixture of densities $q=\sum_{l=1}^L q_k$, with components $q_k=\bar{q}(m,\tau)+F_k$ (which integrate to 1, well defined) and $w_l$ the weights of the components. 
+
+Typical orthogonal components have shapes represented in figure X: that correspond to. From equations ... one can see that if we take this model for variation as the underlying source of variability for the SPD, its shape will depend in a non-linear fashion on the volatility factors. We represent a simulated SPD for the typical profile of the implied volatility (see paper) in figure ... and we highlight the importance of the implied volatility derivative in the rest of the panels. 
+
+
+Application of PCA or FPCA to
+the implied volatility curves or surfaces of index options reveal usually three driving
+sources for its variability: a shift or level effect, a Z-shaped slope twist that impacts
+the skewness of the implied density, a curvature or butterfly mode that changes the
+convexity in the IV.
+
+
+In order to have consistency with the previous results we would expect to have orthogonal components that look similar to those in figure X. Indeed ....
+
+
+
+The volatility of the two loadings is considerable higher between 2002 and 2005, see figure \ref{corr}, and it peaks again during the financial crises - the jump occurs after Lehman Brothers declare bankruptcy on 15 September 2008. Concomitantly, until the beginning of 2006 the difference in loadings has a stable negative correlation close to $-1$. After that, the absolute correlation decreases and becomes statistically insignificant at several dates in 2008 and 2009. Until 2006 changes in the two loadings have the same amplitude and are opposite in sign, whereas afterwards the intensity of responses to shocks changes. This corresponds to the aftermath of the housing prices peak in early 2006 followed by a bubble burst and is consistent with a change in the response of option prices to changes in the economic system.
+
+
+\subsubsection{Extensions}
+
+The arbitrage conditions must be included a-priori in FPCA - the regular methods have this problem. 
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{figures/vmean} 
+\includegraphics[width=0.45\textwidth]{figures/level} \\
+\includegraphics[width=0.45\textwidth]{figures/curvature} 
+\includegraphics[width=0.45\textwidth]{figures/slope} 
+\caption{\label{rez0} IV: Mean, level, curvature, slope. Source: Cont and de Francesca}\label{pac}
+\end{center}
+\end{figure}

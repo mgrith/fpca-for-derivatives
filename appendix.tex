@@ -1,0 +1,479 @@
+\section{Appendix}%
+\subsection{Assumptions summary}
+\label{assum}
+%\begin{assumptions}
+%Let $X$ be a centered smooth random function in $L^2([0,1]^g)$, where $g$ denotes the spatial dimension, with finite second moment $\int_{[0,1]^g} \EE\left[X(u)^2 \right]du < \infty$ for $u=(u_1, \ldots, u_g)^{\top}$and $\EE\left[X(t) \right] =0$ . %Here, we consider 
+%\end{assumptions}
+%\begin{assumptions}
+%$X$ is at least $m+1$ times total continuously differentiable where 
+%\begin{enumerate}
+%	\item $m \geq \max \left(2\|d|,\sum_{l=1}^g d_l \right)$ if $M^{(d)}$ is used to derive the decomposition 
+%	\item $m \geq \|d|$ if $M^{(0)}$ if $M^{(0)}$ is used to derive the decomposition
+%\end{enumerate}
+%and all the partial derivatives are bounded by a constant $C<\infty$ such that $\underset{t}{\operatorname{sup}}\underset{k \in (\mathbb{N}\cap [0,m+1])^g}{\operatorname{sup}}\EE\left[X_i^{(k)}(t)\right]\leq C$. 
+%	\item For $x \in supp(f) $, $f(x)>0$
+%\end{assumptions}
+\begin{assumptions}
+\label{A1}
+The curves $Y_i \; i=1,\dots,N$ are observed at a random grid $t_{i1},\dots,t_{iT_i}$, $t_{ij}\in [0,1]^g$ having a common bounded and continuously differentiable density $f$ with support $supp(f)=[0,1]^g$ and the integrand $u \in supp(f)$ and $inf_u f(u)>0$. 
+\end{assumptions} 
+\begin{assumptions}  
+\label{A2}
+$E(\varepsilon_{ik})=0,var(\varepsilon_{ik})=\sigma_{\varepsilon,i}>0$ and $\varepsilon_{ik}$ are independent of $X_i$, and $\EE\left[\varepsilon_{ik}^4\right]<\infty, \forall i,k$. %$\sigma_{\varepsilon,i}^{-l} \EE\left[\varepsilon_{ik}^l\right]<\infty, \; l=3,4 \; \forall i,k$. 
+\end{assumptions}
+\begin{assumptions}
+\label{A3}
+Let $K_B(u)=\frac{1}{b_1 \times \dots \times b_g} K(u \circ b)$. $K$ is a product kernel based on symmetric univariate kernels. $B$ is a diagonal matrix with $b=(b_1,\dots,b_g)^{\top}$ at the diagonal.   Further the kernel $K$ is bounded and compactly at supported at $[-1,1]^g$ such that for $u \in \mathbb{R}^g$ $\int u u^T K(u) du = \mu(K) I$ where $\mu(K)\neq 0$ is a scalar and $I$ is the $g \times g$ identity matrix. Conditions 2 and 3 from \cite{Masry96} are fulfilled.
+\end{assumptions}
+\begin{assumptions}
+\label{A4}
+$\rho- \sum_{l=1}^g d_l$ and $p -\sum_{l=1}^g d_l$ are odd.
+\end{assumptions}
+\begin{assumptions}
+\label{A4.1}
+$|\hat{\sigma}_{\varepsilon}^2-\sigma_{\varepsilon}^2|=\mathcal{O}_P(T^{-1/2}) $
+\end{assumptions}
+\begin{assumptions}
+\label{A5} 
+We require that for the decomposition it holds that 
+\begin{equation}\label{cc1}
+\underset{r\in \mathbb{N}}{\operatorname{sup}} \; \underset{t \in [0,1]^g}{\operatorname{sup}} | \varphi^{(d)}_r(t)| < \infty \;,\; \underset{r\in \mathbb{N}}{\operatorname{sup}} \; \underset{t \in [0,1]^g}{\operatorname{sup}} | \gamma^{(d)}_r(t)| < \infty
+\end{equation}
+\begin{equation}\label{cc2}
+\sum_{r=1}^\infty \sum_{s=1}^\infty \EE \left[\left(\delta^{(\nu)}_{ri}\right)^2 \left(\delta^{(\nu)}_{si}\right)^2 \right] < \infty \;,\; \sum_{q=1}^\infty \sum_{s=1}^\infty \EE \left[\left(\delta^{(\nu)}_{ri}\right)^2 \delta^{(\nu)}_{si} \delta^{(\nu)}_{qi}\right] < \infty, \; \ \nu=(0,d)
+\end{equation}
+for all $r\in \mathbb{N}$.
+\end{assumptions}
+\begin{assumptions} 
+\label{A6}
+ We require that the eigenvalues are distinguishable such that for any $T$ and $N$ and fixed $r \in{1,\dots,L}$ there exists $0<C_{1,r}<\infty$, $0 < C_{2,r} \leq C_{3,r} < \infty $ such that
+\begin{equation}
+\label{eigeval}
+\begin{split}
+N C_{2,r} \leq l^{(\nu)}_r \leq N C_{3,r} \\
+\min_{s=1,\dots,N ; s \neq r} |l^{(\nu)}_r-l^{(\nu)}_s|\geq N C_{1,r}.
+\end{split}
+\end{equation}
+\end{assumptions}
+
+\subsection{Proof of Lemma \ref{lemint} } 
+\label{prooflemma}
+\subsubsection{Univariate case g=1}
+In the Proof we use $d$ instead of $\nu$. 
+As noted by \cite{Ruppert:94} equation (\ref{polyeqkern}) can be stated up to a vanishing constant using equivalent kernels. Equivalent kernels can be understand as an asymptotic version of $W^T_d$. In particular let $e_l$ be a vector of length $\rho$ with $1$ at the $l+1$ position and zero else, then $W^T_d(t)$ to evaluate the function at point $u$ is defined as $(T b^{d+1}) ^{-1} e_d^T S_T(u)^{-1}(1,t,\dots, t^\rho)^T  K(t)$. $S_T(u)$ is a $\rho \times \rho$  matrix with entries $S_{T,k}(u)= (Tb)^{-1} \sum_{l=1}^{T} K\left( \frac{t_l-u}{b} \right) (\frac{t_l-u}{b})^k$  such that
+\begin{equation}
+\label{STMat}
+S_T(u)=
+\begin{pmatrix}
+S_{T,0}(u)	& S_{T,1}(u)	& \dots	 & S_{T,\rho}(u)      \\
+S_{T,1}(u)	& S_{T,2}(u) 	& \dots  & S_{T,\rho+1} 	  \\
+\vdots	& \vdots 	& \ddots & \vdots \\
+S_{T,\rho}(u)	& S_{T,\rho+1}(u)	& \dots	 & S_{T,2\rho}(u)
+\end{pmatrix}.
+\end{equation} 
+Accordingly 
+\begin{equation}
+\begin{split}
+\EE ( S_{T,k}(u) ) =& (Tb)^{-1}  \int_0^1 \sum_{l=1}^{T} K\left( \frac{x-u}{b} \right) \left(\frac{x-u}{b} \right)^k f(x) dx \\
+=& b^{-1}\int_u^{1+u}  K\left( \frac{x}{b} \right) \left(\frac{x}{b} \right)^k f(x) dx = \int_{ub^{-1}}^{(1+u)b^{-1}} K\left(t \right)  t^k f(tb) dt.
+\end{split}
+\end{equation}
+
+Since $K(t)$ has compact support and is bounded, for a point at the left boundary with $c\geq 0$ $u$ is of the form $u=cb$ and at the right boundary $u=1-cb$ respectively. We define $S_{k,c}=\int_{-c}^\infty t^k K(t) dt$ and $S_{k,c}=\int_{-\infty}^c t^k K(t) dt$ respectively and for interior points $S_{k}=\int_{-\infty}^\infty t^k K(t) dt$. Further we construct the $p \times p$ Matrix corresponding to (\ref{STMat}) with
+\begin{equation}
+   S(u)=
+   \begin{cases}
+     S_c=(S_{j+l,c})_{0\leq j,l \leq\rho} 	&\text{, $u$ is a boundary point} \\
+     S=(S_{j+l})_{0\leq j,l \leq\rho} 	&\text{, $u$ is an interior point}\\
+   \end{cases} .
+\end{equation}
+ The equivalent kernel is then defined as $K_{d,\rho}^{u*}\left( t \right)  = e_d^T S(u)^{-1}(1,t,\dots, t^\rho)^T  K(t)$ and the estimator can be rewritten as 
+\begin{equation}\label{polyeqkernn}
+\hat{X}^{(d)}_{b}(u)= d! \beta_{d}(u) = \frac{d!}{T f(u) b^{d+1}} \sum_{l=1}^{T} K^{u*}_{d,\rho}\left( \frac{ t_{l}-u }{b}    \right) Y(t_{l})\{ 1+ o_P(1) \}
+\end{equation}
+The only difference between $W^T_d$ and $K^{u*}_{d,\rho}$ is that $S_T(u)$ is been replaced by $f(u)S(u)$. Regarding \cite{Masry96} we can further state that with a bandwidth fulfilling $\frac{log(T)}{T b} \rightarrow 0$ we have 
+uniformly in $u \in [0,1]$ that $S_T(u)^{-1} \rightarrow \frac{S(u)^{-1}}{f(u)}$ almost surely as $T \rightarrow \infty$. We will drop the $u$ index concerning the equivalent kernel from now on.
+
+By construction the equivalent kernel fulfills that using the Kronecker-Delta $\delta$
+\begin{equation}
+\label{kron}
+\int u^k K_{d,\rho}^*\left( u \right) du  = \delta_{d,k} \; \; 0 \leq d , k \leq \rho. %\; \forall i=1,\dots g
+\end{equation}
+As mentioned by \cite{Fan1995} the design of the kernel automatically adepts to the boundary which gives as shown in \cite{Ruppert:94} the same order of convergence for interior and also for boundary points. The estimator can then be rewritten as 
+\begin{equation}
+\begin{split}
+&\int d!^2  \sum_{j=1}^{T} \sum_{l=1}^{T} W_d^T\left(\frac{t_{j}-u}{b}\right)  W_d^T\left(\frac{t_{l}-u}{b} \right) Y(t_{l}) Y(t_{j}) du \\
+=& \int \frac{d!^2}{T^2 f(u)^2 b^{2d+2}} \sum_{l=1}^{T}  \sum_{j=1}^{T} K_{d,\rho}^*\left(\frac{t_{j}-u}{b}\right) K_{d,\rho}^*\left(\frac{t_{l}-u}{b} \right) Y(t_{l})Y(t_{j})\{ 1+ o_P(1) \} du.
+\end{split}
+\end{equation}
+%fulfills the boundary moment conditions of \cite{Gasser1985}. 
+For the expectation we get
+\begin{equation}
+\begin{split}
+&\EE \left( \theta_{d,\rho}  | t_1, \dots, t_T \right) \\
+=& \int_0^1 d!^2  \sum_{j=1}^{T} \sum_{l=1}^{T} W_d^T\left(\frac{t_{j}-u}{b} \right)  W_d^T\left(\frac{t_{l}-u}{b}\right) X(t_{l}) X(t_{j}) du \\ 
+&+  d!^2 \left(\sigma_{\varepsilon}^2-  \hat{\sigma}_{\varepsilon}^2 \right) \int_0^1 \sum_{j=1}^{T} W_d^T\left(\frac{t_{j}-u}{b} \right)^2  du\\
+%=& \int_0^1 d!^2  \sum_{k=1}^{T} \sum_{l=1}^{T} W_d^T\left((t_{k}-u)b^{-1} \right)  W_d^T\left((t_{l}-u)\circ (b^{-1})^{\top} \right) X(t_{l}) X(t_{k}) du \\ 
+%&+  d!^2 (\sigma_{\varepsilon}^2-\hat{\sigma}_{\varepsilon}^2) \int_0^1 T \left( \sum_{k=1}^{T} W_d^T\left((t_{k}-u)b^{-1} \right) \right)^2  du +o_P(1)\\
+%=&\int \frac{d!^2}{f(z)^2 b^{2d+2} } \EE \left(K_{d,\rho}^*\left((t_{1}-z)  b^{-1} \right)K_{d,\rho}^*\left((t_{2}-z)  b^{-1} \right) Y(t_{1})Y(t_{2})\right) \\
+%&+ \frac{d!^2}{T f(z)^2 b^{2d+2} } \EE \left(K_{d,\rho}^*\left((t_{1}-z)  b^{-1} \right)^2 (Y(t_{1})^2 + \sigma^2) \right) dz \\
+=& \left\{ d!^2 \int_0^1 \int_0^1 \int_0^1 \frac{ f(x)f(y) }{ b^{2(d+1)} f(z)^2 } K_{d,\rho}^*\left( \frac{x-z}{b} \right) K_{d,\rho}^*\left(\frac{y-z}{b} \right) X(x) X(y) dx dy dz \right.\\ 
+&\left.+ \mathcal{O}_P \left( \frac{1}{T^{3/2} b^{2d+1}} \right) \right\} \{ 1+ o_P(1) \} \\
+%%&\left.+ \mathcal{O}_P \left( \frac{1}{T^{3/2} b^{2d+1}} \right) \right\} \{ 1+ o_P(1) \} \\
+%&+  d!^2 (\sigma_{\varepsilon}^2-\hat{\sigma}_{\varepsilon}^2) \mathcal{O}_P\{T^{-1} b^{-2d-1} \}   +o_p(1)\\
+%=&  d!^2 \int_0^1 \int_0^1 \int_0^1  \frac{ f(z+ub)f(z+vb) }{ b^{2d} f(z)^2 } K_{d,\rho}^*\left( u \right) K_{d,\rho}^*\left(v \right) X(z+ub) X(z+vb) du dv dz + \mathcal{O}_P \left( \frac{\sigma_{\varepsilon}^2-\hat{\sigma}_{\varepsilon}^2}{T b^{2d+1} } \right) \{1+ o_p(1) \}\\
+=& \left\{ \int_0^1  X^{(d)}(z) X^{(d)}(z) dz \right.\\
+&+ 2 \frac{d!}{(\rho+1)!} \int_0^1  \frac{ b^{\rho+1} }{ b^{d}  } \left(\int_0^1 u^{\rho+1} K_{d,\rho}^*\left( u \right) du \right) X^{(\rho+1)}(z) X^{(d)}(z)dz  \\
+&+  \frac{d!^2}{(\rho+1)!^2} \int_0^1   \frac{ b^{2\rho+2} }{ b^{2d}  } \left(\int_0^1 u^{\rho+1} K_{d,\rho}^*\left( u \right) du \right)^2 X^{(\rho+1)}(z) X^{(\rho+1)}(z) dz \\
+&\left.+ \mathcal{O}_P \left( \frac{1}{T^{3/2} b^{2d+1}} \right) \right\} \{ 1+ o_P(1) \}%\{1+ o_p(1) \}
+\end{split}
+\end{equation}
+results where obtained by substitution with $x=z+ub, y=z+vb$ and using a $\rho+1$ order Taylor expansion of $X(z+ub)$ and $X(z+vb)$ together with (\ref{kron}). We get $ \int_{[0,1]^g} X(u)^2 du - \EE (\theta_{d,\rho}|  t_1, \dots, t_T) = \mathcal{O}_p \left( b^{\rho+1-d} + \left(T^{3/2} b^{2d+1}\right)^{-1} \right)$.%+ \mathcal{O}_P \left( (T b^{2d+1})^{-1}\right)$.
+
+%
+%
+%fot the expectation we thus get
+%\begin{equation}
+%\begin{split}
+%\EE \hat{M}_{ij}^{(d)} =& d!^2 \int_0^1 \int_0^1 \frac{1}{ b^{2(d+1)} f(x)f(y) } K_{d,\rho}^C \left( \frac{x+y}{b} \right) X_i(x) X_i(y) dx dy\\
+%=& d!^2 \int_0^1 \int_0^1 \frac{1}{ b^{2d+1} f(x)f(x-bu) } K_{d,\rho}^C \left( u \right) X_i(x) X_i(x-bu) dx du \\
+%=& \int_0^1 \int_0^1 Y^{(d)}_i(x) Y^{(d)}_i(x-bu) du \\
+%&+ b^{\rho-2d} \{ \int t^{\rho+1} K_{d,\rho}^C(t) dt \} \frac{d!^2}{((\rho+1)!)^2} Y_i(x) Y^{(\rho+1)}_i(x) dx  + o_p(b^{p-2d})
+%\end{split}
+%\end{equation}
+%by using a $\rho+1-d$ order taylor expansion of $Y^{(d)}_i(x-hu)$ we get $\EE \hat{M}_{ij}^{(d)} - M_{ij}^{(d)} = \mathcal{O}_p(h^{\rho+1-2d})$.Let 
+First note that using the second mean value integration theorem there exits some $c \in (0,1)$ and we can write
+\begin{equation}
+\begin{split}
+	& \int f(z)^{-2} K_{d,\rho}^*\left( \frac{y-z}{b} \right) K_{d,\rho}^*\left(\frac{x-z}{b} \right) dz  = 	
+	 f(c)^{-2} \int  K_{d,\rho}^*\left(\frac{y-z}{b} \right) K_{d,\rho}^*\left(\frac{x-z}{b}\right) dz.
+\end{split}
+\end{equation}
+
+%First note that 
+%\begin{equation}
+%\begin{split}
+	%& \int \int \int f(z)^{-2}f(x)f(y) K_{d,\rho}^*\left( (y-z)b^{-1} \right) K_{d,\rho}^*\left((x-z)b^{-1} \right) dz dy dz \\
+	%=& \int \int \int  K_{d,\rho}^*\left( (y-z)b^{-1} \right) K_{d,\rho}^*\left((x-z)b^{-1} \right) dz dy dz \{1 + o_P(1)\}
+%\end{split}
+%\end{equation}
+%Because we are only interested in the order of variance and bias, to make the notation easier when analyze the variance term we will further ignore the densities (assuming that observations are uniform distributed) and 
+We introduce a kernel convolution with 
+\begin{equation}
+\begin{split}
+	&K_{d,\rho}^{C} \left(y-x \right) := \int K_{d,\rho}^*\left( y-z \right) K_{d,\rho}^*\left(x-z \right) dz \\
+\end{split}
+\end{equation}
+and thus using $z=\frac{u}{b}$%with substitution of $z$ with $ub^{-1}$ to shrink the convoluted kernel
+\begin{equation}
+\begin{split}
+&K_{d,\rho}^{C} \left(\frac{y-x}{b}  \right) = \int  K_{d,\rho}^*\left( \frac{y}{b} -z \right) K_{d,\rho}^*\left(\frac{x}{b} -z \right) dz= \int b^{-1} K_{d,\rho}^*\left( \frac{y-u}{b}  \right) K_{d,\rho}^*\left( \frac{x-u}{b}  \right) du.
+%	=& \int (f(y) - u f'(y))^{-2} (K_{d,\rho}^*\left(y-x \right) - u K'(y-x) )K_{d,\rho}^*\left( u \right)  du \\
+	%=& \int \int \frac{ b }{d! } K^{(d)}_{d,\rho}^*\left((y-x)b^{-1}\right) dy dx \int z^d K_{d,\rho}^*(z) du + \mathcal{O}(b^2) \\
+	%=& \int \int \frac{ b }{d! } K^{(d)}_{d,\rho}^*\left((y-x) b^{-1}\right) dy dx+ \mathcal{O}(b) 
+\end{split}
+\end{equation}
+Note that the integral over $K_{d,\rho}^{C}$ is computed over an  parallelogram $D$ bounded by the lines $x+y=2, x+y=0, x-y=1, x-y=-1$. Using the substitution $x= \frac{v+u}{2}b, \;  y= \frac{u-v}{2}b $
+\begin{equation}
+\begin{split}
+& \int \int_D K_{d,\rho}^{C} \left(\frac{y-x}{b}  \right) dy dx=  \frac{b}{2} \int_{0}^{2} \int_{-1}^{1} K_{d,\rho}^{C} \left( \frac{v+u-u+v}{2} \right)  dv du = b\int K_{d,\rho}^{C} \left( v \right) dv. 
+\end{split}
+\end{equation}
+%and by using the substitution $x= y-ub$
+%\begin{equation}
+%\begin{split}
+%& \int \int K_{d,\rho}^{C} \left((y-x)b^{-1} \right) dy dx= b \int \int K_{d,\rho}^{C} \left( (y-y+ub)b^{-1} \right) du dy = b \int K_{d,\rho}^{C} \left( u \right) du \\
+%\end{split}
+%\end{equation}
+%From our analysis of the expectation we further learned that
+%\begin{equation*}
+%\begin{split}
+%&\int \int \frac{ d!^2 }{ b^{2d+3} } K_{d,\rho}^{C} \left((y-x)b^{-1} \right) Y_i(x) Y_i(y) dx dy = \\
+%&\int \int \frac{ d!^2 }{ b^{2d+2} } K_{d,\rho}^{C} \left(u \right)  Y_i(y-ub)Y_i(y) du dy \\
+%=&\int_0^1  Y^{(d)}_i(y) Y^{(d)}_i(y) dy + \mathcal{O}_P\left(  \frac{ b^{\rho+1} }{ b^{d}  }\right)\\
+%\end{split}
+%\end{equation*}
+%and 
+
+Note that the variance can be decomposed
+\begin{align}
+&\hspace{-0.3cm}\var \left(\theta_{d,\rho} | t_1, \dots, t_T \right)  \\
+%=& \frac{d!^4}{(T_i^4 b^{4d+2})f(c)^4} \sum_{k=1}^{T} \sum_{l=1}^{T} \sum_{k'=1}^{T} \sum_{l'=1}^{T} Cov(  K_{d,\rho}^{C} \left((t_{l}-t_{k}) b^{-1}) \right) Y(t_{l}) Y(t_{k}),  K_{d,\rho}^{C} \left((t_{l'}-t_{k'})b^{-1}  \right) Y(t_{l'}) Y(t_{k'})) \\
+%&+  Var(\hat{\sigma}_{\varepsilon}^2) d!^2  \int_0^1 \sum_{k=1}^{T} W_d^T\left((t_{k}-u)b^{-1} \right)^2   du + o_P(1)\\
+\label{eq1}
+=& \frac{d!^4 }{T^4 (b^{4d+2})f(c)^4} \left\{ \sum_{l=1}^T K_{d,\rho}^{C} \left(0 \right)^2 \var(  Y(t_l)^2  )  \right. \\
+\label{eq2}
+&+ 2\sum_{l=1}^T \sum_{k \neq l}^T \var( K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k}}{b} \right) Y(t_{l}) Y(t_{k})) \\
+\label{eq3}
+&+ 4 \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T  \cov( K_{d,\rho}^{C} \left(\frac{t_{k}-t_{l}}{b} \right) Y(t_{k}) Y(t_{l}) , K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k'}}{b} \right) Y(t_{l}) Y(t_{k'}))\\
+\label{eq4}
+&+ \left.24 \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T \sum_{l' \neq k' }^T \cov( K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k}}{b} \right) Y(t_{l}) Y(t_{k}) , K_{d,\rho}^{C} \left(\frac{t_{l'}-t_{k'}}{b} \right) Y(t_{l'}) Y(t_{k'})) \right\}\\
+&+ \mathcal{O}_P \left( \frac{1}{T} \right).
+%=& \frac{d!^4 }{T^3 (b^{4d+2})f(c)^4} \int K_{d,\rho}^{C} \left(0 \right)^2 Var(  Y(y)^2  ) f(y) dy  \\
+%&+ \frac{2d!^4 }{T^2 (b^{4d+2})f(c)^4} Var( K_{d,\rho}^{C} \left((t_{1}-t_{2}) b^{-1} \right) Y(t_{1}) Y(t_{2})) \\
+%&+ \frac{4 d!^4}{T (b^{4d+2})f(c)^4} Cov( K_{d,\rho}^{C} \left((t_{1}-t_{2}) b^{-1} \right) Y(t_{1}) Y(t_{2}) , K_{d,\rho}^{C,b} \left((t_{2}-t_{3}) b^{-1} \right) Y(t_{2}) Y(t_{3}))\\
+%&+ \frac{24 d!^4}{(b^{4d+2})f(c)^4} Cov( K_{d,\rho}^{C} \left((t_{1}-t_{2}) b^{-1} \right) Y(t_{1}) Y(t_{2}) , K_{d,\rho}^{C,b} \left((t_{3}-t_{4}) b^{-1} \right) Y(t_{3}) Y(t_{4}))
+ %\frac{1}{(T_i\textbf{b})^2} \sum_{k=1}^{T_i} \sum_{l\neq k}^{T_i} K_{d,\rho}^C \left((t_{il}-t_{ik}) X_i(t_{il}) X_i(t_{ik})
+\end{align}
+Expression (\ref{eq4}) vanish and (\ref{eq1}) given by $\frac{d!^4 }{T^3 (b^{4d+2})f(c)^4} \int K_{d,\rho}^{C} \left(0 \right)^2 Var(  Y(y)^2  ) f(y) dy \{1+ \mathcal{O}_P (T^{-1})\}$ is dominated by (\ref{eq2}) because
+\begin{equation}
+\begin{split}
+&\frac{2d!^4 }{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k \neq l}^T  K_{d,\rho}^{C} \left( \frac{t_{l}-t_{k}}{b}\right)^2 Var( Y(t_{l}) Y(t_{k}))  \\
+=& \frac{2d!^4 }{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k \neq l}^T  K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k}}{b} \right)^2 \left( \EE(Y(t_{l})^2 Y(t_{k})^2) - \EE(Y(t_{l}) Y(t_{k}))^2 \right) \\ 
+%=& \frac{2d!^4 \sigma^2 }{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k \neq l}^T  K_{d,\rho}^{C} \left((t_{l}-t_{k}) b^{-1} \right)^2\left( \sigma^2+X(t_{l})^2 + X(t_{k})^2  \right)\\
+=& \frac{2d!^4  \int (\sigma_{\epsilon}^4 + 2\sigma_{\epsilon}^2 X(x)^2)  f(x)^2 dx}{T^2 b^{4d+1} f(c)^4} \int\left(  K_{d,\rho}^{C}(u)  \right)^2 du + o_P \left(\frac{1}{T^2 b^{4d+1}}\right).
+\end{split}
+\end{equation}
+%
+%The third term  is dominating with 
+%\begin{equation*}
+%\begin{split}
+%&\EE \left[ \frac{d!^4}{b^{4d+2}}\left(K_{d,\rho}^{C} \left((t_{1}-t_{2})b^{-1} \right) \left( \epsilon_{1} \epsilon_{2}\right) \right)^2 \right] = \frac{d!^4\sigma^4}{b^{4d+2}} \left( \int \int  K_{d,\rho}^{C} \left( (x-y)b^{-1} \right)^2  f(x)f(y)dx dy \right)\\
+%%=& \frac{d!^4\sigma^4}{b^{4d+1}} \left( \int K_{d,\rho}^*(u)^2 du \right)^2  + o \left(\frac{1}{b^{4d+1}}\right)
+%=& \frac{d!^4\sigma^4 \int f(x)^2 dx}{b^{4d+1}} \int\left(  K_{d,\rho}^{C}(u)  \right)^2 du + o_P \left(\frac{1}{b^{4d+1}}\right)
+%\end{split}
+%\end{equation}
+
+Before looking at expression (\ref{eq3}), note that with $m\geq 2d$
+\begin{equation}
+\begin{split}
+&\int \int \frac{ d!^2 }{ b^{2d+1} } K_{d,\rho}^{C} \left(\frac{x-y}{b} \right) X(x)  dx dy  \\
+%=&\int \int \frac{ d!^2 }{ b^{2d} } K_{d,\rho}^{C} \left(u \right)  X(y+ub) du dy \\
+%=& \frac{ d!^2 }{ b^{2d+1} } \int \int \int K_{d,\rho}^*\left( u-z b^{-1} \right) K_{d,\rho}^*\left( zb^{-1} \right)  Y_i(y-ub) dz du dy \\
+%=& \frac{ d!^2 }{ b^{2d} } \int \int \int K_{d,\rho}^*\left( u-z \right) K_{d,\rho}^*\left( z \right)  X(y-ub) dz du dy \\
+=& \frac{ d!^2 }{ b^{2d} } \int \int \int K_{d,\rho}^*\left( m \right) K_{d,\rho}^*\left( z \right)  X(y+(m-z)b) dz dm dy \\
+=&(-1)^d \int_0^1  X^{(2d)}(y)  dy + o_P(1)\\
+\end{split}
+\end{equation}
+by performing two taylor expansions with $mb$ first and then $-zb$. 
+
+We can thus derive for expression (\ref{eq3}) that 
+\begin{equation}
+\begin{split}
+&\frac{4 d!^4}{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T  Cov( K_{d,\rho}^{C} \left(\frac{t_{k}-t_{l}}{b} \right) Y(t_{k}) Y(t_{l}) , K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k'}}{b} \right) Y(t_{l}) Y(t_{k'}))\\
+=& \frac{4 d!^4}{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T  K_{d,\rho}^{C} \left(\frac{t_{k}-t_{l}}{b} \right)   K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k'}}{b} \right) \left\{ \EE \left( Y(t_{k}) Y(t_{l})^2 Y(t_{k'})  \right) \left.\\ 
+&\right.- \EE\left( Y(t_{k}) Y(t_{l}) \right) \EE \left( Y(t_{l}) Y(t_{k'}) \right) \right\}  \\
+%=& \frac{4 d!^4}{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T  K_{d,\rho}^{C} \left(\frac{t_{k}-t_{l}}{b} \right)   K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k'}}{b} \right)   X(t_{k}) \sigma_{\epsilon}^2 X(t_{k'}) \\
+=& \frac{4 d!^4}{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k =1}^T \sum_{k' =1 }^T  K_{d,\rho}^{C} \left(\frac{t_{k}-t_{l}}{b} \right)   K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k'}}{b} \right)   X(t_{k}) \sigma_{\epsilon}^2 X(t_{k'}) \\
+& - \frac{2 d!^4}{T^4 (b^{4d+2})f(c)^4}  \sum_{k =1}^T \sum_{k' =1 }^T  K_{d,\rho}^{C} \left(\frac{t_{l}-t_{k'}}{b} \right)^2    X(t_{k}) \sigma_{\epsilon}^2 X(t_{k'}) \\
+=& \frac{4 \sigma_{\epsilon}^2}{T f(c)} \int  X^{(2d)}(y) X^{(2d)}(y) dy - \mathcal{O}_P \left( \frac{1}{T^2 (b^{4d+1})} \right).%\{1+o_P(1)\}.
+\end{split}
+\end{equation}
+Thus $\var \left(\theta_{d,\rho} | t_1, \dots, t_T \right)= \mathcal{O}_P \left( \frac{1}{T^2 (b^{4d+1})} \right)$.
+
+\subsubsection{multivariate case}
+The same strategy also works in the multivariate case by using multivariate Taylor series. Using the multi-index notation introduces in section \ref{intest} and $a=(a_1 ,...,a_g) , \; a_l \in \mathbb{N}^{+}$ a multivariate taylor series of degree $k < \rho$ is given by
+\begin{equation}
+\begin{split}
+X(x-u \circ b) = \sum_{0\leq|a|\leq k}\frac{X^{(a)}(x)}{a!} (u \circ b)^{a} + o_P \left( u^{k+1} max(b)^{k+1} \right).
+\end{split}
+\end{equation} 
+Using the equivalent kernel by \cite{Ruppert:94} extended to the case and using \cite{Masry96} we can further state that with a bandwidth fulfilling $\frac{log(T)}{T b_1\times\dots \times b_g} \rightarrow 0$ we have uniformly in $u \in[0,1]^g$ that $S_T(u)^{-1} \rightarrow \frac{S(u)^{-1}}{f(u)}$ almost surely as $T \rightarrow \infty$. Furthermore, the multivariate equivalent kernel has the properties that with $v=(v_1,\dots,v_g), \; v_l \in \mathbb{N}^{+}$
+\begin{equation}
+\begin{split}
+\int u^v K_{d,\rho}^*\left( u \right) du  = \delta_{d,v}, \;|v|\leq \rho, \; 0 \leq d_i \; \forall i=1,\dots g.
+\end{split}
+\end{equation}
+
+
+Let  $c$ be the position of $max(b)$ in $b$ and $\tilde{\rho}$ be a vector of length $g$ which is $\rho+1$ at the $c-th$ position and 0 else. Then for the bias  
+\begin{equation}
+\begin{split}
+&\EE \left( \theta_{d,\rho} | t_1, \dots, t_T  \right) \right.\\
+=&\left\{ \int_{[0,1]^g}  X^{(d)}(z) X^{(d)}(z) dz \\
+&+ 2 \frac{d!}{(\rho+1)!} \int_{[0,1]^g}  \frac{ max(b)^{\rho+1} }{ b^{d}  } \left(\int u^{\tilde{\rho}} K_{d,\rho}^*\left( u \right) du \right) X^{(\tilde{\rho})}(z) X^{(d)}(z)dz \\
+&\left. + \mathcal{O}_P \left(\frac{ max(b)^{\rho+1} }{ b^{d}} + \frac{1}{T^{3/2} (b^{2d} b_1 \times \dots \times b_g)}    \right) \right\} \{1+o_P(1)\} %+ o_P\left(\frac{ max(b)^{\rho+1} }{ b^{d}} +\frac{1}{T b_1 \times \dots \times b_g b^{2d}} \right).
+\end{split}
+\end{equation}
+Further note that for the convoluted kernel we get
+\begin{equation}
+\begin{split}
+& K_{d,\rho}^{C} \left((y-x)\circ b^{-1} \right)  \\
+=&  \int (b_1 \times \dots \times b_g)^{-1} K_{d,\rho}^*\left( (y -u) \circ b^{-1} \right) K_{d,\rho}^*\left( (x -u) \circ b^{-1}\right) du .
+\end{split}
+\end{equation}
+
+
+%\begin{equation}\label{bias_var}
+%\begin{split}
+%\bias\left(\tilde{M}_{ij} \right)= \mathcal{O}_p(max(b)^{p+1} \textbf{b}^{-d}) \\
+%\end{split}
+%\end{equation}
+Accordingly, we get for the multivariate equivalent of expression (\ref{eq2}) that
+\begin{equation}
+\begin{split}
+& \frac{2 d!^4}{T^4 f(c)^4 (b_1^2 \times \dots \times b_g^2 b^{4d})} \sum_{l=1}^T \sum_{k \neq l}^T  K_{d,\rho}^{C} \left((t_{l}-t_{k}) \circ b^{-1} \right)^2 Var( Y(t_{l}) Y(t_{k}))  \\
+%&\EE \left[ \frac{d!^4}{(b_1^2 \times \dots \times b_g^2 b^{4d})}\left(K_{d,\rho}^{C} \left((t_{1}-t_{2})\circ b^{-1} \right) \left( \epsilon_{1} \epsilon_{2}\right) \right)^2 \right] \\
+=& \frac{2 d!^4   \int (\sigma_{\epsilon}^4 + 2\sigma_{\epsilon}^2 X(x)^2)  f(x)^2 dx}{T^2 f(c)^4 b_1 \times \dots \times b_g b^{4d}} \int \left(   K_{d,\rho}^C(u)  \right)^2du \{1+o_P(1)\}\\
+%=& \frac{d!^4\sigma^4}{b_1 \times \dots \times b_g \textbf{b}^{4d}} \int \int K_{d,\rho}^{C} \left(u \right)^2 f(x) f(x-bu) dx du\{1+o(1)\}\\
+%=& \frac{d!^4\sigma^4}{b_1 \times \dots \times b_g \textbf{b}^{4d}}  \int K_{d,\rho}^{C}\left(u\right)^2 du \int f(x)^{2} dx + o_P \left(\frac{1}{b_1 \times \dots \times b_g \textbf{b}^{4d}}\right)
+\end{split}
+\end{equation}
+and because we assume that  $m\geq 2 |d|$ we get for the multivariate equivalent of expression (\ref{eq3}) that 
+\begin{equation}
+\begin{split}
+&A \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T  Cov( K_{d,\rho}^{C} \left((t_{k}-t_{l}) \circ b^{-1} \right) Y(t_{k}) Y(t_{l}) , K_{d,\rho}^{C} \left((t_{l}-t_{k'})\circ b^{-1} \right) Y(t_{l}) Y(t_{k'}))\\
+%=& \frac{4 d!^4}{T^4 (b^{4d+2})f(c)^4} \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T \left( K_{d,\rho}^{C} \left((t_{k}-t_{l}) b^{-1} \right)   K_{d,\rho}^{C} \left((t_{l}-t_{k'}) b^{-1} \right)\right) \left(\EE \left( Y(t_{k}) Y(t_{l})^2 Y(t_{k'}) \right)\\ 
+%&- \EE\left( Y(t_{k}) Y(t_{l}) ) \EE( Y(t_{l}) Y(t_{k'})\right) \right) \\
+=&A \sum_{l=1}^T \sum_{k \neq l}^T \sum_{k' \neq k }^T  K_{d,\rho}^{C} \left((t_{k}-t_{l}) \circ b^{-1} \right)   K_{d,\rho}^{C} \left((t_{l}-t_{k'})\circ b^{-1} \right)   X(t_{k}) \sigma^2 X(t_{k'}) \\
+%=&\frac{4 d!^2 \sigma^2}{ T b^{2d} f(c)^4} \int \int \int K_{d,\rho}^*\left(u\right)  K_{d,\rho}^*\left(v\right) X_i^{(d)}(y+bu)  X_i^{(d)}(y-bv) f(y) f(y+bu) f(y-bv) du dy dv\{1+o_P(1)\}\\ 
+=& \frac{4 \sigma_{\epsilon}^2}{T f(c)} \int  X^{(2d)}(y) X^{(2d)}(y) dy + \mathcal{O}_P \left( \frac{1}{T^2 (b^{4d} b_1 \times \dots \times b_g)} \right)%
+%&\frac{4 d!^4}{b^{4d} b_1^2 \times \dots \times b_g^2}\EE \left(\left(K_{d,\rho}^{C} \left((t_{1}-t_{2}) \circ b^{-1} \right) \left( Y(t_{1}) Y(t_{2})  \right)\right)  \left(K_{d,\rho}^{C} \left((t_{2}-t_{3}) \circ b^{-1} \right) \left( Y(t_{2}) Y(t_{3}) \right)\right)\right) \\
+%=&\frac{4d!^4}{ b^{4d}} \int \int \int K_{d,\rho}^{C,b} \left(u\right) K_{d,\rho}^C \left(v\right) X(y+u \circ b) (X(y)^2+\sigma^2) X(y-v \circ b) du dy dv \\
+%%=&\frac{4 d!^2}{ \textbf{b}^{2d}} \int \int \int K_{d,\rho}^*\left(u\right)  K_{d,\rho}^*\left(v\right) Y_i^{(d)}(y+u\circ b)  (Y_i(y)^2+\sigma^2) Y_i^{(d)}(y-v\circ b) du dy dv\{1+o_P(1)\}\\ 
+%=& \int 4 X^{(2d)}(y) (X(y)^2+\sigma^2) X^{(2d)}(y) f(y)^4 dy\{1+o_P(1)\} \\
+%%&\frac{4 d!^2 b^{2\rho+2}}{(\rho+1)!^2 b^{2d}} \int \int u^{\rho+1} K_{d,\rho}^*\left(u\right)  v^{\rho+1} K_{d,\rho}^*\left(v\right) Y_i^{(d+\rho+1)}(y) (Y_i(y)^2+\sigma^2) Y_i^{(d+\rho+1)}(y) du dy dv + o_P(1)\\ 
+\end{split}
+\end{equation}
+where $A:=\frac{4 d!^4}{T^4 (b^{4d} b_1^2 \times \dots \times b_g^2)f(c)^4} $.
+%leading to
+%\end{equation}
+%\[
+%\var\left(\tilde{M}_{ij} \right)= \mathcal{O}_p\left( \frac{1}{T^2 b_1\dots b_g  \textbf{b}^{4d}  }+ \frac{1}{T}\right)
+%\]
+
+\subsection{Proof of Proposition \ref{Mbias}}
+\subsubsection{Asymptotic results} \label{M0}\label{Md}
+We first have look at the estimator $\tilde{M}^{(0)}$ for the special case when a common random grid is present.  The only error here comes from approximating the integral in equation (\ref{Mij0}) with a sum. 
+\begin{equation}
+\begin{split}
+ M^{(0)}_{ij}-\tilde{M}^{(0)}_{ij} =&\int_{[0,1]^g} X_i(t) X_j(t) dt -\frac{1}{T} \sum_{l=1}^{T} Y_i(t_{il}) Y_j(t_{jl})+ I(i = j )\hat{\sigma}_{i\varepsilon}^2\\
+=&\int_{[0,1]^g} X_i(t) X_j(t) dt -\frac{1}{T} \sum_{l=1}^{T} \left( X_i(t_{l}) +\varepsilon_{il}\right) \left( X_j(t_{l})+\varepsilon_{jl} \right) + I(i = j )\hat{\sigma}_{i\varepsilon}^2\\
+=&\int_{[0,1]^g} X_i(t)X_j(t) dt  -\frac{1}{T} \sum_{l=1}^{T} X_i(t_{l}) X_j(t_{l}) \\ 
+& - \frac{1}{T} \sum_{l=1}^{T} X_i(t_{l})\varepsilon_{jl} - \frac{1}{T} \sum_{l=1}^{T} X_j(t_{l})\varepsilon_{il} - \frac{1}{T} \sum_{l=1}^{T_i} \varepsilon_{il}\varepsilon_{jl}+ I(i = j )\hat{\sigma}_{i\varepsilon}^2.
+\end{split}
+\end{equation}
+
+
+By construction, it hold that $\EE\left[  \varepsilon_{il}\varepsilon_{jl} \right] = 0,\; i \neq j$, $\EE\left[ {\varepsilon_{il}}^2 \right] = \sigma_{i\varepsilon}^2$ and $ \EE\left[ Y_i(t_{l})\varepsilon_{jl} \right] = 0$. 
+All sums for example $\frac{1}{T}\sum_{l=1}^T X_i(t_l)X_j(t_l)$ are the corresponding empirical estimator for the mean, i.e., $\int_{[0,1]^g} X_i(t)X_j(t) dt=\EE \left[X_iX_j\right]$. By the law of large numbers, it converges in probability to the theoretical mean as $T \rightarrow \infty$. Using the central limit theorem we can further state that $\int_{[0,1]^g} X_i(t)X_j(t) dt - \frac{1}{T} \sum_{l=1}^T X_i(t_l)X_j(t_l)$ is approximately normal, which gives an error of order $T^{-1/2}$ regardless of dimension $g$. By requiring that $\hat{\sigma}_{i\varepsilon}$ is also $T^{-1/2}$ consistent we get $T^{-1/2}$ for all elements. 
+
+To understand $\hat{M}^{(0)}$ we investigate two possible sources of error in the construction of the estimator. One coming from interpolation and smoothing at a common grid  and the other from approximating the integral with a sum. First note that by the same arguments as for $\tilde{M}^{(0)}$ the error of the integral approximation is of order $T^{-1/2}$. Besides the error for the off diagonal elements is smaller then for the diagonal, thus the leading error source is given by  Lemma \ref{lemint}. The same arguments also work to derive asymptotic results for $\hat{M}^{(d)}$. %Using Lemma \ref{lemint} we can further state that under the proposed conditions   $\rho \geq \frac{g}{2}-1 $ and $b^*=T_i^{-\alpha} \; \forall i=1,\dots,N$ with $\frac{1}{2\rho+2} \leq \alpha \leq \frac{1}{g}$ the error from interpolation and smoothing is also of order $T_i^{-1/2} \leq \min_i(T_i)^{-1/2} = T^{-1/2}$. 
+
+%\subsubsection{Asymptotic results for $\hat{M}^{(d)}$} \label{Md}
+%Asymptotic of $\hat{M}^{(d)}$ are similar to those of  $\hat{M}^{(0)}$, but to get $T_i^{-1/2}$ using Lemma \ref{lemint} additionally need that each $Y_i$ is at least $2|d|$-times differentiable and $b=T_i^{-\alpha}$ for each direction and $\frac{1}{2(\rho+1 -\sum_{l=1}^g d_l)} \leq \alpha \leq \frac{1}{g+4 \sum_{l=1}^g d_l}$ to hold. 
+%
+
+\subsection{Proof of Proposition \ref{asymgam}}\label{proof24}
+%We will first derive some properties of the estimators $\hat{M}^{(\nu)}$. 
+Under the assumptions of Proposition \ref{asymgam} together with the requirements of Lemma \ref{Mbias} for $\nu=(0,d)$ and the setup of Remark \ref{remark1}%by the calculations of Appendix \ref{prooflemma}
+\begin{equation}
+\begin{split}
+||\hat{M}^{(\nu)}-M^{(\nu)}||  
+\leq \tr \left\{ \left(\hat{M}^{(\nu)}-M^{(\nu)}\right)^{\top}\left(\hat{M}^{(\nu)}-M^{(\nu)}\right) \right\}^{1/2} =\mathcal{O}_p\left(NT^{-1/2}\right).
+\end{split}
+\end{equation}
+%As in Proposition 1 in \cite{Kneip2001} this inside together with Lemma A from \cite{Kneip2001} and the fact  that $\sum_{l=1}^N p^{(\nu)}_{lr}=0, \; \sum_{l=1}^N p^{(\nu)}_{lr}^2=1 \; \forall r$. Hence $\sum_{i=1}^N p^{(\nu)}_{lr} X_j=0$ and  Cauchy-Schwarz gives $\sum_{l=1}^N |p^{(\nu)}_{lr}|=\mathcal{O}(N^{1/2})$ which leads to
+Given that $\sum_{l=1}^T p^{(\nu)}_{lr}=0, \; \sum_{l=1}^T \left(p^{(\nu)}_{lr}\right)^2=1 \; \forall r$ and applying Cauchy-Schwarz inequality gives $\sum_{l=1}^N |p^{(\nu)}_{lr}|=\mathcal{O}\left(N^{1/2}\right)$. This together with Lemma A from \cite{Kneip2001} leads to
+\begin{equation}
+\label{prMpr}
+\EE \left[\left( p^{(\nu)}_r\right)^{\top}(\hat{M}^{(\nu)}-M^{(\nu)})p^{(\nu)}_r\right]^2  = \mathcal{O}_p\left(\frac{N}{T}\right)
+\end{equation}
+
+%In the previous section we gathered all requirements needed 
+We are now ready to make a statement about the basis that span the factor space. %For $\nu=0$ and $\nu=d$ 
+\begin{equation}\label{gamphi}
+\begin{split}
+%\hat{\gamma}^{(\nu)}_{r,T}(t)- \gamma^{(\nu)}(t)
+&\left|\frac{1}{\sqrt{l_r^{(\nu)}}}\sum_{i=1}^N p^{(\nu)}_{ir} X_i^{(d)}(t)-\frac{1}{\sqrt{\hat{l}_r^{(\nu)}}}\sum_{i=1}^N \hat{p}^{(\nu)}_{ir}\hat{X}^{(d)}_{i,h}(t)\right|\\
+ \leq &\left|\frac{1}{\sqrt{l_r^{(\nu)}}}\sum_{i=1}^N p^{(\nu)}_{ir} \left[X_i^{(d)}(t)-\hat{X}^{(d)}_{i,h}(t)\right]\right| +  \left|\sum_{i=1}^N \left( \frac{1}{\sqrt{l_r^{(\nu)}}} p^{(\nu)}_{ir} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \hat{p}^{(\nu)}_{ir} \right) \hat{X}^{(d)}_{i,h}(t)\right|.
+\end{split}
+\end{equation}
+The first term is discussed in equation (\ref{hbias}). Therefore we take a look at the second term here. %We do so by introducing some partial results first. 
+As a consequence of Assumption (\ref{A6}), Lemma A (a) from \cite{Kneip2001} together with equation (\ref{prMpr}) gives
+\begin{equation}
+\label{lambdabias}
+\begin{split}
+%\frac{l^{(\nu)}_r}{N}-\frac{\hat{l}_r^{(\nu)}}{N} = N^{-1} (p^{(\nu)}_r)^T (\hat{M}^{(\nu)}-M^{(\nu)})p^{(\nu)}_r) +\mathcal{O}_p(T^{-1})= \mathcal{O}_p((NT)^{-1/2} + T^{-1})
+l^{(\nu)}_r-\hat{l}_r^{(\nu)} = (p^{(\nu)}_r)^T (\hat{M}^{(\nu)}-M^{(\nu)})p^{(\nu)}_r) +\mathcal{O}_p(NT^{-1})= \mathcal{O}_p(N^{1/2}T^{-1/2} + NT^{-1}),
+\end{split}
+\end{equation}
+where 
+\begin{equation} \label{lrsqrt}
+\frac{1}{\sqrt{\hat{l}^{(\nu)}_r}}-\frac{1}{\sqrt{l^{(\nu)}_r}}=\frac{l^{(\nu)}_r-\hat{l}^{(\nu)}_r}{\sqrt{\hat{l}^{(\nu)}_r}\sqrt{l^{(\nu)}_r}(\sqrt{\hat{l}^{(\nu)}_r}+\sqrt{l^{(\nu)}_r})}= \mathcal{O}_p\left(T^{-1/2}N^{-1}+T^{-1}N^{-1/2}\right).
+\end{equation}%as well as using Lemma A (a) from \cite{Kneip2001} gives
+%\begin{equation}
+%\begin{split}
+%|\frac{l_r}{N}-\frac{\hat{l}_r}{N}| = N^{-1} |p_r^T (\hat{M}-M)p_r)| +\mathcal{O}_p(T^{-1})= \mathcal{O}_p((NT)^{-1/2} + T^{-1})
+%\end{split}
+%\end{equation}
+Using Lemma A (b) from \cite{Kneip2001} we further get
+\begin{equation} \label{pir}
+\begin{split}
+|\hat{p}^{(\nu)}_{ir}-p^{(\nu)}_{ir}|=\mathcal{O}_p\left((NT)^{-1/2} \right) \text{ and } || \hat{p}^{(\nu)}_r-p^{(\nu)}_r || =  \mathcal{O}_p\left(T^{-1/2}\right).
+\end{split}
+\end{equation}
+Putting all results together for the second term gives
+\begin{equation}
+\begin{split}
+&\left| \sum_{i=1}^N \left( \frac{1}{\sqrt{l_r^{(\nu)}}} p^{(\nu)}_{ir} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \hat{p}^{(\nu)}_{ir} \right) \hat{X}^{(d)}_{i,h}(t) \right| = \\
+%&\left| \sum_{i=1}^N \left( \{l_r^{(\nu)}\}^{-1/2} p^{(\nu)}_{ir} - \frac{1}{\{\hat{l}_r^{(\nu)}\}^{-1/2} \hat{p}^{(\nu)}_{ir} \right) \hat{Y}^{(d)}_{i,h}(t) \right| = \\
+=& \left|\sum_{i=1}^N \left( \frac{1}{\sqrt{l_r^{(\nu)}}} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \right) \hat{p}^{(\nu)}_{ir} \hat{X}^{(d)}_{i,h}(t) + \frac{1}{\sqrt{l_r^{(\nu)}}} \sum_{i=1}^N \left( \hat{p}^{(\nu)}_{ir} - p^{(\nu)}_{ir}\right) \hat{X}^{(d)}_{i,h}(t)\right|\\
+%=&\left|\sum_{i=1}^N \left( \{l_r^{(\nu)}\}^{-1/2} - \{\hat{l}_r^{(\nu)}\}^{-1/2} \right) \hat{p}^{(\nu)}_{ir} \hat{Y}^{(d)}_{i,h}(t) + \{l_r^{(\nu)}\}^{-1/2} \sum_{i=1}^N \left( \hat{p}^{(\nu)}_{ir} - p^{(\nu)}_{ir}\right) \hat{Y}^{(d)}_{i,h}(t)\right|\\
+%\leq & \left| \left( \frac{1}{\sqrt{l_r^{(\nu)}}} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \right) \sum_{i=1}^N \hat{p}^{(\nu)}_{ir} \left( \hat{X}^{(d)}_{i,h}(t)  \right)\right| + \left| \frac{1}{\sqrt{l_r^{(\nu)}}} \sum_{i=1}^N \left( \hat{p}^{(\nu)}_{ir} - p^{(\nu)}_{ir}\right) \left( \hat{X}^{(d)}_{i,h}(t) \right)\right| \\
+%=& \left| \left( \frac{1}{\sqrt{l_r^{(\nu)}}} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \right) \sum_{i=1}^N \left( p^{(\nu)}_{ir} - p^{(\nu)}_{ir} + \hat{p}^{(\nu)}_{ir} \right) \left( \hat{X}^{(d)}_{i,h}(t) \right)\right|\\ 
+%&+ \left| \frac{1}{\sqrt{l_r^{(\nu)}}} \sum_{i=1}^N \left( \hat{p}^{(\nu)}_{ir} - p^{(\nu)}_{ir}\right) \left( \hat{X}^{(d)}_{i,h}(t)  \right)\right| \\
+%\leq & \left| \left( \frac{1}{\sqrt{l_r^{(\nu)}}} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \right) \sum_{i=1}^N  p^{(\nu)}_{ir}  \left( \hat{X}^{(d)}_{i,h}(t)  \right)\right|\\
+%&+ \left| \left( \frac{1}{\sqrt{l_r^{(\nu)}}} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \right) \sum_{i=1}^N \left(   \hat{p}^{(\nu)}_{ir} -p^{(\nu)}_{ir}  \right) \left( \hat{X}^{(d)}_{i,h}(t) \right)\right| + \left| \frac{1}{\sqrt{l_r^{(\nu)}}} \sum_{i=1}^N \left( \hat{p}^{(\nu)}_{ir} - p^{(\nu)}_{ir}\right) \left( \hat{X}^{(d)}_{i,h}(t)  \right)\right| \\
+\leq & \left| \left( \frac{1}{\sqrt{l_r^{(\nu)}}} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \right)\right| \sum_{i=1}^N  | p^{(\nu)}_{ir}| \left|  \left( \hat{X}^{(d)}_{i,h}(t)  \right)\right|\\
+&+ \left| \left( \frac{1}{\sqrt{l_r^{(\nu)}}} - \frac{1}{\sqrt{\hat{l}_r^{(\nu)}}} \right) \right| ||   \hat{p}^{(\nu)}_{r} -p^{(\nu)}_{r}  || \left| \hat{X}^{(d)}_{i,h}(t) \right| +  \frac{1}{\sqrt{l_r^{(\nu)}}}  || \hat{p}^{(\nu)}_{r} - p^{(\nu)}_{r} ||  \left| \hat{X}^{(d)}_{i,h}(t)  \right| \\
+=& \mathcal{O}_p\left( (N T)^{-1/2}\right) \left| \hat{X}^{(d)}_{i,h}(t) - X^{(d)}_{i,h}(t) +X^{(d)}_{i,h}(t) \right| \\
+\leq & \mathcal{O}_p\left( (N T)^{-1/2}\right)(\bias\left(\hat{X}^{(d)}_{j,h}(t)\right)+\sqrt{\var\left(\hat{X}^{(d)}_{j,h}(t)\right)}+\left|X^{(d)}_{i,h}(t)\right| ).
+\end{split}
+\end{equation}
+Using Cauchy-Schwarz and equation (\ref{lrsqrt}) we see that first term is of order $(NT)^{-1/2}$. For the second term remember that $l_r^{(\nu)}$ is of order $N$ together with  (\ref{pir}) this also leads to order $(NT)^{-1/2}$.
+%By taking the norm on the left hand side of equation (\ref{gamphi}) is smaller than equal than 
+Inserting the right hand side, equation (\ref{gamphi}) becomes
+\begin{equation}
+\begin{split}
+&\mathcal{O}_p\left( max(h)^{p+1} h^{-d}\right) +\mathcal{O}_p\left( (N T  h_1\dots h_g  h^{2d} )^{-1/2} \right)+\mathcal{O}_p\left(  (N T)^{-1/2}\right) \mathcal{O}_p\left( max(h)^{p+1} h^{-d}\right)\\
+& + \mathcal{O}_p\left(  (N T)^{-1/2}\right)\mathcal{O}_p\left((T h_1\dots h_g  h^{2d})^{-1/2}  \right)+\mathcal{O}_p\left(  (N T)^{-1/2}\right)\\
+=&\mathcal{O}_p\left( max(h)^{p+1} h^{-d}\right) +\mathcal{O}_p\left((N T  h_1\dots h_g  h^{2d} )^{-1/2} \right).
+\end{split}
+\end{equation}
+
+
+%\frac{1}{\sqrt{l_r^{(\nu)}}} \{l_r^{(\nu)}\}^{-1/2}
+%which leads to the rates given in \ref{asymgam} because the second term is dominated by the first term .
+
+%
+%If $nb^{2p+2}\rightarrow \infty$ as $b\rightarrow 0$ 
+%\begin{equation}
+%Var(\hat{M}^{(d)}_{ij})=\mathcal{O}_p(\frac{1}{Tb^{3d-p}}).
+%\end{equation}
+%%The mixed terms from the diagonal correction are asymptotically smaller and thus dominated. The optimal $b$ is of order $T^{-1/(p+d+2)}$.
+%%The mixed terms from the diagonal correction are asymptotically smaller and thus dominated. The optimal $b$ is of order $T^{-1/(2d+1)}$.
+%
+%For the multivariate case this generalizes to
+%\[
+%\EE \left\{ M^{(d)}_{ij}-\hat{M}^{(d)}_{ij}\right\} = \mathcal{O}_p(|b|^{p+1} b^{-d})
+%\]
+%and
+%\[
+%Var(\hat{M}^{(d)}_{ij}) = \mathcal{O}_p \left( \frac{1}{T  \prod_{j=1}^g b_j b^{3d}|b|^{-p-1} }\right).
+%\]
+%This gives an optimal bandwidth of order $b_{opt}=\mathcal{O}(T^{-1/(p+g+1+\sum d_i)} ) $. Giving a Bias of $\mathcal{O}_p(T^{-1/(g+2\sum d_i)} )
+%giving an optimal common bandwidth b of $\mathcal{O}(T^{-1/(2gd+g)})$
+%\subsection{Theoretical optimal bandwidths}
+\subsection{Proof of Proposition \ref{curvebias}}\label{Proof2.5}
+Note that
+\begin{equation}
+\begin{split}
+\sqrt{l^{(v)}_r} - \sqrt{\hat{l}^{(v)}_r} = (l^{(v)}_r - \hat{l}^{(v)}_r)(\sqrt{l^{(v)}_r} + \sqrt{\hat{l}^{(v)}_r})^{-1}= \mathcal{O}_p(T^{-1/2} + N^{1/2}T^{-1}),
+\end{split}
+\end{equation}
+together with (\ref{pir}) gives
+\begin{equation}
+\begin{split}
+&\hat{\delta}_{ir}-\hat{\delta}_{ir,T}= \sqrt{l^{(v)}_r} p^{(v)}_{ir}  - \sqrt{\hat{l}^{(v)}_r} \hat{p}^{(v)}_{ir}  \\
+=& \left( \sqrt{l^{(v)}_r} - \sqrt{\hat{l}^{(v)}_r} \right) p^{(v)}_{ir}  -  \sqrt{\hat{l}^{(v)}_r} \left(  \hat{p}^{(v)}_{ir} -  p^{(v)}_{ir}\right) = \mathcal{O}_p(T^{-1/2} + N^{1/2}T^{-1}).
+\end{split}
+\end{equation}
+Using Proposition \ref{asymgam} it follows that
+\begin{equation}
+\begin{split}
+&|Y_i(t) - \hat{Y}_i(t)|= |\sum_{r=1}^K \hat{\delta}_{ir} \hat{\gamma}^{(v)}_r(t) - \sum_{r=1}^K \hat{\delta}_{ir,T} \hat{\gamma}^{(v)}_{r,T}(t)| \\
+=& |\sum_{r=1}^K (\hat{\delta}_{ir}-\hat{\delta}_{ir,T}) \hat{\gamma}_r + \hat{\delta}_{ir,T} (\hat{\gamma}_r-\hat{\gamma}_{r,T})| \\
+=& \mathcal{O}_p\left(T^{-1/2} + N^{1/2}T^{-1} +  \max(h)^{p+1} h^{-d}  +(N T  h_1 \times \dots \times h_g h^{2d} )^{-1/2} \right).
+\end{split}
+\end{equation}

@@ -1,0 +1,19 @@
+\BOOKMARK [1][]{section.1}{1 Introduction}{}% 1
+\BOOKMARK [1][]{section.2}{2 Methodology}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{2.1 Two approaches to the derivatives of multivariate functions using FPCA}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{2.2 Sample inference}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{2.3 The model}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{2.4 Estimation procedure}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{2.5 Consistency results for the derivative of curves}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{2.6 Parallel to Mueller:2009}{section.2}% 8
+\BOOKMARK [1][]{section.3}{3 Application to state price densities implied from option prices}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{3.1 Implementation}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{3.2 Simulation Study}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{3.3 Real Data Example}{section.3}% 12
+\BOOKMARK [1][]{section.4}{4 Conclusions}{}% 13
+\BOOKMARK [1][]{section.5}{5 Appendix}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{5.1 Assumptions summary}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{5.2 Proof of Lemma 2.1}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.3}{5.3 Proof of Proposition 2.2}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.4}{5.4 Proof of Proposition 2.4}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.5}{5.5 Proof of Proposition 2.5}{section.5}% 19

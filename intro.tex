@@ -1,0 +1,444 @@
+
+\section{Introduction}
+
+Over the last two decades, functional data analysis became a popular tool to handle data entities that are functions. Usually, discrete and noisy versions of them are observed. Oftentimes, these entities are high-dimensional spatial objects. Examples include brain activity recordings generated during fMRI or EEG experiments, e.g., \cite{majer:15}. %, environmental or climatological maps.  
+In a variety of applications though the object of interest is not directly observable but it is a function of the observed data.  Typical examples in the financial applications include functionals that can be retrieved from the observed prices by means of derivatives, such as implied state price density, e.g., \cite{Schienle:12}, pricing kernel, e.g., \cite{Gr:13} or the market price of risk, e.g.,  \cite{Lopez:12}. Motivated by such data analysis situations, we address the problem of estimating high-dimensional spatial curves that are not empirically observable but can be recovered from the existing discrete and noisy data by means of derivatives. %An example of such an instance that motivates our present study are the SPDs implied by option prices. SPDs are continuous versions of Arrow Debreu prices that pay one unit of currency if one state is realized and zero otherwise. %Considered basic securities, they are not traded over exchanges but can be calculated from the prices of existing securities. 
+
+%The usefulness of knowing the shape and dynamics of SPDs derives, among others, from the possibility of fair pricing of exotic contingent claims because they are assumed to reflect equilibrium conditions on the market, see pricing under the risk neutral rule, e.g. \cite{Harrison:79}. Furthermore, due to the forward-looking perspective, they are used to estimate the physical density of the underlying asset by incorporating the adjustments for risks by means of pricing kernel, e.g. \cite{Anagnou:02}, \cite{Bliss:04}, \cite{Alonso:09}, \cite{Duca:14}. In addition, the exchanges calculate volatility indexes, such as VIX for S$\&$P 500 or VDAX for DAX 30, that reflect the market expected forward volatility. Also known by the investors as 'fear indices' they are computed from option prices, with a link to but not a straight forward interpretation of the implied densities. 
+
+%These adjustments require the understanding of behavioral risk patterns on the market - through the aggregate measures of preferences and beliefs - and this is possible by linking the implied state price to the physical densities, see \cite{hens:12}, \cite{Bakshi:10}, \cite{Polkovnichenko:12}, \cite{Kra:14}.
+Functions, which are objects of an infinite-dimensional vector space, require specific methods that allow a good approximation of their variability with a small number of components. FPCA is a convenient tool to address this task because it allows to explain complicated data structures with only a few orthogonal principal components that fulfill the optimal basis property in terms of its $L^2$ accuracy. These components are given by the Karhunen-Lo{\`e}ve theorem, see for instance \cite{Bosq:2000}. %In the one-dimensional case it is also easy to implement. 
+In addition, the corresponding principal loadings to this basis system can be used to study the variability of the observed phenomena. %, for example in a time series framework. In addition, depending on the application the corresponding principal scores can be interpreted, for example in a time series framework.
+%The mathematical basis for the Karhunen-Lo{\`e}ve decomposition is given by the Hilbert-Schmidt theorem. % from the functional analysis theory. In the last years a lot of effort has been done to lay a theoretical foundation for the use of these insights in a statistical context. 
+An important contribution in the treatment of the finite dimensional PCA was done by \cite{Pousse:82}, followed by subsequent studies that fostered the applicability of the method to samples of observed noisy curves. \cite{Besse:86}, among others, derived theoretical results for observations that are affected by additive errors. Some of the most important contributions for the extension of the PCA to functional data belong to \cite{cardot1999functional}, \cite{Cardot2007}, \cite{Vieu2006}, \cite{Mas2002117} and \cite{mas2008local}.
+To date, simple, one-dimensional spatial curves are well understood from both numerical and theoretical perspective. In the one-dimensional case FPCA is also easy to implement. High-dimensional objects, with more complicated spatial and temporal correlation structures, or not-directly observable functions of these objects, such as derivatives, lack a sound theoretical framework. Furthermore, the computational issues are not negligible in high-dimensions. 
+
+To our best knowledge, FPCA for derivatives has been tackled by \cite{Hall:09} and \cite{Mueller:2009}. The first study handles one-dimensional directional derivatives and gradients. The second paper analyses a particular setup in one-dimension where the observations are sparse. This method can be applied to non-sparse data but may be computationally inefficient when dealing with large amount of observations per curve. There are no studies of derivatives using FPCA in more than one spatial dimension. For the study of observed functions, there are a series of applied papers for the two-dimensional case, see \cite{Cont:02} for an application close to our empirical study. Other complicated attempts to implement FPCA when the object of interest are the observed functions, rather than their derivatives, have been done in more than two dimensions, in particular in the area of brain imaging. For example, \cite{Zipunnikov:11} split the recorded data into smaller parts to make it manageable. The method called multilevel FPCA has been developed through previous studies, see \cite{Staicu01042010}, \cite{di2009multilevel}, and is well suited to analyze different groups of individuals. However, a thorough derivation of the statistical properties of the estimators is missing in these papers.
+
+%To our knowledge, the functional data analysis for derivatives has been done by \cite{Mueller:2009}, in a particular type of application in one-dimension where the observations are sparse. When applied to non-sparse data, the methodology is inefficient. Another paper by \cite{Hall:09} handles one-dimensional directional derivatives and gradients. There are no studies of derivatives using FPCA in more than one-dimension. 
+
+%Particularly when high-dimensional data is present, the computational aspect is not negligible. For every additional dimension exponentially many observations are needed to get the same rate of convergence. There is no straightforward way to generalize the commonly used procedures to compute the FPCA to the higher dimensional case, without getting into computational trouble. Complicated attempts has been done for example by \cite{Zipunnikov:11} where the data is split into smaller parts to be still calculable. 
+
+%A way to handle large amounts of observations was proposed by \cite{Benko:2009} where the duality relation is used for one-dimensional curves. Computational efficiency is essential with increasing spatial dimensions and the dual method performs better when the number of curves is smaller than the number of the discrete observations per curve. We will also use this approach here.
+
+In this paper, we aim to fill in the existent gaps in the literature on FPCA for the study of derivatives of functions in high-dimensional spaces. We present two alternative methods to obtain the derivatives. %and to apply the newly developed framework to the study of SPDs.
+%The rest of the paper is organized as following: The theoretical framework, estimation procedure and statistical properties will be derived through sections \ref{t2} and \ref{t3} for general functions. Our empirical study in section \ref{t4} is guided by the estimation and dynamics analysis of option implied SPDs in a simulation study and real data example. Section \ref{t5} concludes. 
+The paper is organized as following: the theoretical framework, estimation procedure and statistical properties are derived through Section \ref{t2}. Our empirical study in Section \ref{t4} is guided by the estimation and the dynamics analysis of the option implied state price densities. It includes a simulation study and a real data example. %Section \ref{t5} concludes. 
+
+
+%\color{red}VIX = constructed by CBOE based on some continuous-time theory ??? Zhaogang 2013\color{black}
+
+\section{Methodology}\label{t2}
+
+%Handling infinite-dimensional data structures requires specific methods that allow the representation of their variability with a small number of components. Karhunen-Lo{\`e}ve decomposition is a convenient tool to address this task; it allows to explain complicated data structures with only a few principal components. In addition, the corresponding principal scores can be used to study the evolution of the observed phenomena, for example in a time series framework. %In addition, depending on the application the corresponding principal scores can be interpreted, for example in a time series framework.
+
+%The mathematical basis for the Karhunen-Lo{\`e}ve decomposition is given by the Hilbert-Schmidt theorem. % from the functional analysis theory. In the last years a lot of effort has been done to lay a theoretical foundation for the use of these insights in a statistical context. 
+%An important contribution in this context has been done by \cite{Pousse:82}, followed by consequent studies that fostered the applicability of the method to samples of observed noisy curves. \cite{Benko:2009} and \cite{Besse:86}, among others, derived theoretical results for observations that are effected by additive errors. 
+
+%To date, simple, one-dimensional structures are well understood from both numerical and theoretical perspective. High-dimensional structures, with more complicated spatial and temporal correlation structures, or derivatives lack a sound theoretical framework. In addition, the computational issues are not negligible. A few papers have tackled the indirectly observed curves estimation. \cite{Hall:09} handle one-dimensional directional derivatives and gradients. \cite{Mueller:2009} analyze a particular setup in one-dimension where the observations are sparse. When applied to non-sparse data, this methodology is computationally inefficient. Though there are no studies of derivatives using FPCA in more than one-dimension. For the study on nonderivatives, there are a series of applied papers for the two-dimensional case, see \cite{Cont:02} for an application close to our empirical study. Complicated attempts to implement FPCA for nonderivatives in more that two dimensions has been done, for example by \cite{Zipunnikov:11}, where the data is split into smaller parts to make it manageable. However, a thorough derivation of the statistical properties of these estimators is missing.
+
+%To our knowledge, the functional data analysis for derivatives has been done by \cite{Mueller:2009}, in a particular type of application in one-dimension where the observations are sparse. When applied to non-sparse data, the methodology is inefficient. Another paper by \cite{Hall:09} handles one-dimensional directional derivatives and gradients. There are no studies of derivatives using FPCA in more than one-dimension. 
+
+%Particularly when high-dimensional data is present, the computational aspect is not negligible. For every additional dimension exponentially many observations are needed to get the same rate of convergence. There is no straightforward way to generalize the commonly used procedures to compute the FPCA to the higher dimensional case, without getting into computational trouble. Complicated attempts has been done for example by \cite{Zipunnikov:11} where the data is split into smaller parts to be still calculable. 
+
+%A way to handle large amounts of observations with joint functional structure was proposed by \cite{Benko:2009} where the duality relation is used for one-dimensional curves. Computation efficiency is essential with increasing dimensions and the dual method performs better when the number of curves is smaller than the number of the discrete observations per curve. In this paper, we generalize this procedure to the case of derivatives in high-dimensions. Next, we will present two alternative methods to obtain the derivatives and in the subsequent two sections we will explain their comparative performance in terms of asymptotics and finite sample in a simulation study.
+
+
+%In our empirical study we are guided by a finance application in which we want to explain the variability of option implied SPDs 
+
+% in which we want to explain the variability of option implied SPDs through dynamic parameters (principal scores) that can be interpreted within a time series framework. 
+
+%ADD STH ABOUT APPLICATION HERE!
+
+
+%In this paper we aim to recover the derivatives of high-dimensional noisy curves, as well as to summarize them by few principal components and to explain their variability through dynamic parameters that can be interpreted within a time series framework. To achieve this goal we employ a functional data analysis (FDA) method based on the Karhunen-Lo{\`e}ve decomposition of a random curve via a set of orthonormal basis functions gained from the covariance operator. In particular, we will adapt the functional principal component analysis (FPCA) for curves to the case of their derivatives.
+
+%The main assumption for performing this decomposition is that the curves are square integrable and their derivatives exist. One situation when this condition is fulfilled if the case of continuous phenomenon that can be represented as smooth functions. For a finite number of curves observed without errors the Karhunen-Lo{\`e}ve decomposition is applied to the sample counterpart of the covariance operator, as shown in \cite{Hall:2006}. If these curves are additionally observed at discrete points with noise, as it is often the case in practice, smoothing is required at some stage, see \cite{Benko:2009} or (reference Silverman for ex.) for additional details. 
+
+%Our approach is a generalization of the approach presented by \cite{Benko:2009}. They introduce a new method for the estimation of principal components of functions from discrete noisy data, based on the duality relation for matrices (see härlde book ref). One advantage of using this method is that no smoothing of individual curves is required to obtain an asymptotically unbiased estimator for the dual matrix of the covariance operator. Consequently, this estimation method doesn't suffer of the potential biases and inconsistencies introduced by smoothing involved in the application of other famous method e.g.(reference) to the noisy data. In addition, the method is computationally more efficient when the sample size is smaller than observation points (why, reference). 
+
+%To apply standard approaches which are based of decomposing the covariance directly, to higher dimensions has several problems: computational effort for computing the covariance matrix and the eigenvalues decomposition increases exponentially with every additional dimension. (why, reference) Besides, it is not clear how one can adapt the standard method to the high-dimensional case, in particular with respect to the derivation of theoretical properties of the estimators. 
+
+%To our knowledge, the functional data analysis for derivatives has only been done by \cite{Mueller:2009}, and only in a particular type of application with sparse data in one-dimension. (explain method) When applied to non-sparse data, the methodology is inefficient and causes not very good convergence rates (reference). There are no studies of derivatives using FPCA in more dimensions. 
+
+%(the advantage of analyzing all the curves together. estimating them using FPCA. signal to noise ratio, leveling down the noise by averaging, assumptions about the curves as being realizations from a stationary process)
+
+%The paper is organized as follows: 
+%\subsection{Karhunen-Lo{\`e}ve decomposition and derivatives of (multivariate) functions}
+\subsection{Two approaches to the derivatives of high-dimensional functions using FPCA}
+%\subsection{Theoretical underpinnings}
+The representation of derivatives of high-dimensional spatial curves requires a careful choice of notation. In this section, we review the FPCA from a technical point of view and make the reader familiar with our notations. 
+
+Let $X$ be a centered smooth random function in $L^2([0,1]^g)$, where $g$ denotes the spatial dimension, with finite second moment $\int_{[0,1]^g} \EE\left[X(t)^2 \right]dt < \infty$ for $t=(t_1, \ldots, t_g)^{\top}$. %Here, we consider centered functions. %if non-centered curves are assume than there is a need to additionally subtract $E(Y)$. 
+The underlying dependence structure can  be characterized by the covariance function $\sigma(t,v)\stackrel{\operatorname{def}}{=}\EE\left[X(t)X(v)\right]$ and
+ the corresponding covariance operator $\Gamma$% applied to some function $\vartheta \in L^2([0,1]^g)$
+ \begin{equation*}
+%\Gamma \vartheta(t)=\int_{[0,1]^g}\sigma(t,v)\vartheta(v)dv,
+(\Gamma \vartheta)(t)=\int_{[0,1]^g}\sigma(t,v)\vartheta(v)dv.
+\end{equation*}
+%Under weak conditions $\Gamma$ is a Hilbert-Schmidt operator and possesses a countable number of non-negative eigenvalues. 
+Mercer's lemma guarantees the existence of a set of eigenvalues $\lambda_1\geq \lambda_2\geq \dots$ and a corresponding system of orthonormal eigenfunctions $\gamma_1,\gamma_2,\dots$ called functional principal components s.t.
+\begin{equation} \label{op}
+\sigma(t,v)= \sum_{r=1}^\infty \lambda_r \gamma_r(t) \gamma_r(v),
+\end{equation}
+where the eigenvalues and eigenfunctions satisfy 
+%\begin{equation*} \label{y}
+$(\Gamma \gamma_r)(t)=\lambda_r\gamma_r(t)$. Moreover, $\sum_{r=1}^\infty \lambda_r=\int_{[0,1]^g}\sigma(t,t)dt$.
+%\end{equation*}
+%Let $\lambda_1\geq \lambda_2\geq \dots$ denote the ordered eigenvalues of $\sigma$ and let $\gamma_1,\gamma_2,\dots$ be a corresponding system of orthonormal eigenfunctions (functional principal components) s.t. $\sigma(t,v)= \sum_{r=1}^\infty \lambda_r \gamma_r(t) \gamma_r(v)$. 
+The Karhunen-Lo\`eve decomposition for the random function $X$ gives
+\begin{equation} \label{y}
+X(t)=\sum_{r=1}^{\infty} \delta_{r} \gamma_r(t), %\qquad  
+\end{equation}
+where the loadings $\delta_{r}$ are random variables defined as $\delta_{r}=\int_{[0,1]^g} X(t) \gamma_r(t) dt$ that satisfy $\EE\left[\delta_{r}^2\right]=\lambda_r$, as well as $\EE\left[\delta_{r}\delta_{s}\right]=0$ for $r\neq s$. 
+Throughout the paper the following notation for the derivatives of a function $X$ will be used
+\begin{equation}
+X^{(d)}(t) \stackrel{\operatorname{def}}{=} \frac{\partial^d }{\partial t^{d} } X(t) = \frac{\partial^{d_1} }{\partial t_1^{d_1} } \cdots \frac{\partial^{d_g} }{\partial t_g^{d_g} } X(t_1,\dots,t_g),
+\end{equation}
+%where $d=(d_1,...,d_g), \; d_j\in \mathbb{N}^{+}$ is the order of the derivative in a particular spatial direction $j=1,\dots,g$. 
+for $d=(d_1,...,d_g)^{\top}$ and $d_j\in \mathbb{N}^+$ the partial derivative in the spatial direction $j=1,\dots,g$.
+We denote $|d|=\sum_{j=1}^g |d_j|$ and require that $X$ is at least $|d|+1$ times continuously differentiable. %in each direction $j$, where $m\geq \max(d)$ 
+%and that all partial derivatives are bounded by a constant $C<\infty$ such that $\underset{t}{\operatorname{sup}}\underset{k \in (\mathbb{N}\cap [0,|d|+1])^g}{\operatorname{sup}}\EE\left[X_i^{(k)}(t)\right]\leq C$. %For the special case where no derivatives are taken, $d=0 \Leftrightarrow \max(d)=0$ is used.
+
+%\subsubsection{Direct approach }
+Building on equations (\ref{op}) and (\ref{y}), we consider two approaches to model a decomposition for derivatives $X^{(d)}$. The first one can be stated in terms of the Karhunen-Lo\`eve decomposition applied to their covariance function.  %In that case the covariance operator becomes $\EE[DY(t) DY(v)]$.
+%Based on our applications  we will take a closer look at mixed partial derivatives.  
+We define $\sigma^{(d)}(t,v) \stackrel{\operatorname{def}}{=} \EE\left[X^{(d)}(t)X^{(d)}(v)\right]$ and $\lambda_1^{(d)}\geq\lambda_2^{(d)}\geq \dots$ be the  corresponding eigenvalues. Then the principal components $\varphi^{(d)}_{r}$ are solutions to
+\begin{equation}\label{alter}
+\int_{[0,1]^g} \sigma^{(d)}(t,v) \varphi^{(d)}_r(v) dv = \lambda^{(d)}_r \varphi^{(d)}_r(t).
+\end{equation}
+For nonderivatives, i.e., $|d|=0$, we introduce the following notation $\varphi_r^{(0)}(t)\equiv \gamma_r(t)$. Similarly to (\ref{y}), the decomposition of $X^{(d)}$ with principal components $ \varphi_r^{(d)}(t)$ is  
+\begin{equation}\label{alterdec}
+%\frac{\partial^{d_1} }{\partial u_1^{d_1} } \cdots \frac{\partial^{d_g} }{\partial u_g^{d_g} } Y(u_1,\dots,u_g) =: \frac{\partial^d }{\partial u^{d} } Y(t) = 
+X^{(d)}(t) =  \sum_{r=1}^\infty \delta^{(d)}_{r}  \varphi^{(d)}_r(t),
+\end{equation}
+for $\delta^{(d)}_r = \int_{[0,1]^g} X^{(d)}(t) \varphi^{(d)}_r(t) dt$.
+
+%\subsubsection{Indirect approach }
+A different way to think about a decomposition for derivatives, is to take the derivatives of the functional principal components in (\ref{y}) %A representation of the $d$-th mixed partial derivative is then given by 
+\begin{equation}\label{der2}
+%\frac{\partial^{d_1} }{\partial u_1^{d_1} } \cdots \frac{\partial^{d_g} }{\partial u_g^{d_g} } Y(u_1,\dots,u_g) =: \frac{\partial^d }{\partial u^{d} } Y(t) = 
+X^{(d)}(t) =  \sum_{r=1}^\infty \delta_{r}  \gamma^{(d)}_r(t),
+\end{equation}
+where the $d$-th derivative of the $r$-th eigenfunction is the solution to %the eigenvalue problem
+\begin{equation}\label{pder2}
+%\frac{\partial^d }{\partial u^{d}} \int_{[0,1]^g} \sigma(t,v)\gamma_r(v) dv = \lambda_r \frac{\partial^d }{\partial u^{d}} \gamma_r(t)  =\lambda_r \gamma^{(d)} _r(t)  
+ \int_{[0,1]^g} \frac{\partial^{d}}{\partial v^{d}}\left( \sigma(t,v)\gamma_r(v)\right) dv = \lambda_r \gamma^{(d)} _r(t). 
+\end{equation}
+
+
+
+In general, for $|d|>0$ it holds that $\varphi^{(d)}_r(t) \neq \gamma^{(d)}_r(t) $, but both basis systems span the same function space. In particular, there always exists a projection with $a_{ri}=\left\langle \gamma^{(d)}_i, \varphi^{(d)}_r\right\rangle = \int \gamma^{(d)}_i(t) \varphi^{(d)}_r(t) dt$ such that $ \sum_{r=1}^\infty a_{ri} \varphi^{(d)}_r(t) = \gamma^{(d)}_i(t)$. However, if we consider a truncation of (\ref{y}) after a finite number of components this is no longer true in general. An advantage of using $\varphi^{(d)}_r(t)$ instead of $\gamma^{(d)}_r(t) $ is that the decomposition of the covariance function of the derivatives give orthonormal basis that fulfill the best basis property, such that for any fixed $L \in \mathbb{N}$ and every other orthonormal basis system $ \varphi'$ 
+\begin{equation}
+\label{bestbasis}
+E || X^{(d)} - \sum_{r=1}^L \left\langle X^{(d)},\varphi^{(d)}_r\right\rangle \varphi^{(d)}_r||  \leq E || X^{(d)} - \sum_{r=1}^L  \left\langle X^{(d)},\varphi'_r \right\rangle \varphi'_r||.
+\end{equation}
+%This guarantees that by using $\varphi_r^{(d)}(t), \; r=1,\dots,L$ we always achieve the best $L$ dimensional subset selection in terms of the $L^2$ error function. In the next section we show that estimating the basis functions with such desirable features, for nonzero derivatives, comes at the cost of inferior rates of convergence compared to the estimation of $\gamma^{(d)}_r(t)$. However, if we assume a $L$-dimensional function space from the beginning, which is equivalent to a factor model setup, this advantage vanishes, because it is possible to derive a basis system with the same features using $\spn(\gamma^{(d)})$. In particular, this can be achieved by deriving the function space of $\gamma^{(d)}_r(t), \; r=1,\dots,L$ and performing a spectral decomposition of the finite-dimensional functional space to get an orthonormal basis system fulfilling (\ref{bestbasis}).
+%When choosing $\gamma_r(t)^{(d)}$ as a basis for $Y^{(d)}$ we will loose in general orthonormality as well as the best basis properties. 
+This guarantees that by using $\varphi_r^{(d)}(t), \; r=1,\dots,L$ we always achieve the best $L$ dimensional subset selection in terms of the $L^2$ error function. In the next section we show that estimating the basis functions with such desirable features, for nonzero derivatives, comes at the cost of inferior rates of convergence. % compared to the estimation of $\gamma^{(d)}_r(t)$, if we keep the conditions of the estimation equal. This comes from the superiority in estimating the dual matrix of the sample counterpart for the covariance function $\sigma$. 
+However, if we assume a $L$-dimensional function space from the beginning, which is equivalent to a factor model setup, the advantage of deriving the best orthogonal basis vanishes, because it is possible to derive a basis system with the same features using $\spn(\gamma^{(d)})$. In particular, this can be achieved by deriving the function space of $\gamma^{(d)}_r(t), \; r=1,\dots,L$ and performing a spectral decomposition of the finite-dimensional function space to get an orthonormal basis system fulfilling (\ref{bestbasis}).
+
+
+%In addition we require that for the decomposition it holds that 
+%\begin{equation}\label{cc1}
+%\underset{r}{\operatorname{sup}} \int_{[0,1]^g} \left(\varphi^{(d)}_r(t)\right)^2 dt \leq C \;,\; \underset{r}{\operatorname{sup}} \int_{[0,1]^g} \left(\gamma^{(d)}_r(t)\right)^2 dt \leq C
+%\end{equation}
+%
+%\begin{equation}\label{cc2}
+%\sum_{r=1}^\infty \sum_{s=1}^\infty \EE \left[\left(\delta^{(\nu)}_{ri}\right)^2 \left(\delta^{(\nu)}_{si}\right)^2 \right] \leq C \;,\; \sum_{q=1}^\infty \sum_{s=1}^\infty \EE \left[\left(\delta^{(\nu)}_{ri}\right)^2 \delta^{(\nu)}_{si} \delta^{(\nu)}_{qi}\right] \leq C, \; \ \nu=(0,d)
+%\end{equation}
+%for all $r\in \mathbb{N}$ and $C < \infty$.
+
+%During this paper we will take a closer look at both approaches especially at advantages and disadvantages when the data is discrete and noisy. 
+
+
+%However in the discrete case with additional noise this methods suffers from an additional bandwidth choice for smoothing the curves. If a factor model is present, the spanned space by the basis functions of both methods will be identical. Therefore we decided not to use this approach, because assuming an approximate factor model is reasonable concerning our application. 
+
+%For any linear differential operator $D$ it follows, that 
+%\begin{equation}\label{der}
+%D Y(t)= \sum_{i=1}^\infty \delta_{r} D \gamma_r(t) 
+%\end{equation}
+%where $ D \gamma_r(t)$ is the solution of
+%\begin{equation}\label{pder}
+%D \int_{[0,1]^g} \sigma(t,v)\gamma_r(v) dv = \lambda_r D \gamma_r(t).  
+%\end{equation}
+
+%From (\ref{der}) we can see that by proceeding in this way $D Y$ can be represented as a linear combination between the loadings $\delta$ of the original function $Y$ and the derivatives of the eigenfunctions. When choosing this kind of basis we will loose in general  orthonormality as well as the best basis properties. An alternative which keeps this properties is presented in $4.1$, however this methods suffers from an additional bandwidth choice for $M$ and no parametric convergence rates. If a factor model is present, the spanned space by the basis functions of both methods will be identical. Therefore we decided not to use this approach, because assuming an approximate factor model is reasonable concerning our application.   %In general a consequence of choosing this kind of basis is loosing orthonormality as well as the best basis properties.  
+
+\subsection{Sample inference}
+%In most applications, the curves are only observed at discrete points and the data is corrupted by additive noise. To model these issues, 
+Let $X_1,\dots, X_N \in L^2([0,1]^g)$ be an i.i.d. sample of smooth curves with continuous covariance function. %, we assume that each curve in the sample is observed at independent randomly-distributed points $\mathbf{t}_i=(t_{i1},\dots,t_{iT_i}), \; t_{ik} \in [0,1]^g, \; k=(1,\dots, T_i)$ from a continuous distribution with density $f$ such that $\underset{t\in[0,1]^g}{\operatorname{inf}}f(t)>0$. Our model is then given by 
+%\begin{equation} \label{basic} 
+%Y_i(t_{ik})=X_i(t_{ik}) + \varepsilon_{ik} =\sum_{r=1}^\infty \delta_{ri} \gamma_r(t_{ik})+\varepsilon_{ik}.
+%\end{equation}
+%For each curve $i$, $\varepsilon_{ik}$ are i.i.d. random variables, $\EE\left[\varepsilon_{ik}\right]=0$ and $\var\left(\varepsilon_{ik}\right)= \sigma_{\varepsilon,i}^2$ and $\varepsilon_{ik}$ is independent of $X_j, \; j=1,\dots,N$. 
+For the sample of $N$ observed curves, the empirical approximation of the covariance function is given by the sample counterpart 
+%If a sample of $N$ curves is observed, the dual method can be used to derive the functional principle components. The empirical approximation of the covariance function is given by the sample covariance 
+%Let $Y_1,\dots Y_N \in L^2[0,1]^g$ be an i.i.d. sample with continuous covariance function and at least $p+1$ times contentiously differentiable and the derivatives $\sum_{j=1}^{g}d_j=1,\dots ,p+1$ where $p>\frac{4 \sum_{i=1}^g d_i + g -1}{2}$ are bounded by a constant $C<\infty$ such that $sup_t \EE[Y_i^{(d)}(t)]\leq C$.  The empirical approximation of the covariance function is given by the sample covariance 
+%For a given sample $Y_1, \dots, Y_N$, the empirical approximation of the covariance function is given by the sample covariance 
+\begin{equation} \label{sigma}
+\hat{\sigma}^{(d)}(t,v) = \frac{1}{N} \sum_{i=1}^N X^{(d)}_i(t) X^{(d)}_i(v)
+\end{equation}
+and of the covariance operator by
+ \begin{equation}\label{opemp}
+ \hat{\Gamma}^{(d)}_N \hat{\varphi}^{(d)}_r (t)=\int_{[0,1]^g}\hat{\sigma}^{(d)}(t,v)\hat{\varphi}_r^{(d)}(v)dv,
+\end{equation}
+where the eigenfunction $\hat{\varphi}_r^{(d)}$ corresponds to the $r$-th eigenvalue of $\hat{\Gamma}^{(d)}_N $. For inference, it holds that $||\varphi^{(\nu)}_r-\hat{\varphi}^{(\nu)}_r||=\mathcal{O}_p(N^{-1/2})$ and $|\lambda^{(\nu)}_r-\hat{\lambda}^{(\nu)}_r|=\mathcal{O}_p(N^{-1/2})$, see for instance \cite{Pousse:82} or \cite{Hall:2006}. %In the upcoming sections we will investigate how the model assumptions given in (\ref{basic}) influence the asymptotics . 
+The loadings corresponding to each realization $X_i$ can be estimated via the empirical eigenfunctions as $\hat{\delta}^{(d)}_{ri}= \int_{[0,1]^g} X^{(d)}_i(t) \hat{\varphi}^{(d)}_r(t) dt$. 
+
+\subsection{The model}\label{themodel}
+
+In most applications, the curves are only observed at discrete points and the data is corrupted by additive noise. To model these issues, 
+%Let $X_1,\dots, X_N \in L^2([0,1]^g)$ be an i.i.d. sample of smooth curves with continuous covariance function.%, 
+we assume that each curve in the sample is observed at independent randomly-distributed points $t_i=(t_{i1},\dots,t_{iT_i})^{\top}, \; t_{ik} \in [0,1]^g, \; k=1,\dots, T_i, i=1,\dots, N$ from a continuous distribution with density $f$ such that $\underset{t\in[0,1]^g}{\operatorname{inf}}f(t)>0$. Our model is then given by 
+\begin{equation} \label{basic} 
+Y_i(t_{ik})=X_i(t_{ik}) + \varepsilon_{ik} =\sum_{r=1}^\infty \delta_{ri} \gamma_r(t_{ik})+\varepsilon_{ik}.
+\end{equation}
+
+For each curve $i$, $\varepsilon_{ik}$ are i.i.d. random variables, $\EE\left[\varepsilon_{ik}\right]=0$ and $\var\left(\varepsilon_{ik}\right)= \sigma_{i \varepsilon}^2$ and $\varepsilon_{ik}$ is independent of $X_j, \; j=1,\dots,N$. 
+
+\subsection{Estimation procedure}
+
+\subsubsection{Dual method}\label{DM}
+%A way to handle large amounts of observations with joint functional structure was proposed by \cite{Benko:2009} where the duality relation is used for one-dimensional curves. Computation efficiency is essential with increasing dimensions and the dual method performs better when the number of curves is smaller than the number of the discrete observations per curve. In this paper, we generalize this procedure to the case of derivatives in high-dimensions. Next, we will present two alternative methods to obtain the derivatives and in the subsequent two sections we will explain their comparative performance in terms of asymptotics and finite sample in a simulation study.
+An alternative to the Karhunen-Lo{\`e}ve decomposition relies on the duality relation between the row and column space. The method was first used in a functional context by \cite{Kneip2001} to estimate density functions and later adapted by \cite{Benko:2009} for general functions. Let $\nu=(\nu_1,\dots,\nu_g)^{\top}, \;\ \nu_i \in \mathbb{N}^+$, $|\nu|<\rho\leq m $ a and $M^{(\nu)}$ be the dual matrix of $\hat{\sigma}^{(\nu)}(t,v)$ from (\ref{sigma}) consisting of entries  %The correlation between two realized curves is
+\begin{equation}\label{Mij0}
+M^{(\nu)}_{ij}= \int_{[0,1]^g} X^{(\nu)}_i(t) X^{(\nu)}_j(t) dt.
+\end{equation}
+%\[
+%M^{(d)}_{ij}= \underbrace{\int_{0}^1 \dots \int_{0}^1}_{g-times} Y^{(d)}_i(u_1,\dots,u_g)  Y^{(d)}_j(u_1,\dots,u_g) du_1 \dots du_g   
+%M_{ij}= \int_{[0,1]^g}  Y_i(t)  Y_j(t) dt  
+%\]
+Let $p^{(\nu)}_r=(p^{(\nu)}_{1r}, \ldots, p^{(\nu)}_{Nr})$ be the eigenvectors and  $l^{(\nu)}_r$ the corresponding ordered eigenvalues of matrix $M^{(\nu)}$. 
+In particular, the cases $\nu=d$ relates to equation (\ref{alter}) and gives an empirical version of (\ref{alterdec}) by
+
+\begin{equation} \label{naiveev}
+\hat{\varphi}^{(d)}_r(t) = \frac{1}{\sqrt{l_r^{(d)}} } \sum_{i=1}^N p^{(d)}_{ir} X^{(d)}_i(t) \text{ , } \hat{\lambda}^{(d)}_r=\frac{l^{(d)}_r}{N} \text{ and } \hat{ \delta }^{(d)}_{ri}= \sqrt{l^{(d)}_r} p^{(d)}_{ir}.
+\end{equation}
+Important for the representation given in equation (\ref{der2}) are the eigenvalues and eigenvectors of $M^{(0)}$ denoted by $l_r\stackrel{\operatorname{def}}{=} l^{(0)}_r, p_r\stackrel{\operatorname{def}}{=}p^{(0)}_r$ and $\hat{\gamma}_r(t)=\hat{\varphi}^{(0)}_r(t)$ respectively. It is straightforward to derive %$\hat{\gamma}^{(d)}_r(t)$ by
+\begin{equation} \label{evd}
+\hat{\gamma}^{(d)}_r(t) =\frac{1}{\sqrt{l_r} } \sum_{i=1}^N p_{ir} X^{(d)}_i(t). 
+\end{equation}
+%Since we assume the curves are observed with noise, see equation (\ref{basic}), we can not apply duality relation right away and have to derive an appropriate estimator.
+
+\subsubsection{Quadratic integrated regression }
+%\subsubsection{Local polynomial regression}
+\label{intest}
+Before deriving estimators of $M^{(0)}$ and $M^{(d)}$ using the model from section \ref{themodel} we outline some results needed to construct these estimators. Consider a generic curve $Y(t_l)$ observed at points $l=1,\dots,T$ generated as in equation (\ref{basic}). 
+
+We use the following notation: Let $a=(a_1,\dots, a_g)^{\top}, b=(b_1,\dots, b_g)^{\top}$ then $|a|=\sum_{l=1}^g |a_l|$, $a^b=a_1^{b_1} \times \dots \times a_g^{b_g}$, $a!=a_1! \times \dots \times a_g!$, $a^{-1}=(a_1^{-1},\dots, a_g^{-1})^{\top}$ and $a \circ b=(a_1  b_1,\dots,a_g b_g)^{\top}$.
+
+%$k=(k_1,\dots, k_g)^{\top}$, $k_l \in \mathbb{N}^{+}$, $|k|=\sum_{l=1}^g |k_l|$, $t^k=t_1^{k_1} \times \dots \times t_g^{k_g}$, $k!=k_1! \times \dots \times k_g!$ and $a \circ t=(a_1  t_1,\dots,a_g t_g)^{\top}$, for $t\in \mathbb{R}^g$ and $a \in \mathbb{R}^g$. 
+%We use the following notation: $k=(k_1,\dots, k_g)^{\top}$, $k_l \in \mathbb{N}^{+}$, $|k|=\sum_{l=1}^g |k_l|$, $t^k=t_1^{k_1} \times \dots \times t_g^{k_g}$, $k!=k_1! \times \dots \times k_g!$ and $a \circ t=(a_1  t_1,\dots,a_g t_g)^{\top}$, for $t\in \mathbb{R}^g$ and $a \in \mathbb{R}^g$. 
+
+%For illustration purposes, we drop the index associated with the observed curves. 
+
+Let $k=(k_1,\dots, k_g)^{\top}$, $k_l \in \mathbb{N}^{+}$ and consider a multivariate local polynomial estimator $\hat{\beta}(t) \in \mathbb{R}^\rho$ that solves
+\begin{equation}\label{polymul}
+\underset{\beta(t)}{\operatorname{min}} \sum_{l=1}^{T} \left[ Y(t_{l}) - \sum_{0 \leq |k| \leq \rho} \beta_{k}(t) (t_{l}-t)^k \right]^2 K_{B} (t_{l}-t).
+\end{equation}
+$K_B$ is any non-negative, symmetric and bounded  multivariate kernel function. For simplicity we assume that the $g \times g$ bandwidth matrix $B$ is  a diagonal matrix with $b=(b_1,\dots,b_g)^{\top}$ at the diagonal  and zero else.% However, with additional notation it is straightforward to generalize the obtained results for any bandwidth matrix $B$. %In our implementation $K_b$ is constructed as a product of $g$ univariate Epanechnikov kernel functions as described for example in \cite{Haerdle00}. %If we are interested in derivatives $X^{(d)}$, we set $ \rho > |d|$.
+%$K_b$ can be a product of $g$ univariate Epanechnikov kernel functions as described for example in \cite{Haerdle00}. 
+In our empirical study, we take $K_b \equiv K_B$ to be a product of $g$ univariate Epanechnikov kernel functions as described, for example, in \cite{Haerdle00}. 
+
+As noted by \cite{Fan1995} the solution of the minimization problem (\ref{polymul}) can also be represented using a weight function $W^T_\nu$, see Appendix \ref{prooflemma}, which define% the estimator 
+\begin{equation}\label{polyeqkern}
+\hat{X}_b^{(\nu)}(t)= \nu! \hat{\beta}_{\nu}(t) = \nu!\sum_{l=1}^{T} W^T_\nu  \left((t_{l}-t)\circ b^{-1} \right) Y(t_{l}),
+\end{equation}
+where the argument of $W^T_\nu$ depends on the distance between point $t_l$ and location $t$.% These publication does also give a detailed description how to construct the weights in practice. 
+
+
+
+
+
+
+Local polynomial regression estimators are better suited to estimate integrals like (\ref{Mij0}) than other kernel estimators, e.g., Nadaraya-Watson or Gasser-M{\"u}ller estimator, since the bias and variance are of the same order of magnitude near the boundary as well as in the interior, see for instance \cite{FanGijbels92}. % The impact of this effect gets even bigger with increasing $g$. To estimate the diagonal elements of $M^{(\nu)}$ in (\ref{Mij0}), 
+We propose the following estimator for the squared integrated functions $\int_{[0,1]^g} X^{(\nu)}(t)^2 dt$
+
+\begin{equation}\label{rho}
+\begin{split}
+\theta_{\nu,\rho}= \int_{[0,1]^g} \nu!^2  \sum_{k=1}^{T} \sum_{l=1}^{T} W^T_\nu\left((t_{k}-t)\circ b^{-1} \right)  W^T_\nu\left((t_{l}-t)\circ b^{-1} \right) Y(t_{l}) Y(t_{k}) dt
+\\ -  \nu!^2 \hat{\sigma}_{\varepsilon}^2 \int_{[0,1]^g} \sum_{k=1}^{T} W^T_\nu\left((t_{k}-t)\circ b^{-1} \right)^2  dt.
+\end{split}
+\end{equation}
+where $\hat{\sigma}_{\varepsilon}^2$ is a consistent estimator of $\sigma_{\varepsilon}^2$. The second term is introduces to cancel the bias in $\EE\left[Y^2(t_{k}) \right] = X (t_{k})^2 +\sigma_{\varepsilon}^2$. %The nondiagonal elements of $M^{(\nu)}$ are estimated using the first term of Equation $\ref{rho}$ for corresponding distrinct curves $Y_i$ and $Y_j$.
+
+\begin{lemma}
+\label{lemint} 
+Under Assumptions \ref{A1}- \ref{A4}, $X$ is $m\geq 2 |\nu|$ times  continuously  differentiable, the local polynomial regression has order $\rho$ with $|\nu| \leq \rho < m$ and $|\hat{\sigma}_{\varepsilon}^2-\sigma_{\varepsilon}^2|=\mathcal{O}_P(T^{-1/2}) $ then as $T \rightarrow \infty$ and $\max(b) ^{\rho+1} b^{-\nu} \rightarrow 0$, $\frac{\log(T)}{T b_1\times\dots \times b_g} \rightarrow 0$ as $T b_1 \times \dots \times b_g b^{4\nu}\rightarrow \infty$,
+\begin{equation}
+\begin{split}
+&\EE \left[\theta_{\nu,\rho}\right]- \int_{[0,1]^g} X^{(\nu)}(t)^2 dt =\mathcal{O}_p \left(\max(b)^{\rho+1} b^{-\nu} + \frac{1}{T^{3/2} (b^{2\nu} b_1 \times \dots \times b_g)}  \right) \\ 
+&\var(\theta_{\nu,\rho})=  \mathcal{O}_p\left( \frac{1}{T^2 b_1 \times \dots \times b_g  b^{4\nu}  }+ \frac{1}{T}\right).
+\end{split}
+\end{equation}
+\end{lemma}
+The proof of Lemma \ref{lemint} is given in Appendix \ref{prooflemma}.
+%as a consequence if we use a common bandwidth $b^*=T^{-\alpha}$ for each spatial direction we can archive $\sqrt{T}$ convergence if the curves are smooth enough to use  a polynomial of degree $\rho\geq \frac{g}{2}-1 + 3 \sum_{i=1}^g d_i$ and 
+%choose $\alpha$ in the range of $\frac{1}{2(\rho+1 -\sum_{i=1}^g d_i)} \leq \alpha \leq \frac{1}{g+4 \sum_{i=1}^g d_i}$.
+
+%as a consequence if we use a common bandwidth $b^*=T^{-\alpha}$ for each spatial direction we can archive $\sqrt{T}$ convergence if the curves are smooth enough to use  a polynomial of degree $\rho\geq \frac{g}{2}-1 + 3 \sum_{i=1}^g d_i$ and 
+%choose $\alpha$ in the range of $\frac{1}{2(\rho+1 -\sum_{i=1}^g d_i)} \leq \alpha \leq \frac{1}{g+4 \sum_{i=1}^g d_i}$.
+%\color{red}To get the rates for $M^{(d)}$ Method we need $m>2|d|$ and $m>|d|$ for $M^(0) m>|d|$ is enough.\color{black}
+
+\subsubsection{Estimation of $M^{(0)}$ and $M^{(d)}$ }  The curves $Y_i$ in equation (\ref{basic}) are assumed to be observed at different random points. We consider uniformly sampled points $t_1,\dots,t_{T} \in [0,1]^g$  with $T=\underset{i \in {1,\dots,N}}{\operatorname{min}}T_i$ and replace the integrals in (\ref{rho}) with the Riemann sums %computed at these points to estimate $M^{(d)}$ %the integrals are replaced with Riemann sums %at uniform sampled points $t_1,\dots,t_{T}$. The estimator similar to the $M^{(0)}$ given by
+\begin{equation*}
+\begin{split}
+\hat{M}^{(\nu)}_{ij}= \begin{cases}  \nu!^2 \sum_{k=1}^{T_i} \sum_{l=1}^{T_j}  w_\nu^T(t_{ik},t_{jl},b) Y_j(t_{jl}) Y_i(t_{ik})  &\text{ if } i \neq j  \\ 
+\nu!^2 \left( \sum_{k=1}^{T_i} \sum_{l=1}^{T_i} w_\nu^T(t_{ik},t_{il},b)  Y_i(t_{il}) Y_i(t_{ik}) -  \hat{\sigma}_{i\varepsilon}^2  \sum_{k=1}^{T_i} w_\nu^T(t_{ik},t_{ik},b) \right)   &\text{ if } i = j .\end{cases} 
+\end{split}
+\end{equation*}
+where $w_{\nu}^T(t_{ik},t_{jl},b)  :=T^{-1} \sum_{m=1}^T W^T_{\nu} \left((t_{ik}-t_m)\circ b^{-1} \right)  W^T_{\nu}\left((t_{jl}-t_m)\circ b^{-1} \right)$. The estimator for $M^{(0)}$ is given by setting $\nu=(0,\dots,0)^\top$ and the estimator for $M^{(d)}$ by $\nu=d$. 
+
+%\color{red}On closer examination $\hat{M}^{(d)}_{ij}$ can be seen as an special kind of average derivative, for example, as studied by \cite{Haerdle:88}. \color{black}
+
+There are two possible sources of error in the construction of the estimator $\hat{M}^{(\nu)}$. One is coming from smoothing noisy curves, which gives an estimate at a common grid, and has been analyzed in Lemma (\ref{lemint}). The other one is from approximating the integral in (\ref{rho}) with a sum in the above equation, for the observed curves given in equation (\ref{basic}). The error of the integral approximation is of order $T^{-1/2}$, see Appendix (\ref{M0}). 
+
+\begin{proposition}
+\label{Mbias}
+Under the requirements of Lemma \ref{lemint} %with $T=\min_i{T_i}$
+%\begin{description}
+% \item[a)] and if in addition each curve is observed at common random points $t_1,\dots,t_T$ with $min_t f(t)>0$  then  $|M^{(0)}_{ij} - \tilde{M}^{(0)}_{ij}|=\mathcal{O}_P(1/\sqrt{T})$.
+% \item[b)] $||M^{(0)}_{ij} - \hat{M}^{(0)}_{ij}||=\mathcal{O}_P(\max(b)^{\rho+1}  + \left( \frac{1}{T^2 b_1 \times \dots \times b_g   }+ \frac{1}{T} \right)^{1/2})$.
+% \item[c)] $||M^{(d)}_{ij} - \hat{M}^{(d)}_{ij}||=\mathcal{O}_P(\max(b)^{\rho+1} b^{-d}  + \left( \frac{1}{T^2 b_1 \times \dots \times b_g  b^{4d}   }+ \frac{1}{T}\right)^{1/2})$.
+\[|M^{(\nu)}_{ij} - \hat{M}^{(\nu)}_{ij}|=\mathcal{O}_P\left( \max(b)^{\rho+1} b^{-d}  + \left( \frac{1}{T^2 b_1 \times \dots \times b_g  b^{4d}   }+ \frac{1}{T}\right)^{1/2}\right) .\]
+%\end{description}
+\end{proposition}
+%A proof is given in Appendix ??. 
+By Proposition \ref{Mbias} estimating $M^{(d)}$ gives an asymptotic higher bias and also a higher variance then estimating $M^{(0)}$. This effect becomes even worse in high-dimensions. However, by using local polynomial regression with large $\rho$ one can still get parametric rates within each method. %By requiring that $\hat{\sigma}_{i\varepsilon}$ used for the diagonal correction is also $T^{-1/2}$ consistent, we get $T^{-1/2}$ consistency for all terms of $\hat{M}^{(\nu)}$. 
+
+
+\begin{remark} 
+\label{remark1}
+Under the assumptions of Lemma \ref{lemint} and using Proposition \ref{Mbias} we can derive estimators for $M^{(\nu)}$, which attain parametric rates. 
+%\begin{description}
+% \item[a)] see Proposition \ref{Mbias} a) 
+% \item[b)] If $m \geq \rho \geq \frac{g}{2}-1 $ and $b=T^{-\alpha}$ with $\frac{1}{2\rho+2} \leq \alpha \leq \frac{1}{g}$ then $|M^{(0)}_{ij} - \tilde{M}^{(0)}_{ij}|=\mathcal{O}_P(1/\sqrt{T})$
+% \item[c)] If $m \geq \rho \geq \frac{g}{2}-1 + 3 \sum_{l=1}^g d_l $,  $b=T^{-\alpha}$ with $\frac{1}{2(\rho+1 -\sum_{l=1}^g d_l)} \leq \alpha \leq \frac{1}{g+4 \sum_{l=1}^g d_l}$ then $|M^{(d)}_{ij} - \tilde{M}^{(d)}_{ij}|=\mathcal{O}_P(1/\sqrt{T})$
+%\end{description}
+If $m > \rho \geq \frac{g}{2}-1 + 3 \sum_{l=1}^g \nu_l $,  $b=T^{-\alpha}$ with $\frac{1}{2(\rho+1 -\sum_{l=1}^g \nu_l)} \leq \alpha \leq \frac{1}{g+4 \sum_{l=1}^g \nu_l}$ then $|M^{(\nu)}_{ij} - \hat{M}^{(\nu)}_{ij}|=\mathcal{O}_P(1/\sqrt{T})$.
+\end{remark}
+We can see that the orders of polynomial expansion and the bandwidths for estimating $M^{(\nu)}$ will differ for $\nu=(0,\dots,0)^\top$ and $\nu=d$. In particular, the estimator of $M^{(d)}$ requires higher smoothness assumptions - via $m > \rho$ - and higher bandwidth to achieve the same parametric convergence rate as the estimator for $M^{(0)}$. %Usually, with for the same bandwidth we need higher $\rho$ to estimate $M^{(d)}$.
+
+%For each estimators it is needed to subtract $\hat{\sigma}_{i\varepsilon}^2$  to avoid the additional bias implied by $\EE\left[Y_i^2(t_{ik}) \right] = X_i (t_{ik})^2 +\sigma_{i\varepsilon}^2$. 
+In Lemma \ref{lemint} it is required that $| \sigma_{i\varepsilon}^2 - \hat{\sigma}_{i\varepsilon}^2|=\mathcal{O}_p(T^{-1/2})$, which ensures parametric rates of convergence for $\hat{M}^{(\nu)}$ under the conditions of Remark \ref{remark1}. By Assumption \ref{A2}, in the univariate case a simple class of estimators for $\sigma_{i\varepsilon}^2$,  which archive the desired convergence rate are given by successive differentiation, see \cite{Neumann1941} and \cite{Rice:84}. However, as pointed out in \cite{Munk2005} difference estimators are no longer consistent if $g \geq 4$ due to the curse of dimensionality. A possible solution is to generalize the kernel based variance estimator proposed by \cite{hall1990} to higher dimensions with
+\begin{equation}
+\label{varestim}
+\hat{\sigma}^2_{\varepsiloni} = \frac{1}{v_i} \sum_{l=1}^{T_i} \left( Y_i(t_{il}) - \sum_{k=1}^{T_i} w_{ilk} Y(t_{ik})\right)^2,
+\end{equation}
+where $w_{ilk}=K_{r,{H}}(t_{il} - t_{ik})/ \sum_{k=1}^{T_i} K_{r,{H}}(t_{il} - t_{ik}) $ and $v_i=T_i - 2 \sum_l w_{ilk} + \sum_{l,k} w_{ilk}^2$ and $K_{r,{H}}$ is  a $g$-dimensional product kernel of order $r$ with bandwidth matrix ${H}$. \cite{Munk2005} show that if $4r>g$ and if the elements of the diagonal matrix $H$ are of order $\mathcal{O}(T^{-2/(4r+g)})$ then the estimator $\hat{\sigma}_{\varepsilon i}$ in equation (\ref{varestim}) achieves parametric rates of convergence.
+
+%In this cases more sophisticated estimators are needed to keep the desired rate of convergence. Here for example a multivariate kernel or local polynomial based estimators is a possible solution. .% , like in the case where we have to interpolate the data to a common grid as shwon by Lemma \ref{Mbias}. 
+
+Note that if the curves are observed at a common random grid with $T=T_i=T_j, \; i,j=1,\dots,N$, a simple estimator for $M^{(0)}$ is constructed by replacing the integrals with Riemann sums in (\ref{Mij0}). This estimator then is given by
+\begin{eqnarray}\label{Mdf}
+\tilde{M}^{(0)}_{ij}= \begin{cases}  \frac{1}{T} \sum_{l=1}^{T} Y_i(t_l) Y_j(t_l) \text{ if } i \neq j  \\ 
+\frac{1}{T} \sum_{k=1}^{T} Y_i(t_l)^2- \hat{\sigma}_{i\varepsilon}^2  \text{ if } i = j \end{cases} .%\nointent
+\end{eqnarray}
+In Appendix (\ref{M0}) we verify that if a common random grid is observed the convergence rate of $\tilde{M}^{(0)}_{ij}$ does not depend on $g$. 
+
+When working with more than one spatial dimension, in practice the data is often recorded using an equidistant grid with $T$ points in each direction. For our approach this strategy will not improve the convergence rate of $\tilde{M}^{(0)}$ due to the curse of dimensionality. If one can influence how the data is recorded we recommend using a common random grid which keeps computing time as well as required space to the store the data to a minimum but still gives parametric convergence rates for the estimator of $M_{ij}^{(0)}$. 
+If $T\gg N$ equation (\ref{Mdf}) gives a straightforward explanation why from  a computational point of view the choice of the dual matrix is preferable to derive the eigendecomposition of the covariance operator, because taking sums has a computational cost that is linear.
+
+\subsubsection{Estimating the basis functions }
+\label{estderiv}
+%In the following, we use the notations $d=d$ if we look at the estimation of (\ref{alterdec}) and $d=0$ for (\ref{der2}). 
+%To derive an estimator for the basis functions in  (\ref{naiveev}) and (\ref{evd}) 
+In the following, we use again the notations $\nu=d$ if we refer to the estimation of (\ref{alterdec}) and $\nu=(0,\dots,0)^\top$ for (\ref{der2}). A spectral decomposition of $\hat{M}^{(\nu)}$ is applied to obtain the eigenvalues $\hat{l}_r^{(\nu)}$ and eigenvectors $\hat{p}_r^{(\nu)}$ for $r,j=1,\dots,N$. This gives straightforward empirical counterparts  %$\hat{\varphi}^{(\nu)}_{r,T}$ ($\hat{\gamma}^{(\nu)}_{r,T}$)
+ $\hat{\lambda}^{(\nu)}_{r,T}=\hat{l}^{(\nu)}_r/N$ and $\hat{\delta}^{(\nu)}_{rj,T}=\sqrt{ \hat{l}^{(\nu)}_{r}} \hat{p}^{(\nu)}_{rj}$. %, $i=1,\dots, N$. 
+%According to equations (\ref{naiveev}) and (\ref{evd}), to derive an estimator for either basis system 
+
+To estimate $\varphi^{(d)}_r$ and $\gamma^{(d)}_r$, a suitable estimator for $X_i^{(d)}$, $r,j=1,\dots,N$ is needed. We use a local polynomial kernel estimator, denoted $\hat{X}^{(d)}_{i,h}$, similarly to (\ref{polyeqkern}), with a polynomial of order $p$ and bandwidth vector $h=(h_1,\dots,h_g)$.
+%\[\hat{X}^{(\nu)}_{i,h}(t)= d! \sum_{l=1}^{T_i} W_d^{T_i} \left((t_{il}-t)\circ (h^{-1})^{\top}\right) Y_i(t_{il}).\]
+Here, $h$ is not equal to $b$, the bandwidth used to smooth the entries of the $\hat{M}^{(0)}$ and $\hat{M}^{(d)}$ matrix. In fact, we show below that the optimal order for the bandwidth vector $h$ differs asymptotically from that of $b$ derived in the previous section. %When estimating derivatives, an optimal bandwidth choice is even more crucial compared to the case when observed curved have to be smoothed. Derivatives are much more sensitive to wrong bandwidth choices. If the bandwidth is chosen too small for instance, the derivative will be too wiggly. Otherwise, if the bandwidth is chosen too large, we may loose important features. %Notice that even as shown by Proposition \ref{asymgam} the optimal bandwidth for both approaches is of the same order of magnitude the actual bandwidth may differ. A simple rule of thumb how to chose the bandwidth in practice is given in Section \ref{operbw}.
+An advantage of using local polynomial estimators %smoothing for $\hat{X}^{(\nu)}_{i,h}$ 
+is that the bias and variance can be derived analytically. For the univariate case these results can be found in \cite{Fan:96} and for the multivariate case in \cite{Yang:15}. We summarize them in terms of order of convergence below
+\begin{equation}\label{bias_var}
+\begin{split}
+\EE\left[X_j^{(d)}(t)-\hat{X}^{(d)}_{j,h}(t)\right] &= \mathcal{O}_p(\max(h)^{p+1} h^{-d}) \\
+\var\left(\hat{X}^{(d)}_{j,h}(t)\right) &= \mathcal{O}_p\left( \frac{1}{T h_1 \times \dots \times h_g h^{2d}  }\right).
+\end{split}
+\end{equation}
+
+
+%These expression can be used to derive the bias and variance for the estimators $\hat{\gamma}_{r,T}^{(\nu)}(t)$ and $\hat{\varphi}^{(\nu)}_{r,T}(t)$ as well. 
+Let $\max(h)^{p+1} h^{ -d } \rightarrow 0$ and $\left(\max(h)^{p+1} T h^{ -d }\right)^{-1} \rightarrow 0$ as $T \rightarrow \infty $. %\; \forall t\in[0,1]^g$. 
+If $p$ is chosen such that $p-|d|$ is odd then %using expressions for bias and variance of $\hat{X}^{(\nu)}_{j,h}(t)$ from Lemma 2 in \cite{Yang:15} 
+\begin{equation*}\label{hbias}
+ \begin{aligned}
+\EE\left[\frac{1}{\sqrt{l_r^{(\nu)}}}\sum_{i=1}^N p^{(\nu)}_{ir} \left(X_i^{(d)}(t)-\hat{X}^{(d)}_{i,h}(t)\right)\right]=&\frac{1}{\sqrt{ l^{(\nu)}_{r}}}  \sum_{j=1}^N p^{(\nu)}_{jr} \bias\left(\hat{X}^{(d)}_{j,h}(t)\right)+ \mbox{\scriptsize $\mathcal{O}$}_p\left(  \max(h)^{p+1} h^{-d}\right)  \\
+=&   \mathcal{O}_p( \max(h)^{p+1} h^{-d}) 
+\end{aligned}
+\end{equation*}
+%\begin{equation*}\label{hopt}
+  %\begin{split}
+%\bias\left\{\hat{\gamma}^{(d)}_{r,T}(t)|X\right\}=&\frac{d!}{\sqrt{ \hat{l}_{r}}} \sum_{j=1}^N \hat{p}_{jr}  \left\{\int t^{p+1} K_{d,p}^*(t)dt \right\} \frac{Y_j^{(p+1)}(t) }{(p+1)!} h^{p+1-d}+ \mathcal{O}_p\left((h^{p+1-d})\right) \\
+%=&  \hat{l}_{r}^{-1/2}\sum_{j=1}^N \hat{p}_{jr} \bias\left\{\hat{Y}^{(d)}_j(t)|X_j\right\}
+%\end{split}
+%\end{equation*}
+
+\begin{equation*}\label{hhvar}
+  \begin{split}
+\var\left(\frac{1}{\sqrt{l_r^{(\nu)}}}\sum_{i=1}^Np^{(\nu)}_{ir} \hat{X}^{(d)}_{i,h}(t)\right) =&\frac{1}{l^{(\nu)}_{r}} \sum_{j=1}^N \left(p^{(\nu)}_{jr}\right)^2 \var\left(\hat{X}^{(d)}_{j,h}(t)\right)  + \mbox{\scriptsize $\mathcal{O}$}_p\left( \frac{1}{N T  h_1 \times \dots \times h_g  h^{2d}  }\right) \\
+=& \mathcal{O}_p\left( \frac{1}{N T  h_1 \times \dots \times h_g  h^{2d}  }\right).
+\end{split}
+\end{equation*}
+%\begin{equation*}\label{hopt}
+  %\begin{split}
+%\bias\left\{\hat{\gamma}^{(\nu)}_{r,T}(t)|X\right\}=&\frac{d!}{\sqrt{ \hat{l}_{r}}} \sum_{j=1}^N \hat{p}_{jr}  \left\{\int t^{p+1} K_{d,p}^*(t)dt \right\} \frac{Y_j^{(p+1)}(t) }{(p+1)!} h^{p+1-d}+ \mathcal{O}_p\left((h^{p+1-d})\right) \\
+%=&  \hat{l}_{r}^{-1/2}\sum_{j=1}^N \hat{p}_{jr} \bias\left\{\hat{Y}^{(\nu)}_j(t)|X_j\right\}
+%\end{split}
+%\end{equation*}
+%\color{red}By setting $d=0$ we get the bias and variance for $\hat{\gamma}_{r,T}^{(d)}$ and with $d=d$ those for $\hat{\varphi}^{(d)}_{r,T}(t)$. The resulting global optimal bandwidth $h_{opt}$ for $p-d_j$ odd and $T>N$ is this given by $h_{j,opt} = \mathcal{O}_p ( (NT)^{-1/(g+2p+2)})$.\color{red}
+%By setting $d=0$ we get the bias and variance for $\hat{\gamma}_{r,T}^{(d)}$ and with $d=d$ those for $\hat{\varphi}^{(d)}_{r,T}(t)$. The resulting global optimal bandwidth $h_{opt}$ for $p-d_j$ odd and $T>N$ is this given by $h_{j,opt} = \mathcal{O}_p ( (NT)^{-1/(g+2p+2)})$.
+%As we state in the next proposition, these are also the leading terms which we will use in the Section \ref{operbw} to derive optimal a bandwidth to estimate $\hat{\gamma}_{r;T}$.
+We show that under certain assumptions the asymptotic mean squared error of $\hat{\varphi}^{(d)}_{r,T}$ and $\hat{\gamma}^{(d)}_{r,T}$ is dominated by the two terms. %(\ref{hbias}) and (\ref{hhvar}). 
+
+\begin{proposition}
+\label{asymgam}
+Under the requirements of Lemma \ref{lemint}, Assumptions \ref{A5} and \ref{A6}, Remark \ref{remark1}, and for $\underset{s\neq r}{\operatorname{inf}} |\lambda_r-\lambda_s|>0$, $r,s=1,\dots, N$ and  $\max(h)^{p+1} h^{ -d } \rightarrow 0$ with $N T h_1\dots h_g  h^{2d}  \rightarrow \infty$ as $T,N \rightarrow \infty$ we obtain 
+\begin{description}
+ \item[a)] $|\gamma^{(d )}_r(t) - \hat{\gamma}_{r,T}^{(d )}(t)| =  \mathcal{O}_p\left( \max(h)^{p+1} h^{-d}\right) +\mathcal{O}_p\left((N T  h_1 \times \dots \times h_g  h^{2d} )^{-1/2} \right)$%+\mathcal{O}_p\left( (T^2 h_1 \times \dots \times h_g  \textbf{h}^{2d})^{-1/2}  \right).
+ \item[b)]$|\hat{\varphi}^{(d)}_r(t) - \hat{\varphi}^{(d)}_{r,T}(t)| = \mathcal{O}_p\left( \max(h)^{p+1} h^{-d}\right) +\mathcal{O}_p\left((N T h_1 \times \dots \times h_g  h^{2d} )^{-1/2} \right)$%+\mathcal{O}_p\left( (T^2 h_1 \times \dots \times h_g \textbf{h}^{2d})^{-1/2}  \right).
+\end{description}
+%\[||\hat{\varphi}^{(d)}_r(t) - \hat{\varphi}^{(d)}_{r,T}(t)|| = \mathcal{O}_p\left( max(h)^{p+1} h^{-d}\right) +\mathcal{O}_p\left((N T h_1 \times \dots \times h_g  h^{2d} )^{-1/2} \right)\] %+\mathcal{O}_p\left( (T^2 h_1 \times \dots \times h_g \textbf{h}^{2d})^{-1/2}  \right).
+\end{proposition}
+A proof of Proposition \ref{asymgam} is provided in Appendix \ref{proof24}. As a consequence, the resulting global optimal bandwidth is given by $h_{r,opt} = \mathcal{O}_p \left( (NT)^{-1/(g+2p+2)}\right)$ for both basis and all $r=1,\dots,N$. 
+Even if the optimal bandwidth for both approaches is of the same order of magnitude, the values of the actual bandwidths may differ. A simple rule of thumb for the choice of bandwidths in practice is given in Section \ref{operbw}.
+
+\subsection{Properties under a factor model structure}
+\label{Lchoi}
+%In most applications the variability in the data 
+Often, the variability of the functional curves can be expressed with only a few basis functions modeled by a truncation of (\ref{y}) after $L$ basis functions.
+%\begin{equation} 
+%Y_i(t_{ik})= X_i(t_{ik})+\varepsilon_{ik} =\sum_{r=1}^L \delta_{ri} \gamma_r(t_{ik})+\varepsilon_{ik}.
+%\end{equation}
+If a true factor model is assumed, the basis representation to reconstruct $X^{(d)}$ is arbitrary in sense that
+\begin{equation}\label{approx11}
+X^{(d)}(t) =  \sum_{r=1}^{L}  \delta_{r} \gamma^{(d)}_{r}(t)= \sum_{r=1}^{L_d}  \delta_{r}^{(d)} \varphi^{(d)}_{r}(t).  
+\end{equation}
+Here $L$ is always an upper bound for $L_d$. %, which is the amount of components  needed to decompose $X_i^{(d)}$. 
+The reason for this is that by taking derivatives it is possible that $\gamma_r^{(d)}(t)=0$ or that there exits some $a_r\in \mathbb{R}^{L-1}$ such that $\gamma_r^{(d)}(t)= \sum_{s\neq r}  a_{sr} \gamma_s^{(d)}(t)$.
+
+%In the following, we use the notations $d=d$ if we look at the estimation of (\ref{alterdec}) and $d=0$ for (\ref{der2}). 
+Thus, based on the estimates from Section \ref{estderiv} the estimated derivatives of the functions are  given by
+\begin{equation}\label{approx12}
+\hat{X}^{(d)}_{i,FPCA_1}(t)\stackrel{\operatorname{def}}{=} \sum_{r=1}^{L}  \hat{\delta}_{ir,T} \hat{\gamma}^{(d)}_{r,T}(t) \mbox{  } \approx \mbox{  } \hat{X}^{(d)}_{i,FPCA_2}(t) \stackrel{\operatorname{def}}{=} \sum_{r=1}^{L_d}  \hat{\delta}_{ir,T}^{(d)} \hat{\varphi}^{(d)}_{r,T}(t).  
+\end{equation}
+%Then we expect to get a better estimate for the derivatives $Y^{(d)}$ by taking only $L$ suitably chosen components $r^*=1,\ldots,L$
+
+\begin{proposition}
+\label{curvebias}
+Let $N T^{-1} \rightarrow 0$, together with the requirements of Proposition \ref{asymgam} the true curves can be reconstructed with 
+\begin{description}
+ \item[a)] $|X^{(d)}_{i}(t) - \hat{X}^{(d)}_{i,FPCA_1}(t)| =  \mathcal{O}_p\left(T^{-1/2}+ \max(h)^{p+1} h^{-d} +(N T h_1 \times \dots \times h_g  h^{2d} )^{-1/2} \right)$%+\mathcal{O}_p\left( (T^2 h_1 \times \dots \times h_g  \textbf{h}^{2d})^{-1/2}  \right).
+ \item[b)]$|X^{(d)}_{i}(t) - \hat{X}^{(d)}_{i,FPCA_2}(t)| = \mathcal{O}_p\left(T^{-1/2}+ \max(h)^{p+1} h^{-d}+(N T h_1 \times \dots \times h_g  h^{2d} )^{-1/2} \right)$%+\mathcal{O}_p\left( (T^2 h_1 \times \dots \times h_g \textbf{h}^{2d})^{-1/2}  \right).
+\end{description}
+\end{proposition}
+A proof of Proposition (\ref{curvebias}) is given in Appendix (\ref{Proof2.5}).
+Compared with the convergence rates of the individual curves estimators $\hat{X}^{(d)}_{j,h}$, see \eqref{bias_var}, the variance of our estimators reduces not only in $T$ but also in $N$, because equations (\ref{naiveev}) and (\ref{evd}) can be interpreted as an average over $N$ curves for only a finite number of $L$ components. The intuition behind is, that only  components are truncated which are related to the error term and thus a more accurate fit is possible. If $N$ increases at a certain rate, it is possible to get close to parametric rates. Such rates are not possible when smoothing the curves individually.
+ 
+For the estimation of $\hat{X}^{(d)}_{i,FPCA_2}$,  as illustrated in Remark \ref{remark1}, additional assumptions on the smoothness of the curves are needed to achieve the same rates of convergence for the estimators $\hat{M}^{(d)}$ and $\hat{M}^{(0)}$. %required to apply Proposition \ref{curvebias}. 
+With raising $g$ and $d_j, \; j=1,\dots,g$ it is required that the true  curves become much smoother which makes the  applicability of estimating $\hat{X}^{(d)}_{i,FPCA_2}$ limited for certain applications. In contrast, the estimation of $M^{(0)}$ still gives almost parametric rates if less smooth curves are assumed. %If we face a common grid there is no need for any additional smoothness of the curves at all. 
+%Even though asymptotically under Remark \ref{remark1} the convergence  of $M^{(0)}$ and $M^{(d)}$ are parametric using the estimation of$M^{(0)}$ still given parametric rates if less smooth curves are assumed. 
+In addition, if the sample size is small, using a high degree polynomial needed to estimate $M^{(d)}$ might lead to strange results. To learn more about these issues, we check the performance of both approaches in a simulation study in Section \ref{simstudy} using different sample sizes.
