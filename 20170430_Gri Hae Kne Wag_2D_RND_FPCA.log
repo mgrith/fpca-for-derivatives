@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (MiKTeX 2.9.6350 64-bit)  (format=lualatex 2017.6.25)  3 OCT 2017 22:49
+This is LuaTeX, Version 1.0.4 (MiKTeX 2.9.6350 64-bit)  (format=lualatex 2017.6.25)  6 OCT 2017 13:58
  restricted system commands enabled.
 **"C:/Users/Dell/Documents/fpca/20170430_Gri Hae Kne Wag_2D_RND_FPCA.tex"
 ("C:/Users/Dell/Documents/fpca/20170430_Gri Hae Kne Wag_2D_RND_FPCA.tex"
@@ -33,7 +33,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.740 seconds
+luaotfload | main : initialization completed in 3.892 seconds
 Babel <3.10> and hyphenation patterns for 1 language(s) loaded.
 ("C:/Program Files/MiKTeX 2.9/tex/latex/koma-script/scrartcl.cls"
 Document Class: scrartcl 2017/09/07 v3.24 KOMA-Script document class (article)
@@ -1593,134 +1593,59 @@ Package natbib Warning: Citation `Benko:2009' on page 5 undefined on input line
 
 [5]
 
-Package natbib Warning: Citation `Fan1995' on page 6 undefined on input line 784
-.
-
-
 Package natbib Warning: Citation `FanGijbels92' on page 6 undefined on input lin
-e 795.
+e 766.
 
 
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 804.
+Underfull \hbox (badness 1571) in paragraph at lines 768--769
+[]\T1/futs/m/n/10.5 For any vec-tors $\FML/futmi/m/it/10.5 a$\T1/futs/m/n/10.5 
+, $\FML/futmi/m/it/10.5 b \FMS/futm/m/n/10.5 2 \U/futm/m/n/10.5 R[]$ \T1/futs/m
+/n/10.5 and $\FML/futmi/m/it/10.5 c \FMS/futm/m/n/10.5 2 \U/futm/m/n/10.5 N[]$\
+T1/futs/m/n/10.5 , we de-fine $\FMS/futm/m/n/10.5 j\FML/futmi/m/it/10.5 a\FMS/f
+utm/m/n/10.5 j [] [][] j\FML/futmi/m/it/10.5 a[]\FMS/futm/m/n/10.5 j$\T1/futs/m
+/n/10.5 , $\FML/futmi/m/it/10.5 a[] []
+ []
 
 
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 813.
-
-
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 813.
+Package natbib Warning: Citation `Fan1995' on page 6 undefined on input line 781
+.
 
 [6]
 
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 816.
-
-
 Package natbib Warning: Citation `Neumann1941' on page 7 undefined on input line
- 871.
+ 823.
 
 
-Package natbib Warning: Citation `Rice:84' on page 7 undefined on input line 871
+Package natbib Warning: Citation `Rice:84' on page 7 undefined on input line 823
 .
 
 
-Package natbib Warning: Citation `Munk2005' on page 7 undefined on input line 87
-1.
+Package natbib Warning: Citation `Munk2005' on page 7 undefined on input line 82
+3.
 
 
-Package natbib Warning: Citation `hall1990' on page 7 undefined on input line 87
-1.
+Package natbib Warning: Citation `hall1990' on page 7 undefined on input line 82
+3.
+
+
+Package natbib Warning: Citation `Munk2005' on page 7 undefined on input line 82
+8.
+
+
+Package natbib Warning: Citation `cai2011' on page 7 undefined on input line 838
+.
 
 [7]
 
-Package natbib Warning: Citation `Munk2005' on page 8 undefined on input line 87
-6.
-
-
-Package natbib Warning: Citation `cai2011' on page 8 undefined on input line 887
-.
-
-[8]
-
-Package natbib Warning: Citation `Fan:96' on page 9 undefined on input line 907.
+Package natbib Warning: Citation `Fan:96' on page 8 undefined on input line 858.
 
 
 
-Package natbib Warning: Citation `Masry96' on page 9 undefined on input line 907
+Package natbib Warning: Citation `Masry96' on page 8 undefined on input line 858
 .
 
 
-Package natbib Warning: Citation `Yang:15' on page 9 undefined on input line 907
+Package natbib Warning: Citation `Yang:15' on page 8 undefined on input line 858
 .
 
 
@@ -1742,7 +1667,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 912.
+(scrartcl)              `\normalfont \sffamily ' on input line 863.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -1763,7 +1688,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 912.
+(scrartcl)              `\normalfont \sffamily ' on input line 863.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -1784,105 +1709,110 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 920.
+(scrartcl)              `\normalfont \sffamily ' on input line 871.
 
 
-Overfull \hbox (16.8657pt too wide) detected at line 923
+Overfull \hbox (16.8657pt too wide) detected at line 874
 [][][]
  []
 
+[8]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 948.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 899.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.65997pt on input line 948.
+(Font)              scaled to size 9.65997pt on input line 899.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10.5> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 948.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 899.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10.5> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 948.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 899.
 LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
-(Font)              scaled to size 9.65997pt on input line 948.
-[9] [10]
+(Font)              scaled to size 9.65997pt on input line 899.
+ [9] [10]
 
 Package natbib Warning: Citation `Mueller:2009' on page 11 undefined on input li
-ne 1027.
+ne 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 1027.
+(hyperref)                removing `\begingroup' on input line 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1027.
+(hyperref)                removing `\<let>-command' on input line 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\NAT@ctype' on input line 1027.
+(hyperref)                removing `\NAT@ctype' on input line 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1027.
+(hyperref)                removing `\z@' on input line 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 1027.
+(hyperref)                removing `\let' on input line 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 1027.
+(hyperref)                removing `\let' on input line 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1027.
-
-
-Package natbib Warning: Citation `Mueller:2009' on page 11 undefined on input li
-ne 1030.
+(hyperref)                removing `\new@ifnextchar' on input line 978.
 
 
 Package natbib Warning: Citation `Mueller:2009' on page 11 undefined on input li
-ne 1042.
+ne 981.
 
 
-Package natbib Warning: Citation `Yao:2005' on page 11 undefined on input line 1
-042.
+Package natbib Warning: Citation `Mueller:2009' on page 11 undefined on input li
+ne 993.
+
+
+Package natbib Warning: Citation `Yao:2005' on page 11 undefined on input line 9
+93.
+
+
+Package natbib Warning: Citation `Mueller:2009' on page 11 undefined on input li
+ne 1013.
+
+
+Package natbib Warning: Citation `Rubinstein1985' on page 11 undefined on input 
+line 1020.
+
+
+Package natbib Warning: Citation `Bahra1997' on page 11 undefined on input line 
+1020.
+
+
+Package natbib Warning: Citation `Jackwerth:99' on page 11 undefined on input li
+ne 1020.
+
+
+Package natbib Warning: Citation `Bliss2002' on page 11 undefined on input line 
+1020.
 
 [11]
 
-Package natbib Warning: Citation `Mueller:2009' on page 12 undefined on input li
-ne 1062.
-
-
-Package natbib Warning: Citation `Rubinstein1985' on page 12 undefined on input 
-line 1069.
-
-
-Package natbib Warning: Citation `Bahra1997' on page 12 undefined on input line 
-1069.
-
-
-Package natbib Warning: Citation `Jackwerth:99' on page 12 undefined on input li
-ne 1069.
-
-
-Package natbib Warning: Citation `Bliss2002' on page 12 undefined on input line 
-1069.
-
-
 Package natbib Warning: Citation `Breeden:78' on page 12 undefined on input line
- 1071.
+ 1022.
 
 
 Package natbib Warning: Citation `Banz:78' on page 12 undefined on input line 10
-71.
+22.
 
-[12] [13]
+[12]
 
-Package natbib Warning: Citation `Fan:96' on page 14 undefined on input line 119
-8.
+LaTeX Warning: Reference `intest' on page 13 undefined on input line 1115.
 
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 1213
+
+Package natbib Warning: Citation `Fan:96' on page 13 undefined on input line 114
+9.
+
+[13]
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 1164
 .
-("C:/Program Files/MiKTeX 2.9/tex/latex/fourier/ts1futs.fd"
+ ("C:/Program Files/MiKTeX 2.9/tex/latex/fourier/ts1futs.fd"
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1892,28 +1822,27 @@ Package microtype Info: Loading generic protrusion settings for font family
  [14]
 
 Package natbib Warning: Citation `Bai2002' on page 15 undefined on input line 12
-63.
+14.
 
 
 Package natbib Warning: Citation `Mallows:73' on page 15 undefined on input line
- 1263.
+ 1214.
+
+
+Package natbib Warning: Citation `Bai2002' on page 15 undefined on input line 12
+24.
+
+
+Package natbib Warning: Citation `Brigo:02' on page 15 undefined on input line 1
+253.
 
 [15]
-
-Package natbib Warning: Citation `Bai2002' on page 16 undefined on input line 12
-73.
-
-
-Package natbib Warning: Citation `Brigo:02' on page 16 undefined on input line 1
-302.
-
-[16]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.05008pt on input line 1450.
+(Font)              scaled to size 8.05008pt on input line 1401.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8.7501> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 1450.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1401.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.05008pt on input line 1450.
+(Font)              scaled to size 8.05008pt on input line 1401.
 
 
 ! LaTeX Error: File `qletlogo' not found.
@@ -1922,18 +1851,18 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1452 ...n}{\color{black} \quantnet FPCAsimulation}
+l.1403 ...n}{\color{black} \quantnet FPCAsimulation}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[17]
+[16]
 ! Missing $ inserted.
 <inserted text> 
 $
-l.1499     \multicolumn{2}{c|}{$RISE}
+l.1450     \multicolumn{2}{c|}{$RISE}
                                    $&\multicolumn{4}{c|}{Mean}&\multicolumn{...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1944,29 +1873,26 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
 $
-l.1499     \multicolumn{2}{c|}{$RISE}$&
+l.1450     \multicolumn{2}{c|}{$RISE}$&
                                      \multicolumn{4}{c|}{Mean}&\multicolumn{...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Package natbib Warning: Citation `Mueller:2009' on page 18 undefined on input li
-ne 1527.
+Package natbib Warning: Citation `Mueller:2009' on page 17 undefined on input li
+ne 1478.
 
 
-Package natbib Warning: Citation `Mueller:2009' on page 18 undefined on input li
-ne 1533.
+Package natbib Warning: Citation `Mueller:2009' on page 17 undefined on input li
+ne 1484.
 
-[18]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[17] [18]
 
- [19]
-
-Package natbib Warning: Citation `Ahn2013' on page 20 undefined on input line 16
-42.
+Package natbib Warning: Citation `Ahn2013' on page 19 undefined on input line 15
+93.
 
 
-Overfull \hbox (7.53217pt too wide) in paragraph at lines 1651--1675
+Overfull \hbox (7.53217pt too wide) in paragraph at lines 1602--1626
  [] 
  []
 
@@ -1977,19 +1903,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1676 ...ata}{\color{black} \quantnet FPCArealdata}
+l.1627 ...ata}{\color{black} \quantnet FPCArealdata}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-<Figures/CallsloadingsNEWforward1392.pdf, id=352, 602.25pt x 361.35pt>
+<Figures/CallsloadingsNEWforward1392.pdf, id=338, 602.25pt x 361.35pt>
 File: Figures/CallsloadingsNEWforward1392.pdf Graphic file (type pdf)
 
 <use Figures/CallsloadingsNEWforward1392.pdf>
 Package luatex.def Info: Figures/CallsloadingsNEWforward1392.pdf used on input l
-ine 1684.
+ine 1635.
 (luatex.def)             Requested size: 368.99677pt x 221.40462pt.
 
 
@@ -1999,14 +1925,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1687 ...on}{\color{black}\quantnet FPCAexpiration}
+l.1638 ...on}{\color{black}\quantnet FPCAexpiration}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[20]
+
+Underfull \vbox (badness 1360) has occurred while \output is active []
+
+ [19]
+Underfull \vbox (badness 1466) has occurred while \output is active []
+
+ [20<./Figures/CallsloadingsNEWforward1392.pdf>]
 
 ! LaTeX Error: File `figures/Nonorthogonalbasis20160605' not found.
 
@@ -2014,7 +1946,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1723 ...width]{figures/Nonorthogonalbasis20160605}
+l.1674 ...width]{figures/Nonorthogonalbasis20160605}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -2028,14 +1960,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1730 ...ts}{\color{black}\quantnet FPCAcomponents}
+l.1681 ...ts}{\color{black}\quantnet FPCAcomponents}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[21<./Figures/CallsloadingsNEWforward1392.pdf>]
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              You should note, that since 1994 LaTeX2e provides a
@@ -2055,34 +1986,34 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 1794.
+(scrartcl)              `\normalfont \sffamily ' on input line 1745.
 
+[21]
 
 Package natbib Warning: Citation `Duan2010' on page 22 undefined on input line 1
-811.
+762.
+
+
+Package natbib Warning: Citation `Lo1991' on page 22 undefined on input line 183
+2.
+
+
+Package natbib Warning: Citation `Newey1987' on page 22 undefined on input line 
+1833.
+
+
+Package natbib Warning: Citation `Geweke1983' on page 22 undefined on input line
+ 1836.
+
+
+Package natbib Warning: Citation `Weron2002' on page 22 undefined on input line 
+1836.
+
+
+Package natbib Warning: Citation `Comte1998' on page 22 undefined on input line 
+1839.
 
 [22]
-
-Package natbib Warning: Citation `Lo1991' on page 23 undefined on input line 188
-1.
-
-
-Package natbib Warning: Citation `Newey1987' on page 23 undefined on input line 
-1882.
-
-
-Package natbib Warning: Citation `Geweke1983' on page 23 undefined on input line
- 1885.
-
-
-Package natbib Warning: Citation `Weron2002' on page 23 undefined on input line 
-1885.
-
-
-Package natbib Warning: Citation `Comte1998' on page 23 undefined on input line 
-1888.
-
-[23]
 
 ! LaTeX Error: File `figures/AR_corr' not found.
 
@@ -2090,7 +2021,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1907 ...ics[width=1.00\textwidth]{figures/AR_corr}
+l.1858 ...ics[width=1.00\textwidth]{figures/AR_corr}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -2104,7 +2035,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1910 ...ngs}{\color{black}\quantnet FPCAloadings }
+l.1861 ...ngs}{\color{black}\quantnet FPCAloadings }
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -2112,59 +2043,132 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Package natbib Warning: Citation `Constantinides2015' on page 24 undefined on in
-put line 1924.
+Package natbib Warning: Citation `Constantinides2015' on page 23 undefined on in
+put line 1875.
 
 
-Package natbib Warning: Citation `Bollen2004' on page 24 undefined on input line
- 1924.
+Package natbib Warning: Citation `Bollen2004' on page 23 undefined on input line
+ 1875.
 
 
-Package natbib Warning: Citation `Garleanu2009' on page 24 undefined on input li
-ne 1924.
+Package natbib Warning: Citation `Garleanu2009' on page 23 undefined on input li
+ne 1875.
 
+[23]
 
-Package natbib Warning: Citation `Du2012' on page 24 undefined on input line 193
-8.
+Package natbib Warning: Citation `Du2012' on page 24 undefined on input line 188
+9.
 
 
 Package natbib Warning: Citation `Huang2014' on page 24 undefined on input line 
-1938.
+1889.
 
 
 Package natbib Warning: Citation `Park2015' on page 24 undefined on input line 1
-938.
+889.
+
+
+Package natbib Warning: Citation `Huang2014' on page 24 undefined on input line 
+1909.
+
+
+Package natbib Warning: Citation `Feunou2012' on page 24 undefined on input line
+ 1909.
 
 [24]
 
-Package natbib Warning: Citation `Huang2014' on page 25 undefined on input line 
-1958.
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 1986.
 
 
-Package natbib Warning: Citation `Feunou2012' on page 25 undefined on input line
- 1958.
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 1986.
+
+
+Package natbib Warning: Citation `Masry96' on page 25 undefined on input line 19
+90.
+
+
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 2007.
+
+
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 2007.
 
 [25]
-
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2035.
+Underfull \hbox (badness 10000) in paragraph at lines 2025--2026
+\T1/futs/m/n/10.5 Con-sider the fol-low-ing es-ti-ma-tor for the squared in-te-
+grated func-tions
+ []
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2185,11 +2189,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2035.
-
-
-Package natbib Warning: Citation `Masry96' on page 26 undefined on input line 20
-39.
+(scrartcl)              `\normalfont \sffamily ' on input line 2042.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2210,7 +2210,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2056.
+(scrartcl)              `\normalfont \sffamily ' on input line 2042.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2231,66 +2231,66 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2056.
+(scrartcl)              `\normalfont \sffamily ' on input line 2045.
 
 
 Package natbib Warning: Citation `Ruppert:94' on page 26 undefined on input line
- 2074.
+ 2050.
+
+
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 2066.
+
+
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 2066.
 
 [26]
 
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2090.
+Package natbib Warning: Citation `Masry96' on page 27 undefined on input line 20
+81.
 
 
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2090.
-
-
-Package natbib Warning: Citation `Masry96' on page 27 undefined on input line 21
-05.
-
-
-Package natbib Warning: Citation `Fan1995' on page 27 undefined on input line 21
-13.
+Package natbib Warning: Citation `Fan1995' on page 27 undefined on input line 20
+89.
 
 
 Package natbib Warning: Citation `Ruppert:94' on page 27 undefined on input line
- 2113.
+ 2089.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2311,7 +2311,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2140.
+(scrartcl)              `\normalfont \sffamily ' on input line 2117.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2332,9 +2332,12 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2140.
+(scrartcl)              `\normalfont \sffamily ' on input line 2117.
 
-[27]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27]
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              You should note, that since 1994 LaTeX2e provides a
@@ -2354,10 +2357,10 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2142.
+(scrartcl)              `\normalfont \sffamily ' on input line 2119.
 
 [28]
-Overfull \hbox (5.41698pt too wide) in paragraph at lines 2228--2230
+Overfull \hbox (5.41698pt too wide) in paragraph at lines 2205--2207
 \T1/futs/m/n/10.5 Ex-pres-sion ([][]60[][]) van-ishes and ([][]57[][]) given by
  $[] [] \FML/futmi/m/it/10.5 K[] [][] []\T1/futs/m/n/10.5 (\FML/futmi/m/it/10.5
  Y\T1/futs/m/n/10.5 (\FML/futmi/m/it/10.5 y\T1/futs/m/n/10.5 )[])\FML/futmi/m/i
@@ -2384,7 +2387,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2236.
+(scrartcl)              `\normalfont \sffamily ' on input line 2213.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2405,7 +2408,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2236.
+(scrartcl)              `\normalfont \sffamily ' on input line 2213.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2426,7 +2429,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2236.
+(scrartcl)              `\normalfont \sffamily ' on input line 2213.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2447,7 +2450,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2236.
+(scrartcl)              `\normalfont \sffamily ' on input line 2213.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2468,7 +2471,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2271.
+(scrartcl)              `\normalfont \sffamily ' on input line 2248.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2489,7 +2492,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2271.
+(scrartcl)              `\normalfont \sffamily ' on input line 2248.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2510,7 +2513,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2271.
+(scrartcl)              `\normalfont \sffamily ' on input line 2248.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2531,7 +2534,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2271.
+(scrartcl)              `\normalfont \sffamily ' on input line 2248.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2552,7 +2555,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2271.
+(scrartcl)              `\normalfont \sffamily ' on input line 2248.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2573,19 +2576,22 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2271.
+(scrartcl)              `\normalfont \sffamily ' on input line 2248.
 
 
-Underfull \vbox (badness 1715) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [29]
 
+LaTeX Warning: Reference `intest' on page 30 undefined on input line 2253.
+
+
 Package natbib Warning: Citation `Ruppert:94' on page 30 undefined on input line
- 2282.
+ 2259.
 
 
 Package natbib Warning: Citation `Masry96' on page 30 undefined on input line 22
-82.
+59.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2606,7 +2612,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2297.
+(scrartcl)              `\normalfont \sffamily ' on input line 2274.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2627,29 +2633,12 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2297.
+(scrartcl)              `\normalfont \sffamily ' on input line 2274.
 
 [30]
 
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2357.
+Package natbib Warning: Citation `Kneip2001' on page 31 undefined on input line 
+2334.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2670,62 +2659,16 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2357.
+(scrartcl)              `\normalfont \sffamily ' on input line 2337.
 
 
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2357.
+Package natbib Warning: Citation `Kneip2001' on page 31 undefined on input line 
+2350.
 
 [31]
 
 Package natbib Warning: Citation `Kneip2001' on page 32 undefined on input line 
-2378.
-
-
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2381.
-
-
-Package natbib Warning: Citation `Kneip2001' on page 32 undefined on input line 
-2394.
-
-
-Package natbib Warning: Citation `Kneip2001' on page 32 undefined on input line 
-2411.
+2367.
 
 [32]
 
@@ -2747,7 +2690,7 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2495.
+(scrartcl)              `\normalfont \sffamily ' on input line 2451.
 
 
 Class scrartcl Warning: deprecated old font command `\sf' used.
@@ -2768,90 +2711,92 @@ Class scrartcl Warning: deprecated old font command `\sf' used.
 (scrartcl)              Otherwise you should reconfigure or replace the
 (scrartcl)              package. If you have used the old font command
 (scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2495.
+(scrartcl)              `\normalfont \sffamily ' on input line 2451.
+
+
+Package natbib Warning: Citation `Hall:2006' on page 33 undefined on input line 
+2456.
+
+
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 2513.
+
+
+Class scrartcl Warning: deprecated old font command `\sf' used.
+(scrartcl)              You should note, that since 1994 LaTeX2e provides a
+(scrartcl)              new font selection scheme called NFSS2 with several
+(scrartcl)              new, combinable font commands. New KOMA-Script classes
+(scrartcl)              defined the old font commands like `\sf' only for
+(scrartcl)              compatibility with LaTeX 2.09 document styles of
+(scrartcl)              Script 2.0. These commands are deprecated and
+(scrartcl)              undocumented at least since 2003. Since 2013,
+(scrartcl)              KOMA-Script classes warned about soon removement of
+(scrartcl)              these deprecated commands. Now, after two decades of
+(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
+(scrartcl)              not work any longer. If loading a package results in
+(scrartcl)              this message you should contact the author of that
+(scrartcl)              package and ask him to replace the depracted font
+(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
+(scrartcl)              Otherwise you should reconfigure or replace the
+(scrartcl)              package. If you have used the old font command
+(scrartcl)              `\sf' yourself you should replace it, e.g., by
+(scrartcl)              `\normalfont \sffamily ' on input line 2513.
 
 [33]
 
 Package natbib Warning: Citation `Hall:2006' on page 34 undefined on input line 
-2500.
+2517.
 
-
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2557.
-
-
-Class scrartcl Warning: deprecated old font command `\sf' used.
-(scrartcl)              You should note, that since 1994 LaTeX2e provides a
-(scrartcl)              new font selection scheme called NFSS2 with several
-(scrartcl)              new, combinable font commands. New KOMA-Script classes
-(scrartcl)              defined the old font commands like `\sf' only for
-(scrartcl)              compatibility with LaTeX 2.09 document styles of
-(scrartcl)              Script 2.0. These commands are deprecated and
-(scrartcl)              undocumented at least since 2003. Since 2013,
-(scrartcl)              KOMA-Script classes warned about soon removement of
-(scrartcl)              these deprecated commands. Now, after two decades of
-(scrartcl)              LaTeX2e, NFSS2, and KOMA-Script these commands will
-(scrartcl)              not work any longer. If loading a package results in
-(scrartcl)              this message you should contact the author of that
-(scrartcl)              package and ask him to replace the depracted font
-(scrartcl)              command `\sf', e.g., by `\normalfont \sffamily '.
-(scrartcl)              Otherwise you should reconfigure or replace the
-(scrartcl)              package. If you have used the old font command
-(scrartcl)              `\sf' yourself you should replace it, e.g., by
-(scrartcl)              `\normalfont \sffamily ' on input line 2557.
-
-
-Package natbib Warning: Citation `Hall:2006' on page 34 undefined on input line 
-2561.
-
-[34]
 No file "20170430_Gri Hae Kne Wag_2D_RND_FPCA".bbl.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2607.
-[35]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2607.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2563.
+[34]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2563.
  ("./20170430_Gri Hae Kne Wag_2D_RND_FPCA.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2607.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2607.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2563.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2563.
 Package rerunfilecheck Info: File `"20170430_Gri Hae Kne Wag_2D_RND_FPCA".out' h
 as not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2607.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2563.
 )
 
 Here is how much of LuaTeX's memory you used:
- 16295 strings out of 494481
+ 16294 strings out of 494481
  100000,552014 words of node,token memory allocated
- 9993 words of node memory still in use:
-   128 hlist, 33 vlist, 6 rule, 16 math, 93 glue, 671 kern, 276 glyph, 517 attri
-bute, 115 glue_spec, 517 attribute_list, 2 shape, 1 write nodes
-   avail lists: 2:1297,3:202,4:92,5:695,6:4351,7:1752,8:456,9:1483,10:28,11:442
+ 9851 words of node memory still in use:
+   128 hlist, 33 vlist, 6 rule, 16 math, 93 glue, 653 kern, 276 glyph, 504 attri
+bute, 115 glue_spec, 504 attribute_list, 2 shape, 1 write nodes
+   avail lists: 2:1801,3:197,4:81,5:656,6:4550,7:2146,8:577,9:1194,10:28,11:421
  18909 multiletter control sequences out of 65536+200000
  351 fonts using 21990927 bytes
- 48i,25n,54p,8877b,558s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,25n,54p,8877b,476s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/fourier/fourier-bb.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/fourier/fourier-mcl.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
@@ -2863,10 +2808,10 @@ ram Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/adobe/utopia/putri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helveti
 c/uhvbo8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on 20170430_Gri Hae Kne Wag_2D_RND_FPCA.pdf (35 pages, 2005245 by
+Output written on 20170430_Gri Hae Kne Wag_2D_RND_FPCA.pdf (34 pages, 2001453 by
 tes).
 
-PDF statistics: 10092 PDF objects out of 10688 (max. 8388607)
- 156 named destinations out of 1000 (max. 131072)
- 153 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 10085 PDF objects out of 10688 (max. 8388607)
+ 155 named destinations out of 1000 (max. 131072)
+ 161 words of extra memory for PDF output out of 10000 (max. 100000000)
 

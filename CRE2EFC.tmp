@@ -787,11 +787,11 @@ As noted by \cite{Fan1995} the solution of the minimization problem (\ref{polymu
 Based on these idea our estimator is as follows
 \begin{equation*}
 \begin{split}
-\hat{M}^{(\nu)}_{ij}= \begin{cases}  \nu!^2 \sum_{k=1}^{T_i} \sum_{l=1}^{T_j}  w_\nu(t_{ik},t_{jl},b) Y_j(t_{jl}) Y_i(t_{ik})  &\text{ if } i \neq j  \\ 
-\nu!^2 \left( \sum_{k=1}^{T_i} \sum_{l=1}^{T_i} w_\nu(t_{ik},t_{il},b)  Y_i(t_{il}) Y_i(t_{ik}) -  \hat{\sigma}_{i\varepsilon}^2  \sum_{k=1}^{T_i} w_\nu^T(t_{ik},t_{ik},b) \right)   &\text{ if } i = j .\end{cases} 
+\hat{M}^{(\nu)}_{ij}= \begin{cases}  \nu!^2 \sum_{k=1}^{T_i} \sum_{l=1}^{T_j}  w_\nu^T(t_{ik},t_{jl},b) Y_j(t_{jl}) Y_i(t_{ik})  &\text{ if } i \neq j  \\ 
+\nu!^2 \left( \sum_{k=1}^{T_i} \sum_{l=1}^{T_i} w_\nu^T(t_{ik},t_{il},b)  Y_i(t_{il}) Y_i(t_{ik}) -  \hat{\sigma}_{i\varepsilon}^2  \sum_{k=1}^{T_i} w_\nu^T(t_{ik},t_{ik},b) \right)   &\text{ if } i = j .\end{cases} 
 \end{split}
 \end{equation*}
-where $w_{\nu}^T(t_{ik},t_{jl},b)  := \int_{[0,1]^g} W^{T_i}_{\nu} \left((t_{ik}-s)\circ b^{-1} \right)  W^{T_j}_{\nu}\left((t_{jl}-s)\circ b^{-1} \right) ds$. The estimator for $M^{(0)}$ is given by setting $\nu=(0,\dots,0)^\top$ and the estimator for $M^{(d)}$ by $\nu=d$. In our Matlab implementation we replace $w_{\nu}(t_{ik},t_{jl},b)$  by an approximation based on Monte Carlo integration. We draw uniform samples $s_l,\,l=1,\ldots,T$ with $T = min_i(T_i)$ on $[0,1]^g$ and use the approximation $w_{\nu}(t_{ik},t_{jl},b)  \approx \hat{w}_{\nu}(t_{ik},t_{jl},b) = T^{-1} \sum_{l=1}^T W^{T_i}_{\nu} \left((t_{ik}-s_l)\circ b^{-1} \right)  W^{T_j}_{\nu}\left((t_{jl}-s_l)\circ b^{-1} \right)$. This approximation has asymptotically no effect on the rate of convergence derived in (\ref{Mbias}) since $w_{\nu}(t_{ik},t_{jl},b) - \hat{w}_{\nu}(t_{ik},t_{jl},b)$ is approximately normal, which gives an error of order $T^{-1/2}$ regardless of the dimension $g$.
+where $w_{\nu}^T(t_{ik},t_{jl},b)  := \int_{[0,1]^g} W^T_{\nu} \left((t_{ik}-s)\circ b^{-1} \right)  W^T_{\nu}\left((t_{jl}-s)\circ b^{-1} \right) ds$. The estimator for $M^{(0)}$ is given by setting $\nu=(0,\dots,0)^\top$ and the estimator for $M^{(d)}$ by $\nu=d$. In our \matlab implementation we replace $w_{\nu}^T(t_{ik},t_{jl},b)$  by an approximation based on Monte Carlo integration. We draw uniform samples $s_l,\,l=1,\ldots,T$ with $T = min_i(T_i)$ on $[0,1]^g$ and use the approximation $w_{\nu}^T(t_{ik},t_{jl},b)  \approx \hat{w}_{\nu}^T(t_{ik},t_{jl},b) = T^{-1} \sum_{l=1}^T W^T_{\nu} \left((t_{ik}-s_l)\circ b^{-1} \right)  W^T_{\nu}\left((t_{jl}-s_l)\circ b^{-1} \right)$. This approximation has asymptotically no effect on the rate of convergence derived in (\ref{Mbias}) since $w_{\nu}^T(t_{ik},t_{jl},b) - \hat{w}_{\nu}^T(t_{ik},t_{jl},b)$ is approximately normal, which gives an error of order $T^{-1/2}$ regardless of the dimension $g$.
 
 \begin{proposition}
 \label{Mbias}
@@ -2020,8 +2020,6 @@ N C_{2,r} \leq l^{(\nu)}_r \leq N C_{3,r} \\
 \end{equation}
 \end{assumptions}
 
-\subsection{Proof of Lemma \ref{lemint} } 
-
 Consider the following estimator for the squared integrated functions $\int_{[0,1]^g} X^{(\nu)}(t)^2 dt$
 
 \begin{equation}\label{rho}
@@ -2096,7 +2094,6 @@ As mentioned by \cite{Fan1995}, the design of the kernel automatically adapts to
 %fulfills the boundary moment conditions of \cite{Gasser1985}. 
 For the expectation we get
 \begin{equation}
-\label{expectation}
 \begin{split}
 &\EE \left( \theta_{d,\rho}  | t_1, \dots, t_T \right) \\
 =& \int_0^1 d!^2  \sum_{j=1}^{T} \sum_{l=1}^{T} W_d^T\left(\frac{t_{j}-u}{b} \right)  W_d^T\left(\frac{t_{l}-u}{b}\right) X(t_{l}) X(t_{j}) du \\ 
@@ -2319,11 +2316,11 @@ where $A(T)\stackrel{\operatorname{def}}{=}\frac{4 d!^4}{T^4 (b^{4d} b_1^2 \time
 %\]
 
 \subsection{Proof of Proposition \ref{Mbias}}
-Proposition \ref{Mbias} is a direct consequence of Lemma  \ref{lemint} which covers the diagonal elements where $i=j$. In the case where $i \neq j$ the proof is similar except for the missing $ d!^2 \int_0^1 \int_0^1 \int_0^1 \frac{ f(x)f(y) }{ b^{2(d+1)} f(z)^2 } K_{d,\rho}^*\left( \frac{x-z}{b} \right) K_{d,\rho}^*\left(\frac{y-z}{b} \right) X(x) X(y) dz dy dx$ term in (\ref{expectation}). This then makes the diagonal correction due to $\nu!^2 \hat{\sigma}_{\varepsilon}^2 \int_{[0,1]^g} \sum_{k=1}^{T} W^T_\nu\left((t_{k}-t)\circ b^{-1} \right)^2 dt$ as in Lemma \ref{lemint} unnecessary. 
+Proposition \ref{Mbias} is a direct consequence of Lemma  \ref{lemint} which covers the diagonal elements where $i=j$. In the case where $i \neq j$ the proof is similar except for the missing $\left\{ d!^2 \int_0^1 \int_0^1 \int_0^1 \frac{ f(x)f(y) }{ b^{2(d+1)} f(z)^2 } K_{d,\rho}^*\left( \frac{x-z}{b} \right) K_{d,\rho}^*\left(\frac{y-z}{b} \right) X(x) X(y)$ term in (\ref{}). This then makes the diagonal correction due to $\nu!^2 \hat{\sigma}_{\varepsilon}^2 \int_{[0,1]^g} \sum_{k=1}^{T} W^T_\nu\left((t_{k}-t)\circ b^{-1} \right)^2$ unnecessary. 
 
 \subsection{Proof of Proposition \ref{asymgam}}\label{proof24}
 %We will first derive some properties of the estimators $\hat{M}^{(\nu)}$. 
-Under the assumptions of Proposition \ref{asymgam} together with the requirements of Proposition \ref{Mbias} for $\nu=(0,d)$ and the setup of Remark \ref{remark1}%by the calculations of Appendix \ref{prooflemma}
+Under the assumptions of Proposition \ref{asymgam} together with the requirements of Lemma \ref{Mbias} for $\nu=(0,d)$ and the setup of Remark \ref{remark1}%by the calculations of Appendix \ref{prooflemma}
 \begin{equation}
 \begin{split}
 ||\hat{M}^{(\nu)}-M^{(\nu)}||  
