@@ -782,7 +782,7 @@ For arbitrary $i=1,\dots,N$,
 \begin{equation}\label{polymul}
 \underset{\beta_i(t)}{\operatorname{min}} \sum_{l=1}^{T_i} \left[ Y_i(t_{il}) - \sum_{0 \leq |k| \leq \rho} \beta_{i,k}(t) (t_{il}-t)^k \right]^2 K_{B} (t_{il}-t).
 \end{equation}
-$K_B$ may be any non-negative, symmetric and bounded  multivariate kernel function, and $B$ a $g \times g$ bandwidth matrix. For simplicity, we assume that $B$ has main diagonal entries $b=(b_1,\dots,b_g)^{\top}$ and zero elsewhere. $|\nu|<\rho\leq m $ is the order of the local polynomial expansion that we use to estimate $X^{(\nu)},\,\nu=\{0_g,d\}$. In our application, for the two dimensional case, if $\nu=(0,\,0)^{\top}$ then $\rho=1$ and if $\nu=(2,\,0)^{\top}$ then $\rho=3$.
+$K_B$ may be any non-negative, symmetric and bounded  multivariate kernel function, and $B$ a $g \times g$ bandwidth matrix. For simplicity, we assume that $B$ has main diagonal entries $b=(b_1,\dots,b_g)^{\top}$ and zero elsewhere. $|\nu|<\rho\leq m $ is the order of the local polynomial expansion that we use to estimate $X^{(\nu)},\,\nu=\{(0,\dots,0)^\top,d\}$. In our application, for the two dimensional case, if $\nu=(0,\,0)^{\top}$ then $\rho=1$ and if $\nu=(2,\,0)^{\top}$ then $\rho=3$.
 
 % However, with additional notation it is straightforward to generalize the obtained results for any bandwidth matrix $B$. %In our implementation $K_b$ is constructed as a product of $g$ univariate Epanechnikov kernel functions as described for example in \cite{Haerdle00}. %If we are interested in derivatives $X^{(d)}$, we set $ \rho > |d|$.
 %$K_b$ can be a product of $g$ univariate Epanechnikov kernel functions as described for example in \cite{Haerdle00}.
@@ -864,7 +864,7 @@ In Proposition \ref{Mbias} it is required that $| \sigma_{i\varepsilon}^2 - \hat
 \label{varestim}
 \hat{\sigma}^2_{i\varepsilon} = \frac{1}{v_i} \sum_{l=1}^{T_i} \left( Y_i(t_{il}) - \sum_{k=1}^{T_i} w_{ilk} Y(t_{ik})\right)^2,
 \end{equation}
-where $w_{ilk}=K_{r,{H}}(t_{il} - t_{ik})/ \sum_{k=1}^{T_i} K_{r,{H}}(t_{il} - t_{ik}) $ and $v_i=T_i - 2 \sum_l w_{ilk} + \sum_{l,k} w_{ilk}^2$ and $K_{r,{H}}$ is  a $g$-dimensional product kernel of order $r$ with bandwidth matrix ${H}$. \cite{Munk2005} show that if $4r>g$ and if the elements of the diagonal matrix $H$ are of order $\mathcal{O}(T^{-2/(4r+g)})$ then the estimator $\hat{\sigma}_{\varepsilon i}$ in equation (\ref{varestim}) achieves parametric rates of convergence.
+where $w_{ilk}=K_{r,{H}}(t_{il} - t_{ik})/ \sum_{k=1}^{T_i} K_{r,{H}}(t_{il} - t_{ik}) $ and $v_i=T_i - 2 \sum_l w_{ilk} + \sum_{l,k} w_{ilk}^2$ and $K_{r,{H}}$ is  a $g$-dimensional product kernel of order $r$ with bandwidth matrix ${H}$. \cite{Munk2005} show that if $4r>g$ and if the elements of the diagonal matrix $H$ are of order $\mathcal{O}(T^{-2/(4r+g)})$ then the estimator $\hat{\sigma}_{i \varepsilon}$ in equation (\ref{varestim}) achieves parametric rates of convergence.
 
 %In this cases more sophisticated estimators are needed to keep the desired rate of convergence. Here for example a multivariate kernel or local polynomial based estimators is a possible solution. .% , like in the case where we have to interpolate the data to a common grid as shwon by Lemma \ref{Mbias}.
 
@@ -1271,13 +1271,15 @@ Since we demean the sample in (\ref{demean}), finally we add  $N^{-1} \sum_{i=1}
 In our empirical study, we use the corresponding values of the multivariate domain instead of $[0,1]^g$, as we explain below. In addition, we approximate integrals by Riemann sums for $g=1$ and MC integral for $g>1$.
 %For the uni-dimensional domains we keep the Riemann sums to estimate the integrals, such as equation (31), and to evaluate RMSE and RMISE for $g=1$ in the simulation study, i.e., for the comparison of our method with \cite{Mueller:2009}, which we introduced in Section \ref{simstudy}.
 %For $g=1$ a Riemann integral performs well, therefore there is no need to introduce additional randomness through the MC integration.
-For simplicity, we use an equidistant grid to evaluate the integral in the one-dimensional case $g=1$, while for the two-dimensional case $g=2$ the common grid $t$ is randomly drawn. The details for the simulation of the grid points are described below.
+For simplicity, we use an equidistant grid to evaluate the integral in the one-dimensional case $g=1$, while for the two-dimensional case $g=2$ the common grid $t$ is randomly drawn from an uniform distribution. 
+%The details for the simulation of the grid points are described below.
 
 %The density of the observed points is approximated by a uniform distribution with $f_1= \max_{i,j}(\tau_{ij})- \min_{i,j}(\tau_{ij})$ and $f_2= \max_{i,j}(m_{ij})- \min_{i,j}(m_{ij})$.
 
 %$mx=0.3+ (1:Tout)/Tout*1.8;$
 
-For the Riemman sum in the one-dimensional case, we select $T$ equidistant points between $\{\max_{i,j}(m_{ij})- \min_{i,j}(m_{ij})\}$. For the two dimensional case, we generate the points independently in each direction. The random samples for the moneyness is generated as $\min_{i,j}(m_{ij})+\{\max_{i,j}(m_{ij})- \min_{i,j}(m_{ij})\}U([0,1])$, and similarly the time to maturity direction.
+%For the Riemman sum in the one-dimensional case, we select $T$ equidistant points between $\{\max_{i,j}(m_{ij})- \min_{i,j}(m_{ij})\}$. For the two dimensional case, we generate the points independently in each direction. 
+The random samples for the moneyness is generated as $\min_{i,j}(m_{ij})+\{\max_{i,j}(m_{ij})- \min_{i,j}(m_{ij})\}U([0,1])$, and similarly the time to maturity direction.
 %$\min_{i,j}(\tau_{ij})+\{\max_{i,j}(\tau_{ij})- \min_{i,j}(\tau_{ij})\}U(0,1)$
 
 In order to account for the domain range of the observation points when we compute the MC integral in the simulation study, we have to divide the approximating weighted sum by $\{\max_{i,j}(m_{ij})- \min_{i,j}(m_{ij})\}\{\min_{i,j}(\tau_{ij})- \min_{i,j}(\tau_{ij})\}$.
@@ -1294,11 +1296,11 @@ One such formulation suggests choosing the number of factors using the criteria%
 %K= \operatorname{arg}\,\underset{k\in \mathbb{N}}{\ope-ratorname{min}}  \left[ \log\left(\sum_{r=k+1}^N \hat{\lambda}_r\right)  + k\left( \frac{N+T}{NT} \right) \log\left(\min(N,T) \right) \right]
 %K= \operatorname{arg}\,\underset{k\in \mathbb{N}}{\operatorname{min}}  \left[ \log\left(\sum_{r=k+1}^N \hat{\lambda}_r\right)  + k\left( \frac{log(C^2_{NT})}{C^2_{NT}} \right)  \right].
 %\operatorname{arg}\,
-PC^{(\nu)}(k^*)=\underset{k\in \mathbb{N}, k\leq L_{\max}}{\operatorname{min}}  \left[ \left(\sum_{r=k+1}^N \hat{\lambda}^{(\nu)}_{r}\right)  + k \left(\sum_{r=L^{\max}}^N \hat{\lambda}^{(\nu)}_{r}\right)  \left( \frac{\log(C^2_{NT})}{C^2_{NT}} \right)  \right],
+PC^{(\nu)}(k^*)=\underset{k\in \mathbb{N}, k\leq L_{\max}}{\operatorname{min}}  \left[ \left(\sum_{r=k+1}^N \hat{\lambda}^{(\nu)}_{r,T}\right)  + k \left(\sum_{r=L^{\max}}^N \hat{\lambda}^{(\nu)}_{r,T}\right)  \left( \frac{\log(C^2_{NT})}{C^2_{NT}} \right)  \right],
 \end{equation}
 for the constant $C_{NT}=\min(\sqrt{N},\sqrt{T})$ and a prespecified $L^{\max}< \min(N,T)$. \cite{Bai2002} propose information criteria that do not depend on the choice of $L_{\max}$. We consider the above modified version
 \begin{equation}\label{optIC}
-IC^{(\nu)}(k^*)=\underset{k\in \mathbb{N}, k\leq L}{\operatorname{min}}  \left[ \log {\left(\frac{1}{N}\sum_{r=k+1}^N \hat{\lambda}^{(\nu)}_{r}\right)}  + k  \left( \frac{\log(C^2_{NT})}{C^2_{NT}} \right)  \right].
+IC^{(\nu)}(k^*)=\underset{k\in \mathbb{N}, k\leq L}{\operatorname{min}}  \left[ \log {\left(\frac{1}{N}\sum_{r=k+1}^N \hat{\lambda}^{(\nu)}_{r,T}\right)}  + k  \left( \frac{\log(C^2_{NT})}{C^2_{NT}} \right)  \right].
 \end{equation}
 Here using $\nu=(0,\dots,0)^\top$ will give $L$ while using $\nu=d$ will give the factors $L_d$.
 
@@ -1491,7 +1493,7 @@ The performance is recorded for sample sizes $N$ of $10$ and $25$ with $T$ obser
 %\end{center}
 
 Both FPCA based approaches give better estimates for the derivative of the call functions than an individually applied local polynomial estimator of the individual curves. Both the mean and the median of the $RMISE $ are smaller which is a result of the additional average over $N$ for the basis functions as given by Proposition \ref{curvebias}. However, the $\hat{X}^{(d)}_{L,i,\gamma}$ performs decisively better for small $T$ than the other two both in terms of mean and standard deviation of the mean squared error.
-In addition $\hat{X}^{(d)}_{L,i,\gamma}$ benefits more from increasing $N$ than $\hat{X}^{(d)}_{L,i,\varphi}$. With small $T$ for $\hat{X}^{(d)}_{L,i,\varphi}$ and individual smoothing the variability of $RMISE$ is much bigger than for $\hat{X}^{(d)}_{L,i,\gamma}$ while the median of $RMISE$ for $\hat{X}^{(d)}_{L,i,\gamma}$ and $\hat{X}^{(d)}_{L,i,\varphi}$ are comparable. This means individual local polynomial smoothers and $\hat{X}^{(d)}_{L,i,\varphi}$ must behave much worse than $\hat{X}^{(d)}_{L,i,\gamma}$ in some instances while $\gamma^{(d)}_r$-based expansion was able to stabilize the estimates. To get the same effect using $\hat{X}^{(d)}_{L,i,\varphi}$ a much bigger $T$ is needed. A possible explanation for this behavior is given by Proposition \ref{Mbias}. The rates of convergence for the estimators of the dual matrix entries rely on $T$. Thus in finite sample, when $T$ is small, the estimated loadings might be biased. %The rates of convergence for the estimators of the dual matrix entries rely on $T$, thus when facing small $T$ some of the estimated loadings might be inaccurate.
+In addition $\hat{X}^{(d)}_{L,i,\gamma}$ benefits more from increasing $N$ than $\hat{X}^{(d)}_{L,i,\varphi}$. With small $T$ for $\hat{X}^{(d)}_{L,i,\varphi}$ and individual smoothing the variability of $RMISE$ is much bigger than for $\hat{X}^{(d)}_{L,i,\gamma}$ while the median of $RMISE$ for $\hat{X}^{(d)}_{L,i,\gamma}$ and $\hat{X}^{(d)}_{L,i,\varphi}$ are comparable. This means individual local polynomial smoothers and $\hat{X}^{(d)}_{L,i,\varphi}$ must behave much worse than $\hat{X}^{(d)}_{L,i,\gamma}$ in some instances while $\hat{\gamma}^{(d)}_{r,T}$-based expansion was able to stabilize the estimates. To get the same effect using $\hat{X}^{(d)}_{L,i,\varphi}$ a much bigger $T$ is needed. A possible explanation for this behavior is given by Proposition \ref{Mbias}. The rates of convergence for the estimators of the dual matrix entries rely on $T$. Thus in finite sample, when $T$ is small, the estimated loadings might be biased. %The rates of convergence for the estimators of the dual matrix entries rely on $T$, thus when facing small $T$ some of the estimated loadings might be inaccurate.
 %For all estimation procedures the interquartile range (IQR) together with the standard deviation suggests that the distribution of MSE has fatter tails than normal and the comparison of mean and median also suggests a non normal distribution. %, in particular for the direct method.
 
 %Its performance depends on the sample characteristics and using it in applications has an associated higher risk.
@@ -1510,9 +1512,9 @@ We provided empirical performance results for $\hat{\gamma}^{(d)}_{r,T}$ and $\h
 %\end{equation*}
 
 \begin{equation*}
-RISE\left(\gamma^{(d)}_r, \hat{\gamma}^{(d)}_{r,T}\right)=\frac{\int_{[0,1]^g} \left\{\gamma^{(d)}_{r}(t)- \hat{\gamma}^{(d)}_{r,T}(t) \right\}^2  dt}{\int_{[0,1]^g} \left\{\gamma^{(d)}_{r,T}(t) \right\}^2 dt}.
+RISE\left(\tilde{\gamma}^{(d)}_r, \hat{\gamma}^{(d)}_{r,T}\right)=\frac{\int_{[0,1]^g} \left\{\tilde{\gamma}^{(d)}_{r}(t)- \hat{\gamma}^{(d)}_{r,T}(t) \right\}^2  dt}{\int_{[0,1]^g} \left\{\hat{\gamma}^{(d)}_{r,T}(t) \right\}^2 dt}.
 \end{equation*}
-By definition, the denominator of $RISE\left(\varphi^{(d)}_r, \hat{\varphi}^{(d)}_{r,T}\right)$ is zero.
+%By definition, the denominator of $RISE\left(\varphi^{(d)}_r, \hat{\varphi}^{(d)}_{r,T}\right)$ is zero.
 
 
 
@@ -1550,7 +1552,7 @@ By definition, the denominator of $RISE\left(\varphi^{(d)}_r, \hat{\varphi}^{(d)
 
 The results are summarized in Table \ref{tab:plmbais}. The mean and median of $RISE$ do not have the same order of magnitude and the the results for the corresponding $r$ are not comparable because they refer to different functions $\hat{\varphi}^{(d)}_{r,T}$ and $\hat{\gamma}^{(d)}_{r,T}$. %two different quantities. \textit{since the two quantities are of a different order of magnitude (btw. a possible way out is to normalize $\phi$ - I think the convexity of the function might matter as well, not sure).}
 %Instead
-To compare our method with existing benchmark, we included a simulation study for the unidimensional case, in which we report the results obtained with our second method presented in equations \eqref{der2} and \eqref{pder2} and the results of \cite{Mueller:2009}, since both these two approaches aim to estimate $\gamma^{(d)}_{r}$.  % estimated functions are included in Section \ref{simstudy} and explained below.
+To compare our method with existing benchmark, we included a simulation study for the unidimensional case, in which we report the results obtained with our second method presented in equations \eqref{der2} and \eqref{pder2} and the results of \cite{Mueller:2009}, since both these two approaches aim to estimate $\tilde{\gamma}^{(d)}_{r}$.  % estimated functions are included in Section \ref{simstudy} and explained below.
 
 
 %\bigskip
@@ -2557,7 +2559,7 @@ Further, note that
 and from equation \eqref{pir}
 \begin{equation}\label{Prop25.2}
 \begin{split}
-&\hat{\delta}^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir,T}= \sqrt{l^{(d)}_r} p^{(d)}_{ir}  - \sqrt{\hat{l}^{(d)}_r} \hat{p}^{(d)}_{ir}  \\
+&\tilde{\delta}^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir,T}= \sqrt{l^{(d)}_r} p^{(d)}_{ir}  - \sqrt{\hat{l}^{(d)}_r} \hat{p}^{(d)}_{ir}  \\
 =& \left( \sqrt{l^{(d)}_r} - \sqrt{\hat{l}^{(d)}_r} \right) p^{(d)}_{ir}  -  \sqrt{\hat{l}^{(d)}_r} \left(  \hat{p}^{(d)}_{ir} -  p^{(d)}_{ir}\right) = \mathcal{O}_p(T^{-1/2} + N^{1/2}T^{-1}).
 \end{split}
 \end{equation}
@@ -2568,9 +2570,9 @@ Using Proposition \ref{asymgam} and equation \eqref{three_x} it follows that
 \begin{equation}\label{xnl}
 \begin{split}
 &|X_i^{(d)}(t) - \hat{X}^{(d)}_{i,L,\varphi}(t)|= |\tilde{X}^{(d)}_{L,i,\varphi}(t)- \hat{X}^{(d)}_{i,L,\varphi}(t)|\\
-=& |\sum_{r=1}^L \hat{\delta}^{(d)}_{r}  \hat{\varphi}^{(d)}_r(t)(t) - \sum_{r=1}^L \hat{\delta}^{(d)}_{ir,T} \hat{\varphi}^{(d)}_{r,T}(t)| \\
+=& |\sum_{r=1}^L \tilde{\delta}^{(d)}_{r}  \tilde{\varphi}^{(d)}_r(t)(t) - \sum_{r=1}^L \hat{\delta}^{(d)}_{ir,T} \hat{\varphi}^{(d)}_{r,T}(t)| \\
 %=& |\sum_{r=1}^L (\delta^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir,T}) \varphi^{(d)}_r(t) + \hat{\delta}^{(d)}_{ir,T} (\varphi^{(d)}_r(t)-\hat{\varphi}^{(d)}_{r,T}(t))| \\
-=& |\sum_{r=1}^L (\hat{\delta}^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir,T}) \varphi^{(d)}_r(t) + \hat{\delta}^{(d)}_{ir,T} (\varphi^{(d)}_r(t)-\hat{\varphi}^{(d)}_{r,T}(t))|  \\
+=& |\sum_{r=1}^L (\tilde{\delta}^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir,T}) \varphi^{(d)}_r(t) + \hat{\delta}^{(d)}_{ir,T} (\varphi^{(d)}_r(t)-\hat{\varphi}^{(d)}_{r,T}(t))|  \\
 %= & |\sum_{r=1}^L (\delta^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir}+\hat{\delta}^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir,T}) \varphi^{(d)}_r(t) + \hat{\delta}^{(d)}_{ir,T} (\varphi^{(d)}_r(t)-\hat{\varphi}^{(d)}_{r,T}(t))|  \\
 %=& \mathcal{O}_p\left( N^{-1/2}+T^{-1/2} + N^{1/2}T^{-1} +  max(h)^{p+1} h^{-d}  +(N T  h_1 \times \dots \times h_g h^{2d} )^{-1/2} \right).
 =& \mathcal{O}_p\left(T^{-1/2} + N^{1/2}T^{-1} +  max(h)^{p+1} h^{-d}  +(N T  h_1 \times \dots \times h_g h^{2d} )^{-1/2} \right).
@@ -2611,8 +2613,8 @@ Equation \eqref{real} implies $| X^{(d)}_{i}(t) - X^{(d)}_{L,i,\varphi}(t)| \sta
 it can be verified by equations \eqref{Prop25.1} - \eqref{Prop25.2} and the results in equations (2.8) and (2.9) in \cite{Hall:2006} - $| \delta^{(d)}_{ir} - \hat{\delta}^{(d)}_{ir} | = \mathcal{O}_p(N^{-1/2})$ and $ |\varphi_r^{(d)}(t) - \hat{\varphi}_r^{(d)}(t) | = \mathcal{O}_p(N^{-1/2})$ - that
 \begin{equation}
 \begin{split}
-&|X^{(d)}_{L,i,\varphi}(t) -  \tilde{X}^{(d)}_{L,i,\varphi}(t)| = |\sum_{r=1}^L (\delta^{(d)}_{ir}-\hat{\delta}^{(d)}_{ir}) \varphi^{(d)}_r(t) + \hat{\delta}_{ir} (\varphi^{(d)}_r(t)-\hat{\varphi}^{(d)}_{r}(t))|= \mathcal{O}(N^{-1/2})\\
-&|\tilde{X}^{(d)}_{L,i,\varphi}(t) -\hat{X}^{(d)}_{L,i,\varphi}(t)|= |\sum_{r=1}^L (\hat{\delta}_{ir}-\hat{\delta}_{ir,T}) \hat{\varphi}^{(d)}_r + \hat{\delta}_{ir,T} (\hat{\varphi}^{(d)}_r-\hat{\varphi}^{(d)}_{r,T})| \\
+&|X^{(d)}_{L,i,\varphi}(t) -  \tilde{X}^{(d)}_{L,i,\varphi}(t)| = |\sum_{r=1}^L (\delta^{(d)}_{ir}-\tilde{\delta}^{(d)}_{ir}) \varphi^{(d)}_r(t) + \tilde{\delta}_{ir} (\varphi^{(d)}_r(t)-\tilde{\varphi}^{(d)}_{r}(t))|= \mathcal{O}(N^{-1/2})\\
+&|\tilde{X}^{(d)}_{L,i,\varphi}(t) -\hat{X}^{(d)}_{L,i,\varphi}(t)|= |\sum_{r=1}^L (\tilde{\delta}_{ir}-\hat{\delta}_{ir,T}) \tilde{\varphi}^{(d)}_r + \hat{\delta}_{ir,T} (\tilde{\varphi}^{(d)}_r-\hat{\varphi}^{(d)}_{r,T})| \\
 &=\mathcal{O}_p\left(N^{-1/2} +T^{-1/2} + N^{1/2}T^{-1} +  max(h)^{p+1} h^{-d}  +(N T  h_1 \times \dots \times h_g h^{2d} )^{-1/2} \right) \\
 &=\mathcal{O}_p\left(N^{-1/2}+  max(h)^{p+1} h^{-d}  +(N T  h_1 \times \dots \times h_g h^{2d} )^{-1/2} \right)
 \end{split}
